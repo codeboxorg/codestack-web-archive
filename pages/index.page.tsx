@@ -1,12 +1,9 @@
-import classNames from 'classnames/bind'
-import style from './index.module.scss'
-const cx = classNames.bind(style)
+import Link from 'next/link'
 
 const Landing = () => {
   return (
     <>
-      <div className={cx('box', 'colorBlue')}>Landing</div>
-      <div className="w-200 h-200 bg-red-500">Landing</div>
+      <Link href={'/loginPage'}>로그인 페이지로</Link>
     </>
   )
 }
