@@ -11,7 +11,8 @@
       "@hooks/*": ["hooks/*"],
       "@stores/*": ["stores/*"],
       "@api/*": ["api/*"],
-      "@types/*": ["types/*"]
+      "@types/*": ["types/*"],
+      "@server/*": ["server/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
