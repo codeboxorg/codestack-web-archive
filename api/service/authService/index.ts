@@ -1,12 +1,12 @@
-import { githubBaseAPI } from '@api/core'
+import { nextAPI } from '@api/core'
 import { throwRemoteError } from '@api/error/remoteError'
 import { AuthService } from './authService'
 
 export const authServiceRemote = (): AuthService => ({
   githubAuthorizationToAccessToken: async (code, client_id, client_secret) => {
     try {
-      const response = await githubBaseAPI.post({
-        url: `/access_token`,
+      const response = await nextAPI.post({
+        url: `/api/oauth`,
         data: { code, client_id, client_secret },
       })
       return response.data

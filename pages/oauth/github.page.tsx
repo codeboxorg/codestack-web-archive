@@ -1,14 +1,30 @@
+import { api } from '@api/index'
 import LoadingDot from '@components/shared/LoadingDot'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+
+const githubSecretId = `${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`
+const githubSecretSecret = `${process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET}`
 
 const OAuthGithub = () => {
   const router = useRouter()
 
   useEffect(() => {
+    const getAccessTokenTest = async (authCode: string) => {
+      try {
+        const res = await api.authService.githubAuthorizationToAccessToken(
+          authCode,
+          githubSecretId,
+          githubSecretSecret
+        )
+        window.opener.oAuthRedirectCallback(res.accessToken)
+        window.close()
+      } catch (err) {
+        console.log(err)
+      }
+    }
     if (router.isReady) {
-      window.opener.oAuthRedirectCallback(router.query.code)
-      window.close()
+      getAccessTokenTest(router.query.code as string)
     }
   }, [router.isReady])
 

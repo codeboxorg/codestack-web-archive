@@ -4,8 +4,8 @@ import { useEffect } from 'react'
 const GithubUrl = `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`
 
 const LoginPage = () => {
-  const oAuthRedirectCallback = (authorizationCode: string) => {
-    console.log(authorizationCode)
+  const oAuthRedirectCallback = (githubAccessToken: string) => {
+    console.log(githubAccessToken)
   }
 
   useEffect(() => {
