@@ -13,7 +13,6 @@ oauthHandler.post<NextRequest<GithubAuthorizationToAccessTokenRequest>>(
     body('code').notEmpty().withMessage('Authorization code is empty'),
     body('client_id').notEmpty().withMessage('Client id is empty'),
     body('client_secret').notEmpty().withMessage('Client secret is empty'),
-    body('test').notEmpty().withMessage('test is empty'),
   ]),
   async (req, res) => {
     const { code, client_id, client_secret } = req.body
