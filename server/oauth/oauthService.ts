@@ -1,4 +1,4 @@
-import { axiosForNextApi } from '@server/axiosForNextApi'
+import { axiosForNextApi } from '@server/utils/axiosForNextApi'
 
 interface GithubAccessTokenInfo {
   access_token: string
