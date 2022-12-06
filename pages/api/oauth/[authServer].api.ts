@@ -37,4 +37,11 @@ oauthHandler.post<NextRequest<GithubAuthorizationToAccessTokenRequest>>(
   }
 )
 
+oauthHandler.get<NextRequest<GithubAuthorizationToAccessTokenRequest>>(
+  'api/oauth/test',
+  async (req, res) => {
+    res.status(200).json({ test: 'test' })
+  }
+)
+
 export default oauthHandler
