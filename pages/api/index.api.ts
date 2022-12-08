@@ -1,5 +1,10 @@
-import { NextApiResponse, NextApiRequest } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
+import nc from 'next-connect'
 
-export default function handler(_req: NextApiRequest, res: NextApiResponse) {
-  return res.status(200).json({ test: 'test' })
-}
+const handler = nc<NextApiRequest, NextApiResponse>()
+
+handler.get('/api', async (req, res) => {
+  res.status(200).json({ test: 'test' })
+})
+
+export default handler
