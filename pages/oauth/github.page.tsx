@@ -24,7 +24,7 @@ const OAuthGithub = () => {
       }
     }
     if (router.isReady) {
-      getAccessTokenTest(router.query.code as string)
+      setTimeout(() => getAccessTokenTest(router.query.code as string), 2000)
     }
   }, [router.isReady])
 
