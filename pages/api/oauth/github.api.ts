@@ -7,13 +7,6 @@ import { initValidation } from '@server/utils/validator'
 import { AxiosError } from 'axios'
 import { body } from 'express-validator'
 
-oauthHandler.get<NextRequest<GithubAuthorizationToAccessTokenRequest>>(
-  'api/oauth/test',
-  async (req, res) => {
-    res.status(200).json({ test: 'test' })
-  }
-)
-
 oauthHandler.post<NextRequest<GithubAuthorizationToAccessTokenRequest>>(
   'api/oauth/github',
   initValidation([
