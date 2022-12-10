@@ -6,12 +6,13 @@ import { serverToServerAPI } from '@server/serverToServerApi'
 import { initValidation } from '@server/utils/validator'
 import { AxiosError } from 'axios'
 import { body } from 'express-validator'
+import { NextApiRequest, NextApiResponse } from 'next'
 
-oauthHandler.get<NextRequest<GithubAuthorizationToAccessTokenRequest>>(
-  async (req, res) => {
-    res.status(200).json({ test: 'test2' })
-  }
-)
+function handler(req: NextApiRequest, res: NextApiResponse) {
+  res.status(200).json({ test: 'test2' })
+}
+
+export default handler
 
 // oauthHandler.get<NextRequest<GithubAuthorizationToAccessTokenRequest>>(
 //   'api/oauth/test',
@@ -49,5 +50,3 @@ oauthHandler.get<NextRequest<GithubAuthorizationToAccessTokenRequest>>(
 //     }
 //   }
 // )
-
-export default oauthHandler
