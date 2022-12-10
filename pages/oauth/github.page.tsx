@@ -1,4 +1,4 @@
-import { api } from 'apiForClient/index'
+import { api } from 'api/index'
 import LoadingDot from '@components/shared/LoadingDot'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
