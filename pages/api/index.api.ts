@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 function handler(req: NextApiRequest, res: NextApiResponse) {
-  res.status(200).json({ test: 'root' })
+  req.headers
+  res.status(200).json({ test: 'root', h: req.headers })
 }
 
 export default handler
