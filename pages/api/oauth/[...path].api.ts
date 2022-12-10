@@ -9,7 +9,7 @@ import { body } from 'express-validator'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 function handler(req: NextApiRequest, res: NextApiResponse) {
-  res.status(200).json({ test: 'test2' })
+  res.status(200).json({ test: 'subRoute' })
 }
 
 export default handler
