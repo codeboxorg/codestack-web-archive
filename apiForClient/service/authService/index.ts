@@ -1,5 +1,5 @@
-import { nextAPI } from '@api/core'
-import { throwRemoteError } from '@api/error/remoteError'
+import { nextAPI } from 'apiForClient/core'
+import { throwRemoteError } from 'apiForClient/error/remoteError'
 import { AuthService } from './authService'
 
 export const authServiceRemote = (): AuthService => ({
