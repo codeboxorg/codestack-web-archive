@@ -1,4 +1,4 @@
-interface Pagenation<T> {
+interface Pagination<T> {
   content: T[]
   page_number: number
   total_pages: number
