@@ -1,13 +1,8 @@
-import axios from 'axios'
-import Link from 'next/link'
+import { api } from '@api/index'
 import { GetServerSideProps } from 'next'
+import Link from 'next/link'
 
-interface Problem {
-  id: number
-  title: string
-}
-
-const ProblemPage = ({ content, total_pages }: Pagenation<Problem>) => {
+const ProblemPage = ({ content, total_pages }: Pagination<Problem>) => {
   return (
     <>
       <table className="w-full text-sm text-gray-500">
@@ -18,11 +13,11 @@ const ProblemPage = ({ content, total_pages }: Pagenation<Problem>) => {
           </tr>
         </thead>
         <tbody>
-          {content.map((e: any, i: number) => (
-            <tr className="border-b" key={i}>
-              <td>{e.id}</td>
+          {content.map(({ id, title }, idx) => (
+            <tr className="border-b" key={idx}>
+              <td>{id}</td>
               <td>
-                <Link href={`/problem/${e.id}`}>{e.title}</Link>
+                <Link href={`/problem/${id}`}>{title}</Link>
               </td>
             </tr>
           ))}
@@ -30,10 +25,10 @@ const ProblemPage = ({ content, total_pages }: Pagenation<Problem>) => {
       </table>
       <div className="flex justify-center">
         <ul className="flex list-style-none">
-          {Array.from(Array(total_pages), (e, i) => {
+          {Array.from(Array(total_pages), (_, idx) => {
             return (
-              <li className="px-2" key={i}>
-                <Link href={{ query: { page: i } }}>{i + 1}</Link>
+              <li className="px-2" key={idx}>
+                <Link href={{ query: { page: idx } }}>{idx + 1}</Link>
               </li>
             )
           })}
@@ -46,14 +41,9 @@ const ProblemPage = ({ content, total_pages }: Pagenation<Problem>) => {
 export default ProblemPage
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const url = process.env.NEXT_PUBLIC_BASE_API_URL + '/v1/problem'
-  const res = await axios.get<Pagenation<Problem>>(url, {
-    params: {
-      page: context.query.page,
-    },
-  })
-
+  const pageNumber = context.query.page ? Number(context.query.page) : 0
+  const res = await api.problemService.problemList(pageNumber)
   return {
-    props: res.data,
+    props: res,
   }
 }
