@@ -1,23 +1,18 @@
-import axios from 'axios'
-import Link from 'next/link'
+import { api } from '@api/index'
 import { GetServerSideProps } from 'next'
 
-interface Problem {
-  id: number
-  title: string
-  context: string
-  max_cpu_time: number
-  max_memory: number
-}
-
-const ProblemDetailPage = (data: Problem) => {
+const ProblemDetailPage = ({
+  title,
+  context,
+  max_cpu_time,
+  max_memory,
+}: Problem) => {
   return (
     <>
-      <h1>{data.title}</h1>
-      <p>시간 제한 : {data.max_cpu_time}ms</p>
-      <p>메모리 사용량 : {data.max_memory}MB</p>
-
-      <div dangerouslySetInnerHTML={{ __html: data.context }} />
+      <h1>{title}</h1>
+      <p>시간 제한 : {max_cpu_time}ms</p>
+      <p>메모리 사용량 : {max_memory}MB</p>
+      <div dangerouslySetInnerHTML={{ __html: context }} />
     </>
   )
 }
@@ -25,11 +20,8 @@ const ProblemDetailPage = (data: Problem) => {
 export default ProblemDetailPage
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await axios.get<Problem>(
-    process.env.NEXT_PUBLIC_BASE_API_URL + `/v1/problem/${context.params!.id}`
-  )
-
+  const res = await api.problemService.problemDetail(Number(context.params!.id))
   return {
-    props: res.data,
+    props: res,
   }
 }
