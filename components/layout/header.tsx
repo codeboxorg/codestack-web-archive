@@ -10,12 +10,20 @@ const Header = () => {
           </Link>
         </div>
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div className="text-sm lg:flex-grow">
+          <div className="text-sm">
             <Link
               href="/problem"
               className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-blue-200 mr-4"
             >
               문제
+            </Link>
+          </div>
+          <div className="text-sm lg:flex-grow">
+            <Link
+              href="/submission"
+              className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-blue-200 mr-4"
+            >
+              제출 근황
             </Link>
           </div>
         </div>
