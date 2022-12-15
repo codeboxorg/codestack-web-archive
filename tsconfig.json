@@ -9,7 +9,7 @@
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
       "@hooks/*": ["hooks/*"],
-      "@stores/*": ["stores/*"],
+      "@store/*": ["store/*"],
       "@api/*": ["apiService/*"],
       "@types/*": ["types/*"],
       "@server/*": ["server/*"]
