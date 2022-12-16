@@ -4,8 +4,13 @@ import { cpp } from '@codemirror/lang-cpp'
 import { python } from '@codemirror/lang-python'
 import { api } from '@api/index'
 import { LanguageSupport } from '@codemirror/language'
+import wrapper from '@store/configureStore'
+import { getSubmission, setSubmission } from './submissionSlice'
+import { useSelector } from 'react-redux'
 
-const ProblemPage = (submission: Submission) => {
+const ProblemPage = () => {
+  const { source_code, language } = useSelector(getSubmission)
+
   //TODO: 추후 언어 이름이 아닌 db에서 언어를 나타내는 string 으로 분리
   const languageExtensions: { [name: string]: LanguageSupport } = {
     C: cpp(),
@@ -16,9 +21,9 @@ const ProblemPage = (submission: Submission) => {
     <>
       <CodeMirror
         readOnly
-        value={submission.source_code}
+        value={source_code}
         height="480px"
-        extensions={[languageExtensions[submission.language.name]]}
+        extensions={[languageExtensions[language.name]]}
       />
     </>
   )
@@ -26,11 +31,14 @@ const ProblemPage = (submission: Submission) => {
 
 export default ProblemPage
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await api.submissionService.submissionDetail(
-    Number(context.params!.id)
-  )
-  return {
-    props: res,
-  }
-}
+export const getServerSideProps: GetServerSideProps =
+  wrapper.getServerSideProps((store) => async (context) => {
+    const submissionId = Number(context.params!.id)
+    const submission = await api.submissionService.submissionDetail(
+      submissionId
+    )
+    store.dispatch(setSubmission(submission))
+    return {
+      props: {},
+    }
+  })

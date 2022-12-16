@@ -1,9 +1,13 @@
 import { AnyAction, CombinedState, combineReducers } from 'redux'
 import { HYDRATE } from 'next-redux-wrapper'
 import problemSlice, { ProblemSlice } from '@pages/problem/problemSlice'
+import submissionSlice, {
+  SubmissionSlice,
+} from '@pages/submission/submissionSlice'
 
 export interface ReducerStates {
   problem: ProblemSlice
+  submission: SubmissionSlice
 }
 
 const rootReducer = (
@@ -16,6 +20,7 @@ const rootReducer = (
     default: {
       const combinedReducer = combineReducers({
         problem: problemSlice.reducer,
+        submission: submissionSlice.reducer,
       })
       return combinedReducer(state, action)
     }
