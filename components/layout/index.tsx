@@ -1,8 +1,11 @@
-import { useState } from 'react'
-import pusherClient from '@utils/pusherClient'
-import Link from 'next/link'
-import Header from './header'
-const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
+import { ReactNode } from 'react'
+import Header from './Header/Header'
+
+interface Props {
+  children: ReactNode
+}
+
+const Layout = ({ children }: Props) => {
   return (
     <>
       <Header />
