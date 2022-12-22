@@ -1,8 +1,33 @@
 import { api } from '@api/index'
-import { GetServerSideProps } from 'next'
+import { useQuery } from '@tanstack/react-query'
+import { problemKeys } from 'constant/queryKeys/problem'
 import Link from 'next/link'
+import usePagination from 'react-use-pagination-hook'
 
-const ProblemPage = ({ content, total_pages }: Pagination<Problem>) => {
+const ProblemPage = () => {
+  const {
+    pagelist,
+    goNextSection,
+    goBeforeSection,
+    goFirstSection,
+    goLastSection,
+    goNext,
+    goBefore,
+    setTotalPage,
+    setPage,
+    currentPage,
+  } = usePagination({ numOfPage: 5 })
+
+  const { data: problemList } = useQuery(
+    problemKeys.list(currentPage - 1, ''),
+    () => api.problemService.problemList(currentPage),
+    {
+      onSuccess(res) {
+        setTotalPage(res.total_pages)
+      },
+    }
+  )
+
   return (
     <>
       <table className="w-full text-sm text-gray-500">
@@ -13,7 +38,7 @@ const ProblemPage = ({ content, total_pages }: Pagination<Problem>) => {
           </tr>
         </thead>
         <tbody>
-          {content.map(({ id, title }, idx) => (
+          {problemList?.content.map(({ id, title }, idx) => (
             <tr className="border-b" key={idx}>
               <td>{id}</td>
               <td>
@@ -23,27 +48,23 @@ const ProblemPage = ({ content, total_pages }: Pagination<Problem>) => {
           ))}
         </tbody>
       </table>
-      <div className="flex justify-center">
-        <ul className="flex list-style-none">
-          {Array.from(Array(total_pages), (_, idx) => {
-            return (
-              <li className="px-2" key={idx}>
-                <Link href={{ query: { page: idx } }}>{idx + 1}</Link>
-              </li>
-            )
-          })}
-        </ul>
+      <div className="flex justify-center gap-10 py-15">
+        <button onClick={() => goBeforeSection()}>{'<<'}</button>
+        <button onClick={() => goBefore()}>{'<'}</button>
+        {pagelist.map((page, idx) => (
+          <button
+            className={currentPage === page ? 'text-blue-500' : ''}
+            onClick={() => setPage(page)}
+            key={idx}
+          >
+            {page}
+          </button>
+        ))}
+        <button onClick={() => goNext()}>{'>'}</button>
+        <button onClick={() => goNextSection()}>{'>>'}</button>
       </div>
     </>
   )
 }
 
 export default ProblemPage
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const pageNumber = context.query.page ? Number(context.query.page) : 0
-  const res = await api.problemService.problemList(pageNumber)
-  return {
-    props: res,
-  }
-}
