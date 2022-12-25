@@ -93,7 +93,7 @@ const LoginPage = () => {
         </form>
         <div className="mt-25 b">
           <Link
-            href="http://dev-api.rrrmaster.com/oauth2/authorization/github?redirect_uri=https://pr-16.dp9i34mgnqryi.amplifyapp.com/"
+            href="http://dev-api.rrrmaster.com/oauth2/authorization/github?redirect_uri=https://pr-16.dp9i34mgnqryi.amplifyapp.com/api/oauth2/redirect"
             type="button"
             className="w-full justify-center text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 mb-2"
           >
