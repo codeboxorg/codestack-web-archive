@@ -1,26 +1,19 @@
 import { api } from '@api/index'
+import PaginationBar from '@components/shared/PaginationBar'
 import { useQuery } from '@tanstack/react-query'
 import { problemKeys } from 'constant/queryKeys/problem'
 import Link from 'next/link'
 import usePagination from 'react-use-pagination-hook'
 
 const ProblemPage = () => {
-  const {
-    pagelist,
-    goNextSection,
-    goBeforeSection,
-    goFirstSection,
-    goLastSection,
-    goNext,
-    goBefore,
-    setTotalPage,
-    setPage,
-    currentPage,
-  } = usePagination({ numOfPage: 5 })
+  const paginationMethods = usePagination({ numOfPage: 5 })
+
+  const { currentPage, setTotalPage } = paginationMethods
+  const currentServerPageIndex = currentPage - 1
 
   const { data: problemList } = useQuery(
-    problemKeys.list(currentPage - 1, ''),
-    () => api.problemService.problemList(currentPage),
+    problemKeys.list(currentServerPageIndex, ''),
+    () => api.problemService.problemList(currentServerPageIndex),
     {
       onSuccess(res) {
         setTotalPage(res.total_pages)
@@ -49,19 +42,7 @@ const ProblemPage = () => {
         </tbody>
       </table>
       <div className="flex justify-center gap-10 py-15">
-        <button onClick={() => goBeforeSection()}>{'<<'}</button>
-        <button onClick={() => goBefore()}>{'<'}</button>
-        {pagelist.map((page, idx) => (
-          <button
-            className={currentPage === page ? 'text-blue-500' : ''}
-            onClick={() => setPage(page)}
-            key={idx}
-          >
-            {page}
-          </button>
-        ))}
-        <button onClick={() => goNext()}>{'>'}</button>
-        <button onClick={() => goNextSection()}>{'>>'}</button>
+        <PaginationBar {...paginationMethods} />
       </div>
     </>
   )
