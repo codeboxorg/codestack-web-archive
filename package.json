@@ -33,7 +33,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.1",
     "react-redux": "^8.0.5",
-    "react-use-pagination-hook": "^1.0.2",
+    "react-use-pagination-hook": "^1.1.2",
     "redux": "^4.2.0",
     "sass": "^1.56.1",
     "typescript": "4.9.3"
