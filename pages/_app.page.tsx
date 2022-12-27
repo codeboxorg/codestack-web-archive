@@ -1,12 +1,12 @@
-import '../styles/globals.scss'
-import type { AppProps } from 'next/app'
+import AuthChecker from '@components/auth/AuthChecker'
+import AuthContainer from '@components/auth/AuthContainer'
 import Layout from '@components/layout'
 import wrapper from '@store/configureStore'
-import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import AuthContainer from '@components/auth/AuthContainer'
-import AuthChecker from '@components/auth/AuthChecker'
 import { NextComponentType, NextPageContext } from 'next'
+import type { AppProps } from 'next/app'
+import { useState } from 'react'
+import '../styles/globals.scss'
 
 type PagePermissionInfoEnabledComponentConfig = {
   permission: PagePermissionInfo
