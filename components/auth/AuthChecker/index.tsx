@@ -8,6 +8,13 @@ const AuthChecker = () => {
   const { login, logout } = useAuth()
 
   /**
+   * TODO:
+   * - [] 쿠키의 Token을 UserInfo로 바꿔오는 서버측 엔드포인트로 Fetch (react-query의 useMutation을 사용해주세요)
+   * - [] Fetch 성공 (토큰 검증 성공)시 받아온 user 정보를 전역으로 유지시키기
+   * - [] Fetch 실패 (토큰 검증 실패)시 logout 메서드 실행
+   */
+
+  /**
    * 토큰 검증 실패시 (임시)
    */
   setTimeout(() => {
