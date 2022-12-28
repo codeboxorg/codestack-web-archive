@@ -4,10 +4,12 @@ import problemSlice, { ProblemSlice } from '@pages/problem/problemSlice'
 import submissionSlice, {
   SubmissionSlice,
 } from '@pages/submission/submissionSlice'
+import authSlice, { AuthSlice } from '@components/auth/authSlice'
 
 export interface ReducerStates {
   problem: ProblemSlice
   submission: SubmissionSlice
+  auth: AuthSlice
 }
 
 const rootReducer = (
@@ -21,6 +23,7 @@ const rootReducer = (
       const combinedReducer = combineReducers({
         problem: problemSlice.reducer,
         submission: submissionSlice.reducer,
+        auth: authSlice.reducer,
       })
       return combinedReducer(state, action)
     }

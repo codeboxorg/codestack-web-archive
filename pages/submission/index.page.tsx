@@ -53,6 +53,13 @@ const SubmissionPage = ({ content, total_pages }: Pagination<Submission>) => {
   )
 }
 
+const pagePermission: PagePermissionInfo = {
+  redirect: '/login',
+  loadingFallback: <div>testFallback</div>,
+}
+
+SubmissionPage.permission = pagePermission
+
 export default SubmissionPage
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const pageNumber = context.query.page ? Number(context.query.page) : 0
