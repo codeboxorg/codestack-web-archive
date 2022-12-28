@@ -3,7 +3,9 @@ import AuthContainer from '@components/auth/AuthContainer'
 import Layout from '@components/layout'
 import wrapper from '@store/configureStore'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ConfigProvider } from 'antd'
 import { NextComponentType, NextPageContext } from 'next'
+import { StyleProvider } from '@ant-design/cssinjs'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import '../styles/globals.scss'
@@ -50,7 +52,17 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthChecker />
-      <Layout>{renderAuthorizedComponent()}</Layout>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#3b82f6',
+          },
+        }}
+      >
+        <StyleProvider hashPriority="high">
+          <Layout>{renderAuthorizedComponent()}</Layout>
+        </StyleProvider>
+      </ConfigProvider>
     </QueryClientProvider>
   )
 }
