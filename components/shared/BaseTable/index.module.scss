@@ -1,0 +1,40 @@
+.table {
+  tr th :first-child,
+  tr td :first-child {
+    margin-top: 0;
+  }
+  tr th :last-child,
+  tr td :last-child {
+    margin-bottom: 0;
+  }
+  border-collapse: collapse;
+}
+
+.tableHead {
+  tr th {
+    &:first-child {
+      border-left: none;
+    }
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+.tableBody {
+  td {
+    vertical-align: middle;
+    text-align: center;
+    &:first-child {
+      border-left: none;
+    }
+    &:last-child {
+      border-right: none;
+    }
+  }
+  tr {
+    &:last-child {
+      border: none !important;
+    }
+  }
+}
