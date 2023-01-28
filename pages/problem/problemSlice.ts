@@ -28,5 +28,4 @@ const problemSlice = createSlice({
 })
 
 export const { setProblem } = problemSlice.actions
-export const getProblem = (state: RootState) => state.problem.problem
 export default problemSlice
