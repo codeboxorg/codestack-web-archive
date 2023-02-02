@@ -1,10 +1,11 @@
-import { getProblem } from '@pages/problem/problemSlice'
+import { useRootState } from '@hooks/useRootSelector'
 import Head from 'next/head'
-import { useSelector } from 'react-redux'
 
 const ProblemDetail = () => {
-  const { id, title, max_cpu_time, max_memory, context } =
-    useSelector(getProblem)
+  const { id, title, max_cpu_time, max_memory, context } = useRootState(
+    (state) => state.problem.problem
+  )
+
   return (
     <>
       <Head>

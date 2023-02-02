@@ -28,5 +28,4 @@ const submissionSlice = createSlice({
 })
 
 export const { setSubmission } = submissionSlice.actions
-export const getSubmission = (state: RootState) => state.submission.submission
 export default submissionSlice
