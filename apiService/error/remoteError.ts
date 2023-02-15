@@ -60,6 +60,8 @@ export const throwRemoteError = (error: unknown) => {
     switch (status) {
       case 400:
         throw new BadRequestError(data)
+      case 401:
+        throw new UnauthorizedError(data)
       case 404:
         throw new NotFoundError(data)
       default:
