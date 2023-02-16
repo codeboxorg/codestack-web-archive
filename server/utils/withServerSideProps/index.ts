@@ -8,15 +8,15 @@ export default function withGetServerSideProps(
     try {
       return await getServerSideProps(context)
     } catch (error) {
-      if (error instanceof RemoteError) {
-        return {
-          props: {
-            error: JSON.parse(JSON.stringify(error)),
-          },
-        }
+      if (!(error instanceof RemoteError)) {
+        console.error('unhandled error', error)
+        throw error
       }
-      console.error('unhandled error', error)
-      throw error
+      return {
+        props: {
+          error: JSON.parse(JSON.stringify(error)),
+        },
+      }
     }
   }
 }
