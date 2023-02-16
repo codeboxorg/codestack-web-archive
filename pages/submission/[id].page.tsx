@@ -3,6 +3,7 @@ import { cpp } from '@codemirror/lang-cpp'
 import { python } from '@codemirror/lang-python'
 import { LanguageSupport } from '@codemirror/language'
 import { useRootState } from '@hooks/useRootSelector'
+import withGetServerSideProps from '@server/utils/withServerSideProps'
 import wrapper from '@store/configureStore'
 import CodeMirror from '@uiw/react-codemirror'
 import { GetServerSideProps } from 'next'
@@ -33,7 +34,7 @@ const ProblemPage = () => {
 
 export default ProblemPage
 
-export const getServerSideProps: GetServerSideProps =
+export const getServerSideProps: GetServerSideProps = withGetServerSideProps(
   wrapper.getServerSideProps((store) => async (context) => {
     const submissionId = Number(context.params!.id)
     const submission = await api.submissionService.submissionDetail(
@@ -44,3 +45,4 @@ export const getServerSideProps: GetServerSideProps =
       props: {},
     }
   })
+)
