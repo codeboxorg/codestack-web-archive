@@ -31,7 +31,7 @@ export class UnauthorizedError extends RemoteError {
     const description = data.message ?? '권한이 없는 사용자 입니다.'
     super(description, message)
     this.status = 401
-    this.name = 'NotFoundError'
+    this.name = 'UnauthorizedError'
     this.data = data
   }
 }
@@ -53,6 +53,19 @@ export class BadRequestError extends RemoteError {
   }
 }
 
+export class InternalServerError extends RemoteError {
+  status: 500
+  data: any
+  constructor(data: any) {
+    const message = '500 InternalServerError'
+    const description = data.message ?? '서버측 에러입니다.'
+    super(description, message)
+    this.status = 500
+    this.name = 'InternalServerError'
+    this.data = data
+  }
+}
+
 export const throwRemoteError = (error: unknown) => {
   if (error instanceof AxiosError) {
     const status = error.response?.status
@@ -64,6 +77,8 @@ export const throwRemoteError = (error: unknown) => {
         throw new UnauthorizedError(data)
       case 404:
         throw new NotFoundError(data)
+      case 500:
+        throw new InternalServerError(data)
       default:
         throw error
     }

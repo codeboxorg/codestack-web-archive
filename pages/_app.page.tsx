@@ -1,5 +1,4 @@
 import AuthChecker from '@components/auth/AuthChecker'
-import AuthContainer from '@components/auth/AuthContainer'
 import Layout from '@components/layout'
 import wrapper from '@store/configureStore'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -9,6 +8,7 @@ import { StyleProvider } from '@ant-design/cssinjs'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import '../styles/globals.scss'
+import SSRErrorHandleContainer from '@components/error/SSRErrorHandleContainer'
 
 type PagePermissionInfoEnabledComponentConfig = {
   permission: PagePermissionInfo
@@ -35,18 +35,17 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
         },
       })
   )
-  const memberRequireAuth = ALLOWED_ONLY_TO_MEMBERS.some((path) =>
+
+  const isPermissionRequired = ALLOWED_ONLY_TO_MEMBERS.some((path) =>
     route.startsWith(path)
   )
-  const renderAuthorizedComponent = () => {
-    if (memberRequireAuth) {
-      return (
-        <AuthContainer pagePermissionInfo={Component.permission}>
-          <Component {...pageProps} />
-        </AuthContainer>
-      )
-    }
-    return <Component {...pageProps} />
+
+  const pagePermissionInfo = {
+    role: Component.permission?.role ?? 'member',
+    loadingFallback: Component.permission?.loadingFallback ?? (
+      <div>page Permission Checking...</div>
+    ),
+    redirect: Component.permission?.redirect ?? '/login',
   }
 
   return (
@@ -60,7 +59,15 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
         }}
       >
         <StyleProvider hashPriority="high">
-          <Layout>{renderAuthorizedComponent()}</Layout>
+          <Layout>
+            <SSRErrorHandleContainer
+              error={pageProps.error}
+              pagePermissionInfo={pagePermissionInfo}
+              isPermissionRequired={isPermissionRequired}
+            >
+              <Component {...pageProps} />
+            </SSRErrorHandleContainer>
+          </Layout>
         </StyleProvider>
       </ConfigProvider>
     </QueryClientProvider>

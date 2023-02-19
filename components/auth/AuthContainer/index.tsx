@@ -1,10 +1,10 @@
 import useAuth from '@hooks/useAuth'
 import { useRouter } from 'next/router'
-import { ReactElement, ReactNode, useEffect } from 'react'
+import { ReactElement, useEffect } from 'react'
 
 interface Props {
   children: ReactElement
-  pagePermissionInfo?: PagePermissionInfo
+  pagePermissionInfo: Required<PagePermissionInfo>
 }
 
 /**
@@ -14,17 +14,12 @@ interface Props {
 const AuthContainer = ({ children, pagePermissionInfo }: Props) => {
   const router = useRouter()
   const { user } = useAuth()
-
-  const targetRedirect = pagePermissionInfo?.redirect ?? '/'
-  const targetRole = pagePermissionInfo?.role ?? 'member'
-  const targetLoadingFallback = pagePermissionInfo?.loadingFallback || (
-    <div>Default Auth Loading</div>
-  )
+  const { redirect, loadingFallback } = pagePermissionInfo
 
   useEffect(() => {
     if (user === 'loading') return
     if (!user) {
-      router.push(targetRedirect)
+      router.push(redirect)
     }
   }, [user])
 
@@ -38,7 +33,7 @@ const AuthContainer = ({ children, pagePermissionInfo }: Props) => {
   /**
    * 새로고침시 AuthChecker Component가 권한 검증중인경우 loading 처리
    */
-  return targetLoadingFallback
+  return loadingFallback
 }
 
 export default AuthContainer
