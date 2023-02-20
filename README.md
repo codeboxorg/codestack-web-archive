@@ -5,7 +5,7 @@
     <h2>코딩 테스트 연습 플랫폼</h2>
     <h3>현재 배포 버전(dev branch)</h3>
     <div>
-    <a src="https://dev.dp9i34mgnqryi.amplifyapp.com/">https://dev.dp9i34mgnqryi.amplifyapp.com</a>
+    <a href="https://dev.dp9i34mgnqryi.amplifyapp.com/">https://dev.dp9i34mgnqryi.amplifyapp.com</a>
     </div>
 </div>
 <br/>
