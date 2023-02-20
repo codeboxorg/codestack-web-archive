@@ -11,10 +11,10 @@
 <br/>
 <br/>
 
-|                        백엔드                         |               백엔드, 프론트엔드, 채점서버                |                        프론트엔드                        |     |
-| :---------------------------------------------------: | :-------------------------------------------------------: | :------------------------------------------------------: | :-: |
-| <img src="https://github.com/jeyog.png" width="300"/> | <img src="https://github.com/rrrmaster.png" width="300"/> | <img src="https://github.com/je0ngyun.png" width="300"/> |     |
-|        [jeyog](https://github.com/Najeong-Kim)        |       [rrrmaster](https://github.com/SeojinSeojin)        |       [je0ngyun](https://github.com/superLipbalm)        |     |
+|                        백엔드                         |               백엔드, 프론트엔드, 채점서버                |                        프론트엔드                        |
+| :---------------------------------------------------: | :-------------------------------------------------------: | :------------------------------------------------------: |
+| <img src="https://github.com/jeyog.png" width="300"/> | <img src="https://github.com/rrrmaster.png" width="300"/> | <img src="https://github.com/je0ngyun.png" width="300"/> |
+|           [jeyog](https://github.com/jeyog)           |         [rrrmaster](https://github.com/rrrmaster)         |         [je0ngyun](https://github.com/je0ngyun)          |
 
 <br/>
 
