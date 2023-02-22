@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { GetServerSideProps } from 'next'
 import { api } from '@api/index'
-import withGetServerSideProps from '@server/utils/withServerSideProps'
+import withAuthGssp from '@server/utils/withAuthGssp'
 
 const SubmissionPage = ({ content, total_pages }: Pagination<Submission>) => {
   return (
@@ -62,7 +62,7 @@ const pagePermission: PagePermissionInfo = {
 SubmissionPage.permission = pagePermission
 
 export default SubmissionPage
-export const getServerSideProps: GetServerSideProps = withGetServerSideProps(
+export const getServerSideProps: GetServerSideProps = withAuthGssp(
   async (context) => {
     const pageNumber = context.query.page ? Number(context.query.page) : 0
     const res = await api.submissionService.submissionList(pageNumber)
