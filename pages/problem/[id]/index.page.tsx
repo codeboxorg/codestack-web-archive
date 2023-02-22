@@ -1,11 +1,23 @@
 import { api } from '@api/index'
-import ProblemDetail from '@components/problem/ProblemDetail'
+import { useRootState } from '@hooks/useRootSelector'
 import withGssp from '@server/utils/withGssp'
 import wrapper from '@store/configureStore'
-import { setProblem } from './problemSlice'
+import Head from 'next/head'
+import { setProblem } from '../problemSlice'
+import ProblemDetail from './ProblemDetail'
 
 const ProblemDetailPage = () => {
-  return <ProblemDetail />
+  const { id, title } = useRootState((state) => state.problem.problem)
+  return (
+    <>
+      <Head>
+        <title>
+          {id} : {title}
+        </title>
+      </Head>
+      <ProblemDetail />
+    </>
+  )
 }
 
 export default ProblemDetailPage
