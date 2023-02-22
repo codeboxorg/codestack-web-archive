@@ -12,7 +12,7 @@ const AuthChecker = () => {
    * CSR측에서 초기 렌더링시 검증할 필요가 없음
    */
   if (user !== 'loading' && user) {
-    return
+    return null
   } else {
     /**
      * TODO:
