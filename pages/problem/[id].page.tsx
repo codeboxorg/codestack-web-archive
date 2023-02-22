@@ -1,5 +1,6 @@
 import { api } from '@api/index'
 import ProblemDetail from '@components/problem/ProblemDetail'
+import withGssp from '@server/utils/withGssp'
 import wrapper from '@store/configureStore'
 import { setProblem } from './problemSlice'
 
@@ -8,8 +9,8 @@ const ProblemDetailPage = () => {
 }
 
 export default ProblemDetailPage
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async (context) => {
+export const getServerSideProps = withGssp(
+  wrapper.getServerSideProps((store) => async (context) => {
     const problem = await api.problemService.problemDetail(
       Number(context.params!.id)
     )
@@ -17,5 +18,5 @@ export const getServerSideProps = wrapper.getServerSideProps(
     return {
       props: {},
     }
-  }
+  })
 )
