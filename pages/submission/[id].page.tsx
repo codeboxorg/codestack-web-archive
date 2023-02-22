@@ -3,12 +3,13 @@ import { cpp } from '@codemirror/lang-cpp'
 import { python } from '@codemirror/lang-python'
 import { LanguageSupport } from '@codemirror/language'
 import { useRootState } from '@hooks/useRootSelector'
+import withAuthGssp from '@server/utils/withAuthGssp'
 import wrapper from '@store/configureStore'
 import CodeMirror from '@uiw/react-codemirror'
 import { GetServerSideProps } from 'next'
 import { setSubmission } from './submissionSlice'
 
-const ProblemPage = () => {
+const SubmissionDetailPage = () => {
   const { source_code, language } = useRootState(
     (state) => state.submission.submission
   )
@@ -31,9 +32,9 @@ const ProblemPage = () => {
   )
 }
 
-export default ProblemPage
+export default SubmissionDetailPage
 
-export const getServerSideProps: GetServerSideProps =
+export const getServerSideProps: GetServerSideProps = withAuthGssp(
   wrapper.getServerSideProps((store) => async (context) => {
     const submissionId = Number(context.params!.id)
     const submission = await api.submissionService.submissionDetail(
@@ -44,3 +45,4 @@ export const getServerSideProps: GetServerSideProps =
       props: {},
     }
   })
+)

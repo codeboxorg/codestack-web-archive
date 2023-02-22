@@ -1,29 +1,31 @@
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 import { usePaginationReturn } from 'react-use-pagination-hook'
+import VPaginationBar from './VPaginationBar'
 
-const PaginationBar = ({
-  goBeforeSection,
-  goBefore,
-  pagelist,
-  currentPage,
-  setPage,
-  goNext,
-  goNextSection,
-}: usePaginationReturn) => {
+const VAC = dynamic(import('react-vac'), { ssr: false })
+
+const PaginationBar = ({ pagelist, setPage, ...rest }: usePaginationReturn) => {
+  const vPaginationBarProps = {
+    ...rest,
+    pagelist: pagelist.map((page) => ({
+      page,
+      handlePageClick: () => {
+        setPage(page)
+      },
+    })),
+  }
+
   return (
     <>
-      <button onClick={() => goBeforeSection()}>{'<<'}</button>
-      <button onClick={() => goBefore()}>{'<'}</button>
-      {pagelist.map((page, idx) => (
-        <button
-          className={currentPage === page ? 'text-blue-500' : ''}
-          onClick={() => setPage(page)}
-          key={idx}
-        >
-          {page}
-        </button>
-      ))}
-      <button onClick={() => goNext()}>{'>'}</button>
-      <button onClick={() => goNextSection()}>{'>>'}</button>
+      <VPaginationBar />
+      <Suspense>
+        <VAC
+          name="VPaginationBar"
+          data={vPaginationBarProps}
+          useList="pagelist"
+        />
+      </Suspense>
     </>
   )
 }

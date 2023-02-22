@@ -2,6 +2,7 @@ interface LoginUser {
   userName: string
   userProfileImageUrl: string
   userEmail: string
+  accessToken: string
 }
 
 interface PagePermissionInfo {

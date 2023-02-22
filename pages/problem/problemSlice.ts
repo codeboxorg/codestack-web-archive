@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '@store/configureStore'
 
 const problemSliceType = 'slice/problem'
 

@@ -6,7 +6,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { token } = req.query
-  setCookie('server-key', token, { req, res, maxAge: 60 * 60 * 24 })
-
+  setCookie('server-key', 'temp.token', { req, res, maxAge: 60 * 60 * 24 })
   res.redirect(307, '/')
 }
