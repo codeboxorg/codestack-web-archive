@@ -8,7 +8,7 @@ import { GetServerSideProps } from 'next'
 
 /**
  * 권한이 있는 SSR 페이지를 만들때 사용
- * (즉, SSR을 위한 페칭시 토큰이 필요한 경우)
+ * (즉, SSR을 위한 페칭시 토큰이 필요한 경우 이 고차함수를 사용)
  * @param getServerSideProps
  */
 export default function withAuthGssp(
