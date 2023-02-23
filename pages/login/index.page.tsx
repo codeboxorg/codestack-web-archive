@@ -1,56 +1,59 @@
-import { popupCenter } from '@utils/popupCenter'
+import { api } from '@api/index'
+import useAuth from '@hooks/useAuth'
+import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 
-const GithubUrl = `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`
-
-interface LoginForm {
-  username: string
+export type LoginForm = {
+  email: string
   password: string
 }
 
 const LoginPage = () => {
   const {
     register,
-    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginForm>()
-  //TODO :
-  const onSubmit = handleSubmit((data) => console.log(data))
 
-  const oAuthRedirectCallback = (githubAccessToken: string) => {
-    console.log(githubAccessToken)
+  const router = useRouter()
+  const { login } = useAuth()
+
+  const loginMutation = useMutation(api.authService.login2)
+
+  const handleLoginSuccess = (user: LoginMember) => {
+    login(user)
+    router.push('/')
   }
 
-  useEffect(() => {
-    window.oAuthRedirectCallback = oAuthRedirectCallback
-    return () => {
-      delete window.oAuthRedirectCallback
-    }
-  }, [])
+  const handleLogin = (formData: LoginForm) => {
+    loginMutation.mutate(formData, {
+      onSuccess: handleLoginSuccess,
+    })
+  }
 
   return (
     <>
       <div className="container m-auto w-1/2">
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(handleLogin)}>
           <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               아이디
             </label>
             <input
               type="text"
-              {...register('username', {
-                required: '아이디를 입력해주세요.  ',
+              {...register('email', {
+                required: '이메일을 입력해주세요.',
               })}
+              placeholder="이메일을 입력해주세요."
               className={`${
-                !errors.username
+                !errors.email
                   ? 'border-gray-300 bg-gray-50 text-red-900'
                   : 'border-red-500 bg-red-50 text-gray-900'
               } border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5`}
             />
-            {errors.username && (
+            {errors.email && (
               <p className="text-red-500 text-xs italic">
                 Please fill out this field.
               </p>
@@ -65,6 +68,7 @@ const LoginPage = () => {
               {...register('password', {
                 required: '비밀번호를 입력해주세요.',
               })}
+              placeholder="비밀번호를 입력해주세요."
               className={`${
                 !errors.password
                   ? 'border-gray-300 bg-gray-50 text-red-900'
