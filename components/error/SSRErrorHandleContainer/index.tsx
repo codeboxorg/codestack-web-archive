@@ -19,7 +19,7 @@ const SSRErrorHandleContainer = ({
   const router = useRouter()
   const { redirect } = pagePermissionInfo
 
-  console.log(error)
+  if (error) console.debug('SSRErrorHandler', error)
 
   useEffect(() => {
     if (!error) return
