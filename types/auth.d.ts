@@ -1,11 +1,19 @@
-interface LoginUser {
-  userName: string
-  userProfileImageUrl: string
-  userEmail: string
-  accessToken: string
+type Member = {
+  id: number
+  email: string
+  nickname: string
+  profile_image: string
 }
 
-interface PagePermissionInfo {
+type TokenInfo = {
+  refreshToken: string
+  accessToken: string
+  expiresIn: number
+}
+
+type LoginMember = Member & Omit<TokenInfo, 'refreshToken'>
+
+type PagePermissionInfo = {
   role?: 'admin' | 'member'
   loadingFallback?: React.ReactElement
   redirect?: string
