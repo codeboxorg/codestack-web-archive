@@ -1,6 +1,8 @@
+import { api } from '@api/index'
+import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 
-interface LoginForm {
+export type RegisterForm = {
   email: string
   password: string
   passwordConfirm: string
@@ -12,16 +14,25 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginForm>()
-  
-  //TODO : 회원가입 기능 추가 예정
-  const onSubmit = handleSubmit(async (data) => {})
+  } = useForm<RegisterForm>()
+
+  const registerMutation = useMutation(api.authService.register)
+
+  const handleMutationSuccess = async () => {
+    alert('회원가입에 성공하였습니다.')
+  }
+
+  const handleSubmitRegister = (formData: RegisterForm) => {
+    registerMutation.mutate(formData, {
+      onSuccess: handleMutationSuccess,
+    })
+  }
 
   return (
     <>
       <div className="container m-auto pt-30 w-1/2">
         <h1 className="text-3xl">회원가입</h1>
-        <form className="mt-10" onSubmit={onSubmit}>
+        <form className="mt-10" onSubmit={handleSubmit(handleSubmitRegister)}>
           <div className="mb-20">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               아이디
@@ -31,6 +42,7 @@ const RegisterPage = () => {
               {...register('email', {
                 required: '이메일를 입력해주세요.  ',
               })}
+              placeholder="이메일을 입력해주세요."
               className={`${
                 !errors.email
                   ? 'border-gray-300 bg-gray-50 text-red-900'
@@ -43,7 +55,6 @@ const RegisterPage = () => {
               </p>
             )}
           </div>
-
           <div className="mb-20">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               패스워드
@@ -53,6 +64,7 @@ const RegisterPage = () => {
               {...register('password', {
                 required: '비밀번호를 입력해주세요.',
               })}
+              placeholder="비밀번호를 입력해주세요."
               className={`${
                 !errors.password
                   ? 'border-gray-300 bg-gray-50 text-red-900'
@@ -65,7 +77,6 @@ const RegisterPage = () => {
               </p>
             )}
           </div>
-
           <div className="mb-20">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               패스워드 재확인
@@ -75,6 +86,7 @@ const RegisterPage = () => {
               {...register('passwordConfirm', {
                 required: '비밀번호를 재입력해주세요.',
               })}
+              placeholder="비밀번호를 재입력해주세요."
               className={`${
                 !errors.passwordConfirm
                   ? 'border-gray-300 bg-gray-50 text-red-900'
@@ -87,7 +99,6 @@ const RegisterPage = () => {
               </p>
             )}
           </div>
-
           <div className="mb-20">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               닉네임
@@ -95,8 +106,9 @@ const RegisterPage = () => {
             <input
               type="text"
               {...register('nickname', {
-                required: '닉네임를 입력해주세요.  ',
+                required: '닉네임를 입력해주세요.',
               })}
+              placeholder="닉네임를 입력해주세요."
               className={`${
                 !errors.nickname
                   ? 'border-gray-300 bg-gray-50 text-red-900'
@@ -109,7 +121,6 @@ const RegisterPage = () => {
               </p>
             )}
           </div>
-
           <button
             type="submit"
             className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm m-auto block px-5 py-2.5 text-center"
