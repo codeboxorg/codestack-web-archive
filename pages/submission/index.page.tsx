@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import { GetServerSideProps } from 'next'
 import { api } from '@api/index'
 import withAuthGssp from '@server/utils/withAuthGssp'
+import { GetServerSideProps } from 'next'
+import Link from 'next/link'
 
 const SubmissionPage = ({ content, total_pages }: Pagination<Submission>) => {
   return (
@@ -25,7 +25,7 @@ const SubmissionPage = ({ content, total_pages }: Pagination<Submission>) => {
               <td>
                 <Link href={`submission/${e.id}`}>{e.id}</Link>
               </td>
-              <td className="text-center">{e.user.nickname}</td>
+              <td className="text-center">{e.member.nickname}</td>
               <td className="text-center">
                 <Link href={`problem/${e.problem.id}`}>{e.problem.title}</Link>
               </td>
@@ -33,7 +33,6 @@ const SubmissionPage = ({ content, total_pages }: Pagination<Submission>) => {
               <td className="text-center">{e.language.name}</td>
               <td></td>
               <td></td>
-
               <td className="text-center">1일전</td>
             </tr>
           ))}
