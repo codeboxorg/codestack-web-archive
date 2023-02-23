@@ -4,7 +4,7 @@ import { RootState } from '@store/configureStore'
 const authSliceType = 'slice/auth'
 
 export interface AuthSlice {
-  loginUser: LoginUser | null | 'loading'
+  loginUser: LoginMember | null | 'loading'
 }
 
 const initialState: AuthSlice = {
@@ -17,7 +17,7 @@ const authSlice = createSlice({
   reducers: {
     setLoginUser: (
       state,
-      action: PayloadAction<LoginUser | null | 'loading'>
+      action: PayloadAction<LoginMember | null | 'loading'>
     ) => {
       state.loginUser = action.payload
     },
