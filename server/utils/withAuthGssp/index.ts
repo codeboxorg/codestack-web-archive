@@ -1,5 +1,6 @@
 import { baseAPI } from '@api/core'
 import { RemoteError } from '@api/error/remoteError'
+import { api } from '@api/index'
 import { setLoginUser } from '@components/auth/authSlice'
 import wrapper from '@store/configureStore'
 import { getCookie } from 'cookies-next'
@@ -17,19 +18,15 @@ export default function withAuthGssp(
     try {
       const { req, res } = context
       const refreshToken = getCookie('server-key', { req, res })
-      /**
-       * TODO : 이곳에서 refresh token을 검증후 유저를 받아옴 현재는 임시로 토큰 검증 완료를 가정
-       */
-      if (refreshToken === 'temp.token') {
-        store.dispatch(
-          setLoginUser({
-            userName: 'temp',
-            userProfileImageUrl: 'temp.user.imageUrl',
-            userEmail: 'temp.user.email',
-            accessToken: 'temp.user.token',
-          })
+      if (!refreshToken) store.dispatch(setLoginUser(null))
+      if (refreshToken) {
+        const { accessToken } = await api.authService.refreshTokenToAccessToken(
+          refreshToken
         )
-        baseAPI.setDefaultAuthorizationHeader('temp.user.token')
+        baseAPI.setDefaultAuthorizationHeader(accessToken)
+        const user = await api.memberService.memberInfo()
+        //TODO : 백엔드에 refreshToken 바꿔오는 endPoint에 expiresIn 추가요청
+        store.dispatch(setLoginUser({ ...user, accessToken, expiresIn: 99999 }))
       }
       return await getServerSideProps(context)
     } catch (error) {
