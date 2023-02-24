@@ -1,7 +1,7 @@
 import { api } from '@api/index'
 import PaginationBar from '@components/shared/PaginationBar'
 import { useQuery } from '@tanstack/react-query'
-import { problemKeys } from 'constant/queryKeys/problem'
+import { problemKeys } from './queryKey'
 import usePagination from 'react-use-pagination-hook'
 import ProblemList from './ProblemList'
 
