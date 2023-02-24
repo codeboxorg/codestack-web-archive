@@ -53,6 +53,19 @@ export class BadRequestError extends RemoteError {
   }
 }
 
+export class ForbiddenError extends RemoteError {
+  status: 403
+  data: any
+  constructor(data: any) {
+    const message = '403 ForbiddenError'
+    const description = data.message ?? '금지된 요청입니다.'
+    super(description, message)
+    this.status = 403
+    this.name = 'ForbiddenError'
+    this.data = data
+  }
+}
+
 export class InternalServerError extends RemoteError {
   status: 500
   data: any
@@ -75,6 +88,8 @@ export const throwRemoteError = (error: unknown) => {
         throw new BadRequestError(data)
       case 401:
         throw new UnauthorizedError(data)
+      case 403:
+        throw new ForbiddenError(data)
       case 404:
         throw new NotFoundError(data)
       case 500:
