@@ -1,5 +1,4 @@
 import useAuth from '@hooks/useAuth'
-import renderEnv from '@utils/renderEnv'
 import { useRouter } from 'next/router'
 import { ReactElement, useEffect } from 'react'
 
@@ -10,7 +9,7 @@ interface Props {
 
 /**
  * Private Route 처리가 필요한 Page Component를 감싸는 컨테이너
- * user의 기본 State는 AuthChecker 컴포넌트가 권한 검증을 하기 전까지는 undefined 상태.
+ * user의 기본 State는 AuthChecker 컴포넌트가 권한 검증을 하기 전까지는 null 상태.
  */
 const AuthContainer = ({ children, pagePermissionInfo }: Props) => {
   const router = useRouter()
