@@ -14,7 +14,7 @@ export interface AuthSlice {
 }
 
 const initialState: AuthSlice = {
-  loginUser: false,
+  loginUser: null,
 }
 
 const authSlice = createSlice({
