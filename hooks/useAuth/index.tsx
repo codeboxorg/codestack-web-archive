@@ -7,7 +7,7 @@ const useAuth = () => {
   const user = useSelector(getLoginUser)
   const dispatch = useDispatch()
 
-  const mutation = useMutation(api.authService.initAuth)
+  const mutation = useMutation(api.authService.member)
 
   const login = (user: LoginMember) => {
     dispatch(setLoginUser(user))
@@ -17,7 +17,7 @@ const useAuth = () => {
     dispatch(setLoginUser(null))
   }
 
-  const initAuth = () => {
+  const initMember = () => {
     mutation.mutate(undefined, {
       onSuccess(user) {
         login(user)
@@ -32,7 +32,7 @@ const useAuth = () => {
     user,
     login,
     logout,
-    initAuth,
+    initMember,
   }
 }
 
