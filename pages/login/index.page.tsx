@@ -20,7 +20,7 @@ const LoginPage = () => {
   const router = useRouter()
   const { login } = useAuth()
 
-  const loginMutation = useMutation(api.authService.login2)
+  const loginMutation = useMutation(api.authService.login)
 
   const handleLoginSuccess = (user: LoginMember) => {
     login(user)
