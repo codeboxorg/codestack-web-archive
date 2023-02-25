@@ -14,7 +14,7 @@ const AuthChecker = () => {
    * CSR측에서 초기 렌더링시 검증할 필요가 없음
    */
   useEffect(() => {
-    if (user !== 'loading' && user) return
+    if (user) return
     else initMember()
   }, [])
 
