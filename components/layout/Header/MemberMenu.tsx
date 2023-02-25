@@ -12,7 +12,7 @@ const MemberMenu = ({ profileImage }: Props) => {
       label: <Link href="/">마이페이지</Link>,
     },
     {
-      label: <div className="w-100">로그아웃</div>,
+      label: <div className="w-120 text-red-500">로그아웃</div>,
     },
   ]
 
