@@ -7,7 +7,7 @@ import { useEffect } from 'react'
  */
 
 const AuthChecker = () => {
-  const { user, initAuth } = useAuth()
+  const { user, initMember } = useAuth()
 
   /**
    * 사용자가 권한이 필요한 SSR페이지를 먼저 접속했을 시 권한확인이 완료되어 유저 정보가 이미 채워진 상태이므로
@@ -15,7 +15,7 @@ const AuthChecker = () => {
    */
   useEffect(() => {
     if (user !== 'loading' && user) return
-    else initAuth()
+    else initMember()
   }, [])
 
   return null
