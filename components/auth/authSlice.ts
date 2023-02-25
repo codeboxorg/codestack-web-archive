@@ -5,16 +5,16 @@ const authSliceType = 'slice/auth'
 
 /**
  * 유저의 상태 타입
- * 권한 확인중 -> undefined
+ * 권한 확인중 -> null
  * 로그인 완료시 -> LoginMember
- * 비 로그인 or 권한 확인 실패시 -> null
+ * 비 로그인 or 권한 확인 실패시 -> false
  */
 export interface AuthSlice {
-  loginUser: LoginMember | null | undefined
+  loginUser: LoginMember | null | false
 }
 
 const initialState: AuthSlice = {
-  loginUser: undefined,
+  loginUser: false,
 }
 
 const authSlice = createSlice({
@@ -23,7 +23,7 @@ const authSlice = createSlice({
   reducers: {
     setLoginUser: (
       state,
-      action: PayloadAction<LoginMember | null | undefined>
+      action: PayloadAction<LoginMember | null | false>
     ) => {
       state.loginUser = action.payload
     },

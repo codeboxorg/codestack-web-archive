@@ -18,7 +18,7 @@ const AuthContainer = ({ children, pagePermissionInfo }: Props) => {
   const { redirect, loadingFallback } = pagePermissionInfo
 
   useEffect(() => {
-    if (user === undefined) return
+    if (user === null) return
     if (!user) {
       router.push(redirect)
     }
