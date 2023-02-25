@@ -1,9 +1,9 @@
-import { oauthServerToServerRemote } from '@server/oauth/oauthService'
+import { authServerToServerRemote } from './service/auth/authService'
 
 const provideAPIService = () => {
-  const oauthServerToServer = oauthServerToServerRemote()
+  const authServerToServer = authServerToServerRemote()
   return {
-    oauthServerToServer,
+    authServerToServer,
   }
 }
 
