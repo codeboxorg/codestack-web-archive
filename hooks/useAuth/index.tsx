@@ -14,7 +14,7 @@ const useAuth = () => {
   }
 
   const logout = () => {
-    dispatch(setLoginUser(null))
+    dispatch(setLoginUser(false))
   }
 
   const initMember = () => {

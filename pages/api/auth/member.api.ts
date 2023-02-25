@@ -7,7 +7,7 @@ import { getCookie } from 'cookies-next'
 authHandler.post<NextRequest<unknown>>(async (req, res) => {
   const refreshToken = getCookie('server-key', { req, res })
   if (!refreshToken) {
-    res.json(null)
+    res.json(false)
     return
   }
   try {
