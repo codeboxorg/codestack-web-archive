@@ -4,6 +4,7 @@ import withGssp from '@server/utils/withGssp'
 import wrapper from '@store/configureStore'
 import Head from 'next/head'
 import { setProblem } from '../problemSlice'
+import CodeEditor from './CodeEditor'
 import ProblemDetail from './ProblemDetail'
 
 const ProblemDetailPage = () => {
@@ -16,6 +17,7 @@ const ProblemDetailPage = () => {
         </title>
       </Head>
       <ProblemDetail />
+      <CodeEditor />
     </>
   )
 }
