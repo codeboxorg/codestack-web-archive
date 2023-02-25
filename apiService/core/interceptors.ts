@@ -1,4 +1,5 @@
 import eventBus from '@utils/eventBus'
+import renderEnv from '@utils/renderEnv'
 import axios from 'axios'
 import { EVENT_BUS_KEY } from 'constant/eventBusKey'
 
@@ -12,7 +13,7 @@ instance.interceptors.response.use(
   (res) => res,
   (error) => {
     // CSR시에만 에러 이벤트 디스패치
-    if (typeof window !== 'undefined') {
+    if (renderEnv.isCSR) {
       if (error.response?.status === 401) {
         eventBus.dispatch(EVENT_BUS_KEY.UNAUTHORIZED_ERROR)
         return null
