@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const problemSliceType = 'slice/problem'
 
-export interface ProblemSlice {
-  problem: Problem
+export type ProblemSlice = {
+  problem: ReduxSliceItem<Problem>
 }
 
 const initialState: ProblemSlice = {
@@ -13,6 +13,7 @@ const initialState: ProblemSlice = {
     context: '',
     max_cpu_time: 0,
     max_memory: 0,
+    isInit: true,
   },
 }
 

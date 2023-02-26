@@ -1,10 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '@store/configureStore'
 
 const submissionSliceType = 'slice/submission'
 
-export interface SubmissionSlice {
-  submission: Submission
+export type SubmissionSlice = {
+  submission: ReduxSliceItem<Submission>
 }
 
 const initialState: SubmissionSlice = {
@@ -14,6 +13,7 @@ const initialState: SubmissionSlice = {
     problem: { id: -1, title: '' },
     language: { id: -1, name: '' },
     member: { id: -1, nickname: '' },
+    isInit: true,
   },
 }
 
