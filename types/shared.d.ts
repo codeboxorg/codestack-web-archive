@@ -4,3 +4,5 @@ interface Pagination<T> {
   total_pages: number
   total_elements: number
 }
+
+type ReduxSliceItem<T> = T & { isInit?: boolean }
