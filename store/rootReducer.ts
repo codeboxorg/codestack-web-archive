@@ -12,13 +12,29 @@ export interface ReducerStates {
   auth: AuthSlice
 }
 
+const getNeedChangeState = (actionPayload: any) => {
+  const newActionPayload: { [key: string]: any } = {}
+  for (const rootKey in actionPayload) {
+    for (const key in actionPayload[rootKey]) {
+      if (
+        actionPayload[rootKey][key] === null ||
+        actionPayload[rootKey][key]['isInit']
+      ) {
+        continue
+      }
+      newActionPayload[rootKey] = { [key]: actionPayload[rootKey][key] }
+    }
+  }
+  return newActionPayload
+}
+
 const rootReducer = (
   state: ReducerStates,
   action: AnyAction
 ): CombinedState<ReducerStates> => {
   switch (action.type) {
     case HYDRATE:
-      return action.payload
+      return { ...state, ...getNeedChangeState(action.payload) }
     default: {
       const combinedReducer = combineReducers({
         problem: problemSlice.reducer,
