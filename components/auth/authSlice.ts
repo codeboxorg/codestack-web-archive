@@ -9,7 +9,7 @@ const authSliceType = 'slice/auth'
  * 로그인 완료시 -> LoginMember
  * 비 로그인 or 권한 확인 실패시 -> false
  */
-export interface AuthSlice {
+export type AuthSlice = {
   loginUser: LoginMember | null | false
 }
 
