@@ -1,6 +1,7 @@
 import { api } from '@api/index'
 import { getLoginUser, setLoginUser } from '@components/auth/authSlice'
 import { useMutation } from '@tanstack/react-query'
+import { message } from 'antd'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -24,6 +25,7 @@ const useAuth = () => {
 
   const logout = useCallback(() => {
     logoutMutation.mutate()
+    message.success('로그아웃 되었습니다.')
   }, [])
 
   const getMemberMutation = useMutation(api.authService.member, {
