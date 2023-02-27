@@ -2,13 +2,14 @@ import AuthChecker from '@components/auth/AuthChecker'
 import Layout from '@components/layout'
 import wrapper from '@store/configureStore'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ConfigProvider } from 'antd'
+import { ConfigProvider, message } from 'antd'
 import { NextComponentType, NextPageContext } from 'next'
 import { StyleProvider } from '@ant-design/cssinjs'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import '../styles/globals.scss'
 import SSRErrorHandleContainer from '@components/error/SSRErrorHandleContainer'
+import AntdContextHolderRegister from '@components/app/AntdContextHolderRegister'
 
 type PagePermissionInfoEnabledComponentConfig = {
   permission: PagePermissionInfo
@@ -59,6 +60,7 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
         }}
       >
         <StyleProvider hashPriority="high">
+          <AntdContextHolderRegister />
           <Layout>
             <SSRErrorHandleContainer
               error={pageProps.error}
