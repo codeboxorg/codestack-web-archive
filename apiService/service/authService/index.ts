@@ -15,7 +15,6 @@ export const authServiceRemote = (): AuthService => ({
       throwRemoteError(error)
     }
   },
-
   async login(formData) {
     try {
       const response = await nextAPI.post({
@@ -25,6 +24,16 @@ export const authServiceRemote = (): AuthService => ({
       baseAPI.setDefaultAuthorizationHeader(response.data.accessToken)
       const user = await api.memberService.memberInfo()
       return { ...response.data, ...user }
+    } catch (error) {
+      throwRemoteError(error)
+    }
+  },
+  async logout() {
+    try {
+      const response = await nextAPI.post({
+        url: `api/auth/logout`,
+      })
+      return response.data
     } catch (error) {
       throwRemoteError(error)
     }
