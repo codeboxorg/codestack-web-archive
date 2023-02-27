@@ -1,3 +1,4 @@
+import useAuth from '@hooks/useAuth'
 import Link from 'next/link'
 import React from 'react'
 import VMemberMenu from './VMemberMenu'
@@ -7,12 +8,17 @@ type Props = {
 }
 
 const MemberMenu = ({ profileImage }: Props) => {
+  const { logout } = useAuth()
   const memberLinks = [
     {
       label: <Link href="/">마이페이지</Link>,
     },
     {
-      label: <div className="w-120 text-red-500">로그아웃</div>,
+      label: (
+        <div onClick={logout} className="w-120 text-red-500">
+          로그아웃
+        </div>
+      ),
     },
   ]
 
