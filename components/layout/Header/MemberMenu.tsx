@@ -15,7 +15,10 @@ const MemberMenu = ({ profileImage }: Props) => {
     },
     {
       label: (
-        <div onClick={logout} className="w-120 text-red-500">
+        <div
+          onClick={() => logout({ message: true })}
+          className="w-120 text-red-500"
+        >
           로그아웃
         </div>
       ),
