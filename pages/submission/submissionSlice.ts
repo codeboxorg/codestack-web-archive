@@ -9,6 +9,8 @@ export type SubmissionSlice = {
 const initialState: SubmissionSlice = {
   submission: {
     id: -1,
+    cpu_time: 0,
+    memory_usage: 0,
     source_code: '',
     problem: { id: -1, title: '' },
     language: { id: -1, name: '' },

@@ -13,6 +13,7 @@ const initialState: ProblemSlice = {
     context: '',
     max_cpu_time: 0,
     max_memory: 0,
+    language: [],
     isInit: true,
   },
 }
