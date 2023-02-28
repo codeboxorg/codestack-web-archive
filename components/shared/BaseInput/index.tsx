@@ -11,4 +11,6 @@ const BaseInput = React.forwardRef(
   }
 )
 
+BaseInput.displayName = 'BaseInput'
+
 export default BaseInput
