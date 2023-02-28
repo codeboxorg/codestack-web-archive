@@ -7,6 +7,10 @@
     <div>
     <a href="https://dev.dp9i34mgnqryi.amplifyapp.com/">https://dev.dp9i34mgnqryi.amplifyapp.com</a>
     </div>
+    <br/>
+    <div>테스트 계정<div>
+    <div>ID : test@test.com</div>
+    <div>PW : xptmxm123@</div>
 </div>
 <br/>
 <br/>
