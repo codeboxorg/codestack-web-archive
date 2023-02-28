@@ -2,16 +2,13 @@ import { api } from '@api/index'
 import { useRootState } from '@hooks/useRootSelector'
 import withGssp from '@server/utils/withGssp'
 import wrapper from '@store/configureStore'
-import { Select } from 'antd'
 import Head from 'next/head'
-import { useState } from 'react'
 import { setProblem } from '../problemSlice'
 import CodeEditor from './CodeEditor'
 import ProblemDetail from './ProblemDetail'
 
 const ProblemDetailPage = () => {
-  const { id, title, language } = useRootState((state) => state.problem.problem)
-  const [languageId, setLanguageId] = useState<number>()
+  const { id, title } = useRootState((state) => state.problem.problem)
 
   return (
     <>
@@ -21,12 +18,6 @@ const ProblemDetailPage = () => {
         </title>
       </Head>
       <ProblemDetail />
-      <Select
-        defaultValue={language?.[0].id}
-        style={{ width: 120 }}
-        onChange={setLanguageId}
-        options={language?.map((p, i) => ({ value: p.id, label: p.name }))}
-      />
       <CodeEditor />
     </>
   )
