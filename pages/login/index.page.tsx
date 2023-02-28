@@ -4,7 +4,7 @@ import LoginForm from './LoginForm'
 const LoginPage = () => {
   return (
     <main className="container px-20 w-full pt-100">
-      <div className="sm:w-375 md:w-450 mx-auto">
+      <div className="sm:w-full md:w-450 mx-auto">
         <h1 className="text-center text-25 my-30">로그인</h1>
         <LoginForm />
         <button
