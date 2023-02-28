@@ -1,16 +1,15 @@
-import { useForm } from 'react-hook-form'
-import { LoginForm, VLoginFromProps } from './VLoginForm'
-import VLoginForm from './VLoginForm'
-import { useRouter } from 'next/router'
+import { api } from '@api/index'
 import useAuth from '@hooks/useAuth'
 import { useMutation } from '@tanstack/react-query'
-import { api } from '@api/index'
+import { useRouter } from 'next/router'
+import { useForm } from 'react-hook-form'
+import VLoginForm, { LoginForm, VLoginFromProps } from './VLoginForm'
 
 const LoginForm = () => {
   const {
-    register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm<LoginForm>()
 
   const router = useRouter()
@@ -31,21 +30,28 @@ const LoginForm = () => {
 
   const vLoginFormProps: VLoginFromProps = {
     emailInput: {
-      register: register('email', {
-        required: '비밀번호를 입력해주세요.',
-      }),
+      roles: {
+        required: '이메일을 입력해주세요.',
+      },
       status: errors.email ? 'error' : '',
       message: errors?.email?.message,
     },
     passwordInput: {
-      register: register('password'),
+      roles: {
+        required: '비밀번호를 입력해주세요.',
+      },
       status: errors.password ? 'error' : '',
       message: errors?.password?.message,
     },
     onSubmit,
+    control,
   }
 
-  return <VLoginForm {...vLoginFormProps} />
+  return (
+    <>
+      <VLoginForm {...vLoginFormProps} />
+    </>
+  )
 }
 
 export default LoginForm

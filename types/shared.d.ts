@@ -12,7 +12,11 @@ type HookFormSubmit = (
 ) => Promise<void>
 
 type HookFormInput<T extends string> = {
-  register: UseFormRegisterReturn<T>
-  status: string
+  register?: UseFormRegisterReturn<T>
+  status: InputStatus
   message?: string
+  roles?: Omit<
+    RegisterOptions<TFieldValues, TName>,
+    'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
+  >
 }
