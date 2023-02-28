@@ -3,8 +3,12 @@ import { serverToServerAPI } from '@server/serverToServerApi'
 import { NextRequest } from '@server/types'
 import { AxiosError } from 'axios'
 import { getCookie } from 'cookies-next'
+import { NextApiResponse } from 'next'
 
-authHandler.post<NextRequest<unknown>>(async (req, res) => {
+export default async function handler(
+  req: NextRequest<unknown>,
+  res: NextApiResponse
+) {
   const refreshToken = getCookie('server-key', { req, res })
   if (!refreshToken) {
     res.json(false)
@@ -27,6 +31,4 @@ authHandler.post<NextRequest<unknown>>(async (req, res) => {
       res.status(status ?? 500).json(data)
     }
   }
-})
-
-export default authHandler
+}
