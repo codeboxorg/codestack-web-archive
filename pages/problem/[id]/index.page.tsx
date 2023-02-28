@@ -25,7 +25,7 @@ const ProblemDetailPage = () => {
         defaultValue={language?.[0].id}
         style={{ width: 120 }}
         onChange={setLanguageId}
-        options={language.map((p, i) => ({ value: p.id, label: p.name }))}
+        options={language?.map((p, i) => ({ value: p.id, label: p.name }))}
       />
       <CodeEditor />
     </>
