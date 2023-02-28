@@ -3,17 +3,18 @@ import LoginForm from './LoginForm'
 
 const LoginPage = () => {
   return (
-    <>
-      <div className="container m-auto w-1/2">
+    <main className="container px-20 w-full pt-100">
+      <div className="sm:w-375 md:w-450 mx-auto">
+        <h1 className="text-center text-25 my-30">로그인</h1>
         <LoginForm />
         <button
           form="login"
           type="submit"
-          className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm m-auto block px-5 py-2.5 text-center"
+          className="w-full mt-20 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm m-auto block px-5 py-2.5 text-center"
         >
           로그인
         </button>
-        <div className="mt-25 b">
+        <div className="mt-20">
           <Link
             href="http://dev-api.rrrmaster.com/oauth2/authorization/github?redirect_uri=https://pr-16.dp9i34mgnqryi.amplifyapp.com/api/oauth2/redirect"
             type="button"
@@ -36,9 +37,18 @@ const LoginPage = () => {
             </svg>{' '}
             Github 로그인
           </Link>
+          <div className="under:mt-15 text-14 px-2">
+            <div>
+              회원 가입은{' '}
+              <Link className="text-blue-600/100" href="/register">
+                여기
+              </Link>
+              에서 할 수 있어요!
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </main>
   )
 }
 

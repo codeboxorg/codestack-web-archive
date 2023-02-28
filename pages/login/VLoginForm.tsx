@@ -1,5 +1,6 @@
-import Link from 'next/link'
-import { useFormContext, UseFormRegisterReturn } from 'react-hook-form'
+import BaseInput from '@components/shared/BaseInput'
+import { Input } from 'antd'
+import { Control, Controller } from 'react-hook-form'
 
 export type LoginForm = {
   email: string
@@ -9,6 +10,7 @@ export type LoginForm = {
 export type VLoginFromProps = {
   emailInput: HookFormInput<'email'>
   passwordInput: HookFormInput<'password'>
+  control: Control<LoginForm>
   onSubmit: HookFormSubmit
 }
 
@@ -16,54 +18,57 @@ const VLoginForm = ({
   emailInput,
   passwordInput,
   onSubmit,
+  control,
 }: VLoginFromProps) => {
   return (
     <form onSubmit={onSubmit} id="login">
       <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          아이디
+        <label className="block mb-5 text-sm font-medium text-gray-900">
+          이메일
         </label>
-        <input
-          type="text"
-          {...emailInput.register}
-          placeholder="이메일을 입력해주세요."
-          className={`${
-            !(emailInput.status === 'error')
-              ? 'border-gray-300 bg-gray-50 text-red-900'
-              : 'border-red-500 bg-red-50 text-gray-900'
-          } border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5`}
+        <Controller
+          control={control}
+          name="email"
+          rules={emailInput.roles}
+          render={({ field }) => (
+            <BaseInput
+              style={{ paddingTop: '8px', paddingBottom: '8px' }}
+              placeholder="이메일을 입력해주세요."
+              status={emailInput.status}
+              {...field}
+            />
+          )}
         />
-        {emailInput.status === 'error' && (
-          <p className="text-red-500 text-xs italic">
-            Please fill out this field.
-          </p>
-        )}
+        <div className="h-20 pt-3 w-full">
+          {emailInput.status === 'error' && (
+            <p className="text-red-500 w-full text-xs">{emailInput.message}</p>
+          )}
+        </div>
       </div>
       <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          패스워드
+        <label className="block mb-5 text-sm font-medium text-gray-900">
+          비밀번호
         </label>
-        <input
-          type="password"
-          {...passwordInput.register}
-          placeholder="비밀번호를 입력해주세요."
-          className={`${
-            !(passwordInput.status === 'error')
-              ? 'border-gray-300 bg-gray-50 text-red-900'
-              : 'border-red-500 bg-red-50 text-gray-900'
-          } border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5`}
+        <Controller
+          control={control}
+          name="password"
+          rules={passwordInput.roles}
+          render={({ field }) => (
+            <BaseInput
+              type="password"
+              style={{ paddingTop: '8px', paddingBottom: '8px' }}
+              placeholder="비밀번호를 입력해주세요."
+              status={passwordInput.status}
+              {...field}
+            />
+          )}
         />
-        {passwordInput.status === 'error' && (
-          <p className="text-red-500 text-xs italic">{passwordInput.message}</p>
-        )}
+        <div className="h-20 pt-3 w-full">
+          {passwordInput.status === 'error' && (
+            <p className="text-red-500 text-xs">{passwordInput.message}</p>
+          )}
+        </div>
       </div>
-      <span>
-        회원 가입은{' '}
-        <Link className="text-blue-600/100" href="/register">
-          여기
-        </Link>
-        에서 할 수 있습니다.
-      </span>
     </form>
   )
 }
