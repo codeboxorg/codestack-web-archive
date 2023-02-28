@@ -1,5 +1,5 @@
 import { baseAPI } from '@api/core'
-import { LoginForm } from '@pages/login/index.page'
+import { LoginForm } from '@pages/login/VLoginForm'
 import { CookieValueTypes } from 'cookies-next'
 
 type AuthService = {
