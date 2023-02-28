@@ -1,4 +1,4 @@
-import { LoginForm } from '@pages/login/index.page'
+import { LoginForm } from '@pages/login/VLoginForm'
 import { authHandler } from '@server/handlers/oauthHandler'
 import { serverToServerAPI } from '@server/serverToServerApi'
 import { NextRequest } from '@server/types'
