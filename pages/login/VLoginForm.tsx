@@ -32,7 +32,6 @@ const VLoginForm = ({
           rules={emailInput.roles}
           render={({ field }) => (
             <BaseInput
-              style={{ paddingTop: '8px', paddingBottom: '8px' }}
               placeholder="이메일을 입력해주세요."
               status={emailInput.status}
               {...field}
@@ -56,7 +55,6 @@ const VLoginForm = ({
           render={({ field }) => (
             <BaseInput
               type="password"
-              style={{ paddingTop: '8px', paddingBottom: '8px' }}
               placeholder="비밀번호를 입력해주세요."
               status={passwordInput.status}
               {...field}
