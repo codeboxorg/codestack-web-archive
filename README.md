@@ -9,7 +9,7 @@
     </div>
     <br/>
     <div>테스트 계정<div>
-    <div>ID : test@test.com</div>
+    <div>ID : test123@test.com</div>
     <div>PW : xptmxm123@</div>
 </div>
 <br/>
