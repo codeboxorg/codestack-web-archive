@@ -33,7 +33,7 @@ const MemberMenu = ({ profileImage }: Props) => {
     <>
       <VMemberMenu {...vMemberMenuProps}>
         <img
-          className="rounded-full w-35 h-35 cursor-pointer"
+          className="rounded-full w-40 h-40 cursor-pointer"
           src={profileImage}
           alt="Picture of the author"
         />
