@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react'
-import { Button, Dropdown, MenuProps, Space } from 'antd'
+import { Dropdown, MenuProps } from 'antd'
+import { ReactElement } from 'react'
 
 type Props = {
   links: MenuProps['items']
