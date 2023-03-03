@@ -1,7 +1,25 @@
-import React from 'react'
+import { Table } from 'antd'
+import { ColumnsType } from 'antd/es/table'
 
-const VProblemList = () => {
-  return <></>
+type ProblemRowItem = Problem & { handleRowClick: () => void }
+
+type VProblemProps = {
+  list: ProblemRowItem[]
+  columns: ColumnsType<ProblemRowItem>
+}
+
+const VProblemList = ({ list, columns }: VProblemProps) => {
+  return (
+    <Table
+      rowClassName="cursor-pointer"
+      onRow={(record) => ({
+        onClick: record.handleRowClick,
+      })}
+      dataSource={list}
+      columns={columns}
+      pagination={false}
+    />
+  )
 }
 
 export default VProblemList
