@@ -22,10 +22,10 @@ const ProblemPage = () => {
   )
 
   return (
-    <>
+    <div className="pt-50">
       <ProblemList list={problemListPagination?.content ?? []} />
       <PaginationBar {...paginationMethods} />
-    </>
+    </div>
   )
 }
 
