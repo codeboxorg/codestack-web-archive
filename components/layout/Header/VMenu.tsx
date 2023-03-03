@@ -21,6 +21,7 @@ const VMenu = ({ menus }: VMenuProps) => {
             'block hover:text-blue-500 lg:inline-block',
             isHighlight ? 'text-blue-500' : 'text-black'
           )}
+          key={`${href}-${name}`}
           href={href}
         >
           {name}
