@@ -42,6 +42,17 @@ module.exports = {
       margin: px0_100,
       spacing: px0_300,
     },
+    container: {
+      center: true,
+      padding: '40px',
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1240px',
+        '2xl': '1240px',
+      },
+    },
   },
   darkMode: false,
   variants: {
