@@ -1,9 +1,11 @@
 import useAuth from '@hooks/useAuth'
 import Link from 'next/link'
 import MemberMenu from './MemberMenu'
+import Menu from './Menu'
 
 const Header = () => {
   const { user } = useAuth()
+
   return (
     <header
       className="h-64"
@@ -16,24 +18,16 @@ const Header = () => {
         <div className="flex items-center flex-shrink-0 text-white mr-10">
           <Link
             href="/"
-            className="text-xl relative top-[-2px] font-semibold tracking-tight text-black"
+            className="text-2xl relative top-[-2px] font-semibold tracking-tight text-black"
           >
             Codebox
           </Link>
         </div>
         <div className="flex items-center w-full">
-          <div className="flex gap-10 text-sm">
-            <Link href="/problem" className="block text-black lg:inline-block">
-              문제
-            </Link>
-            <Link
-              href="/submission"
-              className="block text-black lg:inline-block"
-            >
-              제출근황
-            </Link>
+          <div className="flex gap-20 text-lg">
+            <Menu />
           </div>
-          <div className="inline-block ml-auto text-sm text-black">
+          <div className="inline-block ml-auto text-lg text-black">
             {user ? (
               <MemberMenu profileImage={user.profile_image} />
             ) : (
