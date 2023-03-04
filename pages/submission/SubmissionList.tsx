@@ -1,10 +1,6 @@
-import VSubmissionList from './VSubmissionList'
-import dynamic from 'next/dynamic'
-import { Suspense } from 'react'
 import { useRouter } from 'next/router'
+import VSubmissionList, { VSubmissionListProps } from './VSubmissionList'
 import convertByte from '@utils/convert/convertByte'
-
-const VAC = dynamic(import('react-vac'), { ssr: false })
 
 type Props = {
   list: Submission[]
@@ -13,27 +9,16 @@ type Props = {
 const SubmissionList = ({ list }: Props) => {
   const router = useRouter()
 
-  const vSubmissionListProps = {
-    list: list.map(({ memory_usage, ...data }, idx) => ({
+  const vSubmissionListProps: VSubmissionListProps = {
+    list: list.map(({ memory_usage, ...data }) => ({
       ...data,
-      memory_usage:convertByte(memory_usage, 'KB'),
+      memory_usage: convertByte(memory_usage, 'KB'),
       handleRowClick: () => {
         router.push(`/submission/${data.id}`)
       },
     })),
   }
-  return (
-    <>
-      <VSubmissionList />
-      <Suspense>
-        <VAC
-          name="VSubmissionList"
-          data={vSubmissionListProps}
-          useList="list"
-        />
-      </Suspense>
-    </>
-  )
+  return <VSubmissionList {...vSubmissionListProps} />
 }
 
 export default SubmissionList
