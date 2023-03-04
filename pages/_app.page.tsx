@@ -10,6 +10,7 @@ import { useState } from 'react'
 import '../styles/globals.scss'
 import SSRErrorHandleContainer from '@components/error/SSRErrorHandleContainer'
 import AntdContextHolderRegister from '@components/app/AntdContextHolderRegister'
+import PageLoading from '@components/shared/PageLoading'
 
 type PagePermissionInfoEnabledComponentConfig = {
   permission: PagePermissionInfo
@@ -43,9 +44,7 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
 
   const pagePermissionInfo = {
     role: Component.permission?.role ?? 'member',
-    loadingFallback: Component.permission?.loadingFallback ?? (
-      <div>page Permission Checking...</div>
-    ),
+    loadingFallback: Component.permission?.loadingFallback ?? <PageLoading />,
     redirect: Component.permission?.redirect ?? '/login',
   }
 
