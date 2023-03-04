@@ -2761,10 +2761,10 @@ react-redux@^8.0.5:
     react-is "^18.0.0"
     use-sync-external-store "^1.0.0"
 
-react-use-pagination-hook@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-use-pagination-hook/-/react-use-pagination-hook-1.1.2.tgz#a9ce122cea7544d9472ce66cd2eddd3492b42a6e"
-  integrity sha512-1acMTXIPH/1mut+0jkfgBJK+YkSO0EQwHdxi1Mv6jSDaK/gAKDXQHUCzeCUXBppiU5EAZ4qg5HbzAn951lZoaQ==
+react-use-pagination-hook@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-use-pagination-hook/-/react-use-pagination-hook-2.0.0.tgz#bcb433bccd5d0cec550c2a7ffccafa4c8185ce79"
+  integrity sha512-oy5JHwIGiNkkZDVCo9IhG1ZmaW9Cv30oxNzaS1A/J9TXfPHkyfq8MVf5vrt8mDsmyMjYqupDPU4uf9mhP12kRw==
   dependencies:
     react "^18.2.0"
     react-dom "^18.2.0"

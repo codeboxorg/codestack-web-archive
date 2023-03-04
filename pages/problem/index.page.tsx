@@ -24,7 +24,9 @@ const ProblemPage = () => {
   return (
     <div className="pt-50">
       <ProblemList list={problemListPagination?.content ?? []} />
-      <PaginationBar {...paginationMethods} />
+      <div className="w-full flex justify-center py-30">
+        <PaginationBar {...paginationMethods} />
+      </div>
     </div>
   )
 }
