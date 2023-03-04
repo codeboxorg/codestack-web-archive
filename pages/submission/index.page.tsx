@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import usePagination from 'react-use-pagination-hook'
 import { submissionKeys } from './queryKey'
 import SubmissionList from './SubmissionList'
+import PageLoading from '@components/shared/PageLoading'
 
 const SubmissionPage = () => {
   const paginationMethods = usePagination({ numOfPage: 5 })
@@ -33,7 +34,6 @@ const SubmissionPage = () => {
 
 const pagePermission: PagePermissionInfo = {
   redirect: '/login',
-  loadingFallback: <div>testFallback</div>,
 }
 
 SubmissionPage.permission = pagePermission
