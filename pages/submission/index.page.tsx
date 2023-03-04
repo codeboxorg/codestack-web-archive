@@ -22,10 +22,12 @@ const SubmissionPage = () => {
   )
 
   return (
-    <>
+    <div className="pt-50">
       <SubmissionList list={submissionListPagination?.content ?? []} />
-      <PaginationBar {...paginationMethods} />
-    </>
+      <div className="w-full flex justify-center py-30">
+        <PaginationBar {...paginationMethods} />
+      </div>
+    </div>
   )
 }
 
