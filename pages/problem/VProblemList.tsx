@@ -11,6 +11,7 @@ type VProblemProps = {
 const VProblemList = ({ list, columns }: VProblemProps) => {
   return (
     <Table
+      className="border-1 border-neutral-200 rounded-md px-1"
       rowClassName="cursor-pointer"
       onRow={(record) => ({
         onClick: record.handleRowClick,
