@@ -1,10 +1,10 @@
 import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 
-type ProblemRow = Problem & { handleRowClick: () => void }
+type ProblemRow = Problem & { handleRowClick: () => void; acceptPer: string }
 type ProblemColumn = ColumnsType<ProblemRow>
 
-type VProblemProps = {
+export type VProblemProps = {
   list: ProblemRow[]
 }
 
@@ -29,6 +29,11 @@ const columns: ProblemColumn = [
     dataIndex: 'accepted',
     key: 'accepted',
   },
+  {
+    title: '정답률',
+    dataIndex: 'acceptPer',
+    key: 'acceptPer',
+  },
 ]
 
 const VProblemList = ({ list }: VProblemProps) => {
@@ -36,8 +41,8 @@ const VProblemList = ({ list }: VProblemProps) => {
     <Table
       className="border-1 border-neutral-200 rounded-md px-1"
       rowClassName="cursor-pointer"
-      onRow={(record) => ({
-        onClick: record.handleRowClick,
+      onRow={(row) => ({
+        onClick: row.handleRowClick,
       })}
       rowKey={(row) => row.id}
       dataSource={list}
