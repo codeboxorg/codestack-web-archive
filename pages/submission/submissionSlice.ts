@@ -15,6 +15,7 @@ const initialState: SubmissionSlice = {
     problem: { id: -1, title: '' },
     language: { id: -1, name: '' },
     member: { id: -1, nickname: '' },
+    status_code: 'AC',
     isInit: true,
   },
 }
