@@ -39,6 +39,7 @@ const VProblemList = ({ list }: VProblemProps) => {
       onRow={(record) => ({
         onClick: record.handleRowClick,
       })}
+      rowKey={(row) => row.id}
       dataSource={list}
       columns={columns}
       pagination={false}
