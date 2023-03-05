@@ -2,9 +2,10 @@ import { api } from '@api/index'
 import { useRootState } from '@hooks/useRootSelector'
 import withGssp from '@server/utils/withGssp'
 import wrapper from '@store/configureStore'
+import { Button } from 'antd'
 import Head from 'next/head'
+import Link from 'next/link'
 import { setProblem } from '../problemSlice'
-import CodeEditor from './CodeEditor'
 import ProblemDetail from './ProblemDetail'
 
 const ProblemDetailPage = () => {
@@ -17,8 +18,14 @@ const ProblemDetailPage = () => {
           {id} : {title}
         </title>
       </Head>
-      <ProblemDetail />
-      <CodeEditor />
+      <div className="pt-50 flex">
+        <ProblemDetail />
+      </div>
+      <div className="mt-10 flex justify-end">
+        <Link href={`/problem/${id}/submit`}>
+          <Button>풀이 제출</Button>
+        </Link>
+      </div>
     </>
   )
 }
