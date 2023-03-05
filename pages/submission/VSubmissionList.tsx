@@ -1,4 +1,4 @@
-import { Table } from 'antd'
+import { Table, Tag } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 
 type SubmissionRow = Submission & { handleRowClick: () => void }
@@ -6,6 +6,16 @@ type SubmissionColumns = ColumnsType<SubmissionRow>
 
 export type VSubmissionListProps = {
   list: SubmissionRow[]
+}
+
+const SubmissionResultTag = ({ status }: { status: SubmissionStatus }) => {
+  if (status === 'AC') return <Tag color="green">정답</Tag>
+  if (status === 'WA') return <Tag color="red">오답</Tag>
+  if (status === 'PE') return <Tag color="yellow">출력 형식 다름</Tag>
+  if (status === 'TLE') return <Tag color="red">시간 초과</Tag>
+  if (status === 'MLE') return <Tag color="red">메모리 초과</Tag>
+  if (status === 'OLE') return <Tag color="yellow">값 출력 초과</Tag>
+  return <Tag color="red">런타임 에러</Tag>
 }
 
 const columns: SubmissionColumns = [
@@ -40,6 +50,9 @@ const columns: SubmissionColumns = [
     title: '제출 결과',
     dataIndex: 'status_code',
     key: 'status_code',
+    render: (status: SubmissionRow['status_code']) => {
+      return <SubmissionResultTag status={status} />
+    },
   },
 ]
 
