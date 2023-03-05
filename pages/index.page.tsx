@@ -10,7 +10,7 @@ const Landing = () => {
             <div className="h-250 bg-blue-800 rounded-xl overflow-hidden px-30 flex items-center">
               <div className="text-white">
                 <p className="text-2xl font-bold">Codebox와 함께</p>
-                <p className="text-2xl font-bold">성장해봐요~!</p>
+                <p className="text-2xl font-bold">성장해 봐요~!</p>
                 <p className="mt-10 text-lg">
                   목표를 설정하고 맞춤 문제를 추천 받을 수 있어요!
                 </p>
@@ -22,7 +22,7 @@ const Landing = () => {
               <div className="text-white">
                 <p className="text-2xl font-bold">내가 만드는 문제!</p>
                 <p className="mt-10 text-lg">
-                  문제를 커스터마이징 해서 응용 문제를 만들어봐요!
+                  문제 조건을 커스터마이징 해서 응용 문제를 만들어봐요!
                 </p>
               </div>
             </div>
@@ -43,7 +43,7 @@ const Landing = () => {
       <div className="pt-40">
         <h2 className="text-2xl font-bold">문제 추천 설정하기</h2>
         <p className="mt-5 text-gray-500">
-          로그인 후 추천받을 문제 난이도와 유형을 선택해 주세요!
+          추천받을 문제 난이도와 유형을 선택해 주세요!
         </p>
         <button
           onClick={() => message.info('오픈 준비중인 기능이에요!')}
