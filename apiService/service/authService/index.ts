@@ -43,6 +43,7 @@ export const authServiceRemote = (): AuthService => ({
       const response = await nextAPI.post({
         url: `api/auth/member`,
       })
+      baseAPI.setDefaultAuthorizationHeader(response.data.accessToken)
       return response.data
     } catch (error) {
       throwRemoteError(error)
