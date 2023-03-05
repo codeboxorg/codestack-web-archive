@@ -14,6 +14,8 @@ const initialState: ProblemSlice = {
     max_cpu_time: 0,
     max_memory: 0,
     language: [],
+    submission: 0,
+    accepted: 0,
     isInit: true,
   },
 }
