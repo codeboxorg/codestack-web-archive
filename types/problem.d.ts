@@ -4,5 +4,7 @@ interface Problem {
   context: string
   max_cpu_time: number
   max_memory: number
+  submission: number
+  accepted: number
   language: Language[]
 }
