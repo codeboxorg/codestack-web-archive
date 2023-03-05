@@ -1,3 +1,5 @@
+type SubmissionStatus = 'AC' | 'WA' | 'PE' | 'TLE' | 'MLE' | 'OLE' | 'RE'
+
 interface Submission {
   id: number
   source_code: string
@@ -6,4 +8,5 @@ interface Submission {
   problem: Pick<Problem, 'id' | 'title'>
   member: Pick<User, 'id' | 'nickname'>
   language: Pick<Language, 'id' | 'name'>
+  status_code: SubmissionStatus
 }
