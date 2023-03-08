@@ -6,7 +6,7 @@ type Props = {
   children: ReactElement
 }
 
-const VMembderMenu = ({ links, children }: Props) => {
+const VMemberMenu = ({ links, children }: Props) => {
   return (
     <Dropdown menu={{ items: links }} placement="bottomRight">
       {children}
@@ -14,4 +14,4 @@ const VMembderMenu = ({ links, children }: Props) => {
   )
 }
 
-export default VMembderMenu
+export default VMemberMenu
