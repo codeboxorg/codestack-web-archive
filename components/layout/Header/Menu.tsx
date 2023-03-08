@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import VMenu, { MenuItem, VMenuProps } from './VMenu'
 
-const menuItems: Omit<MenuItem, 'isHighlight'>[] = [
+export const menuItems: Omit<MenuItem, 'isHighlight'>[] = [
   {
     href: '/problem',
     name: '문제',
