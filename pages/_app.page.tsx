@@ -11,6 +11,7 @@ import '../styles/globals.scss'
 import SSRErrorHandleContainer from '@components/error/SSRErrorHandleContainer'
 import AntdContextHolderRegister from '@components/app/AntdContextHolderRegister'
 import PageLoading from '@components/shared/PageLoading'
+import { ALLOWED_ONLY_TO_MEMBERS } from 'constant/routePath'
 
 type PagePermissionInfoEnabledComponentConfig = {
   permission: PagePermissionInfo
@@ -23,10 +24,7 @@ interface CustomAppProps extends AppProps {
   Component: NextComponentWithPermission
 }
 
-const ALLOWED_ONLY_TO_MEMBERS = ['/submission', '/problem/[id]/submit']
-
 const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
-  console.log(route)
   const [queryClient] = useState(
     () =>
       new QueryClient({
