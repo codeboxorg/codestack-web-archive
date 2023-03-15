@@ -23,9 +23,10 @@ interface CustomAppProps extends AppProps {
   Component: NextComponentWithPermission
 }
 
-const ALLOWED_ONLY_TO_MEMBERS = ['/submission']
+const ALLOWED_ONLY_TO_MEMBERS = ['/submission', '/problem/[id]/submit']
 
 const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
+  console.log(route)
   const [queryClient] = useState(
     () =>
       new QueryClient({
