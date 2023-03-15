@@ -9,7 +9,7 @@ import { setProblem } from '../problemSlice'
 import ProblemDetail from './ProblemDetail'
 
 const ProblemDetailPage = () => {
-  const { id, title } = useRootState((state) => state.problem.problem)
+  const { id, title, language } = useRootState((state) => state.problem.problem)
 
   return (
     <>
@@ -22,7 +22,13 @@ const ProblemDetailPage = () => {
         <ProblemDetail />
       </div>
       <div className="mt-10 flex justify-end">
-        <Link href={`/problem/${id}/submit`}>
+        <Link
+          href={{
+            pathname: `[id]/submit`,
+            query: { id: 1, languageJSON: JSON.stringify(language) },
+          }}
+          as={`${id}/submit`}
+        >
           <Button>풀이 제출</Button>
         </Link>
       </div>
