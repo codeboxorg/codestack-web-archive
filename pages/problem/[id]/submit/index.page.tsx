@@ -1,43 +1,70 @@
-import { useRef } from 'react'
-import CodeEditor, { MonacoEditor } from './CodeEditor'
-import { Button, Select, message } from 'antd'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { useMutation } from '@tanstack/react-query'
 import { api } from '@api/index'
+import LoadableButton from '@components/shared/LoadableButton'
+import { useMutation } from '@tanstack/react-query'
+import { Button, Select } from 'antd'
+import Head from 'next/head'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useRef, useState } from 'react'
+import CodeEditor, { MonacoEditor } from './CodeEditor'
 
 export type Submit = {
-  problemId: number
-  languageId: number
-  sourceCode: string
+  problem_id: number
+  language_id: number
+  source_code: string
 }
 
 const SubmitPage = () => {
   const router = useRouter()
-  const { id } = router.query
+  const { id, languageJSON } = router.query
+  const language =
+    typeof languageJSON === 'string'
+      ? (JSON.parse(languageJSON) as Language[]).map(({ name, id }) => ({
+          value: id,
+          label: name,
+        }))
+      : []
+
+  const [selectedLanguageId, setSelectedLanguageId] = useState<number>(
+    () => language[0]?.value
+  )
+
+  const [submitId, setSubmitId] = useState<number | null>(null)
+
   const editorRef = useRef<MonacoEditor>()
 
   const handleEditorMount = (editor: MonacoEditor) => {
     editorRef.current = editor
   }
 
-  const handelSubmitSuccess = () => {
-    console.log('성공')
+  const handelSubmitSuccess = ({ id: submitId }: SubmitRes) => {
+    setSubmitId(submitId)
   }
 
-  const submitMutation = useMutation(api.problemService.problemSubmit, {
-    onSuccess: handelSubmitSuccess,
-  })
+  const { mutate: submitMutate } = useMutation(
+    ['submission'],
+    api.problemService.problemSubmit,
+    {
+      onSuccess: handelSubmitSuccess,
+    }
+  )
 
-  //TODO : 서버측 405 이슈 해결후 테스트
   const handleCodeSubmit = () => {
-    // submitMutation.mutate({
-    //   problemId: Number(id),
-    //   languageId: 3,
-    //   sourceCode: editorRef.current?.getValue() ?? '',
-    // })
-    message.info('제출 기능 준비중이에요!')
+    setSubmitId(null)
+    submitMutate({
+      problem_id: Number(id),
+      language_id: selectedLanguageId,
+      source_code: editorRef.current?.getValue() ?? '',
+    })
   }
+
+  useEffect(() => {
+    if (!languageJSON && router.isReady)
+      router.push(
+        { pathname: `/problem/[id]`, query: { id } },
+        `/problem/${id}`
+      )
+  }, [languageJSON, router.isReady])
 
   return (
     <>
@@ -47,24 +74,29 @@ const SubmitPage = () => {
       <h1 className="pt-50 font-semibold text-xl">{id}번 문제 제출</h1>
       <div className="mt-15">
         <Select
-          defaultValue={0}
-          //TODO : 서버측에 language 정보 요청하기
-          options={[
-            { value: 0, label: 'Javascript' },
-            { value: 1, label: 'C++' },
-            { value: 2, label: 'Java' },
-            { value: 3, label: 'Python' },
-          ]}
+          value={selectedLanguageId}
+          onChange={setSelectedLanguageId}
+          options={language}
           className="min-w-150"
         />
       </div>
       <div className="mt-15">
         <CodeEditor handleEditorMount={handleEditorMount} />
       </div>
-      <div className="mt-15 flex justify-end">
-        <Button type="primary" className="w-80" onClick={handleCodeSubmit}>
-          제출
-        </Button>
+      <div className="mt-15 flex justify-end gap-15 items-center">
+        <LoadableButton
+          mutationKey="submission"
+          type="primary"
+          className="min-w-80"
+          onClick={handleCodeSubmit}
+        >
+          {submitId ? '다시 제출' : '제출'}
+        </LoadableButton>
+        {submitId && (
+          <Link href={`/submission/${submitId}`}>
+            <Button>결과 확인하기</Button>
+          </Link>
+        )}
       </div>
     </>
   )
