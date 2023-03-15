@@ -1,4 +1,6 @@
 import useAuth from '@hooks/useAuth'
+import { message } from 'antd'
+import { MESSAGE } from 'constant/message'
 import { useRouter } from 'next/router'
 import { ReactElement, useEffect } from 'react'
 
@@ -19,6 +21,7 @@ const AuthContainer = ({ children, pagePermissionInfo }: Props) => {
   useEffect(() => {
     if (user === null) return
     if (!user) {
+      message.info(MESSAGE.authMessage.info.requiredLogin)
       router.push(redirect)
     }
   }, [user])
