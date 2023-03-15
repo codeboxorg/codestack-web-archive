@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import VRegisterForm, { VRegisterFormProps } from './VRegisterForm'
 import { RegisterForm } from './VRegisterForm'
 
-const RegisterForm = () => {
+const Register = () => {
   const {
     control,
     getValues,
@@ -70,4 +70,4 @@ const RegisterForm = () => {
   )
 }
 
-export default RegisterForm
+export default Register
