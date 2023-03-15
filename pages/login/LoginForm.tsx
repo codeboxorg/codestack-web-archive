@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import VLoginForm, { LoginForm, VLoginFromProps } from './VLoginForm'
 
-const LoginForm = () => {
+const Login = () => {
   const {
     handleSubmit,
     formState: { errors },
@@ -54,4 +54,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default Login
