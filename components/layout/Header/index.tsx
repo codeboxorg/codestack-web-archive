@@ -21,7 +21,7 @@ const Header = () => {
             href="/"
             className="text-2xl relative top-[-2px] font-semibold tracking-tight text-black"
           >
-            Codebox
+            CodeStack
           </Link>
         </div>
         <div className="items-center w-full hidden sm:flex">

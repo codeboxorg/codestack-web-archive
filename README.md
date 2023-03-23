@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>CodeBox Frontend</h1>   
+    <h1>CodeStack Frontend</h1>   
     <img src="https://user-images.githubusercontent.com/33706043/220110976-5e132e3e-4659-4070-b317-76a17c3ca756.png" width="180px"/>
     <br/>
     <h2>코딩 테스트 연습 플랫폼</h2>
@@ -24,7 +24,7 @@
 
 ## 프로젝트 소개
 
-> Codebox는 백준, 프로그래머스, leetcode를 벤치마킹하여 새로운 코딩테스트 연습 플랫폼을 서비스하는 것을 목표로 하고있습니다.
+> CodeStack은 백준, 프로그래머스, leetcode를 벤치마킹하여 새로운 코딩테스트 연습 플랫폼을 서비스하는 것을 목표로 하고있습니다.
 
 <br/>
 

@@ -30,7 +30,7 @@ const MobileMenu = () => {
       >
         <div className="flex items-center pb-30">
           <div className="text-2xl font-semibold tracking-tight text-black">
-            Codebox
+            CodeStack
           </div>
           <button onClick={onClose} className="ml-auto">
             <AiOutlineClose size={25} />

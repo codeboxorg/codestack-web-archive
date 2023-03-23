@@ -9,7 +9,7 @@ const Landing = () => {
           <div>
             <div className="h-250 bg-blue-800 rounded-xl overflow-hidden px-30 flex items-center">
               <div className="text-white">
-                <p className="text-2xl font-bold">Codebox와 함께</p>
+                <p className="text-2xl font-bold">CodeStack과 함께</p>
                 <p className="text-2xl font-bold">성장해 봐요~!</p>
                 <p className="mt-10 text-lg">
                   목표를 설정하고 맞춤 문제를 추천 받을 수 있어요!
