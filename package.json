@@ -30,6 +30,7 @@
     "next": "13.0.4",
     "next-connect": "^0.13.0",
     "next-redux-wrapper": "^8.0.0",
+    "next-seo": "^5.15.0",
     "pusher-js": "^7.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
