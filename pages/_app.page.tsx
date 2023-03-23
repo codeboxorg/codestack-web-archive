@@ -12,6 +12,8 @@ import SSRErrorHandleContainer from '@components/error/SSRErrorHandleContainer'
 import AntdContextHolderRegister from '@components/app/AntdContextHolderRegister'
 import PageLoading from '@components/shared/PageLoading'
 import { ALLOWED_ONLY_TO_MEMBERS } from 'constant/routePath'
+import { DefaultSeo, DefaultSeoProps } from 'next-seo'
+import Seo from '@components/app/Seo'
 
 type PagePermissionInfoEnabledComponentConfig = {
   permission: PagePermissionInfo
@@ -49,6 +51,7 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Seo />
       <AuthChecker />
       <ConfigProvider
         theme={{
