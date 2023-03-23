@@ -7,17 +7,19 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { setProblem } from '../problemSlice'
 import ProblemDetail from './ProblemDetail'
+import { NextSeo } from 'next-seo'
 
 const ProblemDetailPage = () => {
   const { id, title, language } = useRootState((state) => state.problem.problem)
 
   return (
     <>
-      <Head>
-        <title>
-          {id} : {title}
-        </title>
-      </Head>
+      <NextSeo
+        title={title}
+        openGraph={{
+          url: 'https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg',
+        }}
+      />
       <div className="pt-50 flex">
         <ProblemDetail />
       </div>
