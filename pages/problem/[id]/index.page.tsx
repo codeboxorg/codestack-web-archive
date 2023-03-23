@@ -3,7 +3,6 @@ import { useRootState } from '@hooks/useRootSelector'
 import withGssp from '@server/utils/withGssp'
 import wrapper from '@store/configureStore'
 import { Button } from 'antd'
-import Head from 'next/head'
 import Link from 'next/link'
 import { setProblem } from '../problemSlice'
 import ProblemDetail from './ProblemDetail'
@@ -14,12 +13,7 @@ const ProblemDetailPage = () => {
 
   return (
     <>
-      <NextSeo
-        title={title}
-        openGraph={{
-          url: 'https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg',
-        }}
-      />
+      <NextSeo title={`${id}번-${title}`} />
       <div className="pt-50 flex">
         <ProblemDetail />
       </div>
