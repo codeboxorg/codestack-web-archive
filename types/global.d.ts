@@ -10,6 +10,7 @@ interface Opener {
 declare global {
   interface Window {
     oAuthRedirectCallback?: OAuthRedirectCallback
+    gtag: Function
   }
   interface Location {
     replace(url: RoutePaths): void

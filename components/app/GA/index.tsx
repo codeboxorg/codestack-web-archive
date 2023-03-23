@@ -1,4 +1,7 @@
-const GA = () => {
+import Router from 'next/router'
+import { useEffect } from 'react'
+
+const GAInit = () => {
   return (
     <>
       <script
@@ -18,4 +21,22 @@ const GA = () => {
   )
 }
 
-export default GA
+const changeRouteGtag = (url: string) => {
+  window.gtag('config', process.env.NEXT_PUBLIC_GA_ID, {
+    page_path: url,
+  })
+}
+
+const GATrackingRoutePath = () => {
+  useEffect(() => {
+    Router.events.on('routeChangeComplete', changeRouteGtag)
+    return () => {
+      Router.events.off('routeChangeComplete', changeRouteGtag)
+    }
+  }, [])
+  return <></>
+}
+
+export const GA = Object.assign(GAInit, {
+  TrackingRoutePath: GATrackingRoutePath,
+})

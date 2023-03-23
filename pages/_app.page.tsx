@@ -14,6 +14,7 @@ import PageLoading from '@components/shared/PageLoading'
 import { ALLOWED_ONLY_TO_MEMBERS } from 'constant/routePath'
 import { DefaultSeo, DefaultSeoProps } from 'next-seo'
 import Seo from '@components/app/Seo'
+import { GA } from '@components/app/GA'
 
 type PagePermissionInfoEnabledComponentConfig = {
   permission: PagePermissionInfo
@@ -52,6 +53,7 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <Seo />
+      <GA.TrackingRoutePath />
       <AuthChecker />
       <ConfigProvider
         theme={{
