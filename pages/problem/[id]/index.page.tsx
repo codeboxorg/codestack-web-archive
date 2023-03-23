@@ -13,7 +13,7 @@ const ProblemDetailPage = () => {
 
   return (
     <>
-      <NextSeo title={`${id}번-${title}`} />
+      <NextSeo title={`${id}번 - ${title}`} />
       <div className="pt-50 flex">
         <ProblemDetail />
       </div>
