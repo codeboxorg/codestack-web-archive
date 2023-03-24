@@ -2,7 +2,7 @@ import { api } from '@api/index'
 import LoadableButton from '@components/shared/LoadableButton'
 import { useMutation } from '@tanstack/react-query'
 import { Button, Select } from 'antd'
-import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
@@ -68,9 +68,7 @@ const SubmitPage = () => {
 
   return (
     <>
-      <Head>
-        <title>{id}번 문제 제출</title>
-      </Head>
+      <NextSeo title={`${id}번 문제 제출`} />
       <h1 className="pt-50 font-semibold text-xl">{id}번 문제 제출</h1>
       <div className="mt-15">
         <Select
