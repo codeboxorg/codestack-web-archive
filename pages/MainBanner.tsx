@@ -7,6 +7,7 @@ const cx = classNames.bind(style)
 const MainBanner = () => {
   return (
     <>
+      <div className="h-[60vh]"></div>
       <div className={'absolute w-full top-65 left-0 overflow-hidden h-[60vh]'}>
         <Image
           src={mainBanner}
