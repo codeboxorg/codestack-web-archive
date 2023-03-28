@@ -38,6 +38,7 @@ const MobileMenu = () => {
         </div>
         {menuItems.map(({ href, name }) => (
           <Link
+            onClick={onClose}
             className={classNames(
               'block lg:inline-block !text-black text-lg mb-10 hover:!text-blue-500'
             )}
