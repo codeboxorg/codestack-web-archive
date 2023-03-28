@@ -1,54 +1,17 @@
-import { Children, ReactNode, TableHTMLAttributes } from 'react'
-import classNames from 'classnames/bind'
-import style from './index.module.scss'
-import uuid from 'react-uuid'
+import { Table, TableProps } from 'antd'
+import { CSSProperties } from 'react'
 
-const cx = classNames.bind(style)
-
-type ColumnItem = [string | ReactNode, number]
-export type Column = ColumnItem[]
-
-interface Props extends TableHTMLAttributes<HTMLTableElement> {
-  children: ReactNode
-  column: Column
-  theadClassName?: string
-  emptyElement?: ReactNode
-}
-
-const BaseTable = ({
-  children,
-  column,
-  emptyElement,
-  theadClassName,
-  ...rest
-}: Props) => {
-  const isEmptyTableBody = !Children.count(children)
+const BaseTable = <RowType extends Record<string, any>>({
+  style,
+  ...props
+}: TableProps<RowType>) => {
+  const defaultStyle: CSSProperties = {
+    minWidth: '500px',
+  }
   return (
-    <table className={cx('table', 'table-fixed p-0 overflow-hidden')} {...rest}>
-      <thead className={cx('tableHead', theadClassName)}>
-        <tr>
-          {column.map(([title, width]) => (
-            <th
-              key={uuid()}
-              style={{ width: width + '%' }}
-              className="text-15 truncate"
-            >
-              {title}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody className={cx('tableBody', 'all:text-15 all:truncate')}>
-        {isEmptyTableBody && emptyElement && (
-          <tr>
-            <td colSpan={column.length}>
-              <div className="py-10">{emptyElement}</div>
-            </td>
-          </tr>
-        )}
-        {children}
-      </tbody>
-    </table>
+    <div className="overflow-x-scroll border-1 border-neutral-200 rounded-md">
+      <Table<RowType> style={{ ...defaultStyle, ...style }} {...props} />
+    </div>
   )
 }
 
