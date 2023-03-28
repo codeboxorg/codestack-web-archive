@@ -1,0 +1,9 @@
+.banner-img {
+  -webkit-mask: -webkit-gradient(
+    linear,
+    0% 50%,
+    0% 0%,
+    from(rgba(0, 0, 0, 0.9)),
+    to(rgb(0, 0, 0, 1))
+  );
+}
