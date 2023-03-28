@@ -1,3 +1,4 @@
+import BaseTable from '@components/shared/BaseTable'
 import { Table, Tag } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 
@@ -58,7 +59,7 @@ const columns: SubmissionColumns = [
 
 const VSubmissionList = ({ list }: VSubmissionListProps) => {
   return (
-    <Table
+    <BaseTable
       className="border-1 border-neutral-200 rounded-md px-1"
       rowClassName="cursor-pointer"
       onRow={(row) => ({

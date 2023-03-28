@@ -1,3 +1,4 @@
+import BaseTable from '@components/shared/BaseTable'
 import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 
@@ -38,8 +39,7 @@ const columns: ProblemColumn = [
 
 const VProblemList = ({ list }: VProblemProps) => {
   return (
-    <Table
-      className="border-1 border-neutral-200 rounded-md px-1"
+    <BaseTable
       rowClassName="cursor-pointer"
       onRow={(row) => ({
         onClick: row.handleRowClick,
