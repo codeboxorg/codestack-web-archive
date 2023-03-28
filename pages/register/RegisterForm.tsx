@@ -29,12 +29,12 @@ const Register = () => {
   })
 
   const vRegisterFormProps: VRegisterFormProps = {
-    emailInput: {
+    usernameInput: {
       roles: {
-        required: '이메일을 입력해주세요.',
+        required: '아이디를 입력해주세요.',
       },
-      status: errors.email ? 'error' : '',
-      message: errors?.email?.message,
+      status: errors.username ? 'error' : '',
+      message: errors?.username?.message,
     },
     passwordInput: {
       roles: {
@@ -52,9 +52,16 @@ const Register = () => {
       status: errors.passwordConfirm ? 'error' : '',
       message: errors?.passwordConfirm?.message,
     },
-    nicknameInput: {
+    emailInput: {
       roles: {
         required: '이메일을 입력해주세요.',
+      },
+      status: errors.email ? 'error' : '',
+      message: errors?.email?.message,
+    },
+    nicknameInput: {
+      roles: {
+        required: '닉네임을 입력해주세요.',
       },
       status: errors.nickname ? 'error' : '',
       message: errors?.nickname?.message,

@@ -2,6 +2,7 @@ import BaseInput from '@components/shared/BaseInput'
 import { Control, Controller } from 'react-hook-form'
 
 export type RegisterForm = {
+  username: string
   email: string
   password: string
   passwordConfirm: string
@@ -9,6 +10,7 @@ export type RegisterForm = {
 }
 
 export type VRegisterFormProps = {
+  usernameInput: HookFormInput<'username'>
   emailInput: HookFormInput<'email'>
   passwordInput: HookFormInput<'password'>
   passwordConfirmInput: HookFormInput<'passwordConfirm'>
@@ -18,6 +20,7 @@ export type VRegisterFormProps = {
 }
 
 const VRegisterForm = ({
+  usernameInput,
   emailInput,
   passwordInput,
   passwordConfirmInput,
@@ -29,23 +32,25 @@ const VRegisterForm = ({
     <form onSubmit={onSubmit} id="login">
       <div className="mb-6">
         <label className="block mb-5 text-sm font-medium text-gray-900">
-          이메일
+          아이디
         </label>
         <Controller
           control={control}
-          name="email"
-          rules={emailInput.roles}
+          name="username"
+          rules={usernameInput.roles}
           render={({ field }) => (
             <BaseInput
-              placeholder="이메일을 입력해주세요."
-              status={emailInput.status}
+              placeholder="아이디를 입력해주세요."
+              status={usernameInput.status}
               {...field}
             />
           )}
         />
         <div className="h-20 pt-3 w-full">
-          {emailInput.status === 'error' && (
-            <p className="text-red-500 w-full text-xs">{emailInput.message}</p>
+          {usernameInput.status === 'error' && (
+            <p className="text-red-500 w-full text-xs">
+              {usernameInput.message}
+            </p>
           )}
         </div>
       </div>
@@ -101,6 +106,28 @@ const VRegisterForm = ({
       </div>
       <div className="mb-6">
         <label className="block mb-5 text-sm font-medium text-gray-900">
+          이메일
+        </label>
+        <Controller
+          control={control}
+          name="email"
+          rules={emailInput.roles}
+          render={({ field }) => (
+            <BaseInput
+              placeholder="이메일을 입력해주세요."
+              status={emailInput.status}
+              {...field}
+            />
+          )}
+        />
+        <div className="h-20 pt-3 w-full">
+          {emailInput.status === 'error' && (
+            <p className="text-red-500 w-full text-xs">{emailInput.message}</p>
+          )}
+        </div>
+      </div>
+      <div className="mb-6">
+        <label className="block mb-5 text-sm font-medium text-gray-900">
           닉네임
         </label>
         <Controller
@@ -109,7 +136,7 @@ const VRegisterForm = ({
           rules={nicknameInput.roles}
           render={({ field }) => (
             <BaseInput
-              placeholder="이메일을 입력해주세요."
+              placeholder="닉네임을 입력해주세요."
               status={nicknameInput.status}
               {...field}
             />
