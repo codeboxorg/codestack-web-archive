@@ -13,7 +13,7 @@ const PaginationBar = ({
   return (
     <div className="flex gap-5 all:rounded-md p-10">
       <button
-        className="h-35 w-35 hover:bg-neutral-100 transition-all duration-300"
+        className="h-35 w-35 hover:bg-neutral-100 transition-all duration-300 hidden sm:block"
         onClick={() => goBeforeSection()}
       >
         {'<<'}
@@ -47,7 +47,7 @@ const PaginationBar = ({
         {'>'}
       </button>
       <button
-        className="h-35 w-35 hover:bg-neutral-100 transition-all duration-300"
+        className="h-35 w-35 hover:bg-neutral-100 transition-all duration-300 hidden sm:block"
         onClick={() => goNextSection()}
       >
         {'>>'}
