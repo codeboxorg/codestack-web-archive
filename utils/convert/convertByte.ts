@@ -8,4 +8,11 @@ const convertByte = (byte: number, unit: 'KB' | 'MB' | 'GB') => {
       return Math.floor(byte / 1024.0 / 1024.0 / 1024.0)
   }
 }
-export default convertByte
+
+const convertMS = (ms: number, unit: 'SEC') => {
+  switch (unit) {
+    case 'SEC':
+      return Math.floor(ms / 1000)
+  }
+}
+export { convertByte, convertMS }
