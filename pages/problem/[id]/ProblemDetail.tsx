@@ -14,10 +14,12 @@ const ProblemDetail = () => {
 
   return (
     <>
-      <VProblemDetail />
-      <Suspense>
-        <VAC name="VProblemDetail" data={vProblemDetailProps} />
-      </Suspense>
+      <VProblemDetail {...vProblemDetailProps} />
+      <div className="mt-30">
+        <Suspense>
+          <VAC name="VProblemDetail" data={vProblemDetailProps} />
+        </Suspense>
+      </div>
     </>
   )
 }
