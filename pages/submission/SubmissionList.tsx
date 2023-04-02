@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import VSubmissionList, { VSubmissionListProps } from './VSubmissionList'
-import convertByte from '@utils/convert/convertByte'
+import { convertByte } from '@utils/convert/convertByte'
 
 type Props = {
   list: Submission[]
