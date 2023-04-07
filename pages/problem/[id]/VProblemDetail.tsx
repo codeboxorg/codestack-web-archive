@@ -1,7 +1,9 @@
 import BaseTable from '@components/shared/BaseTable'
-import { convertByte, convertMS } from '@utils/convert/convertByte'
 
-type VProblemDetailProps = Problem
+export type VProblemDetailProps = Omit<
+  Problem,
+  'max_memory' | 'max_cpu_time'
+> & { max_memory: string; max_cpu_time: string; possibleLanguage: string }
 
 const columns = [
   {
@@ -31,23 +33,7 @@ const columns = [
   },
 ]
 
-const VProblemDetail = ({
-  id,
-  title,
-  context,
-  language,
-  max_cpu_time,
-  max_memory,
-  ...rest
-}: VProblemDetailProps) => {
-  const possibleLanguage = language.map(({ name }) => name).join(', ')
-  const baseInfo = {
-    ...rest,
-    max_memory: `${convertByte(max_memory, 'MB')} MB`,
-    max_cpu_time: `${convertMS(max_cpu_time, 'SEC')} 초`,
-    possibleLanguage,
-  }
-
+const VProblemDetail = ({ id, title, ...tableInfo }: VProblemDetailProps) => {
   return (
     <div>
       <div>
@@ -56,7 +42,11 @@ const VProblemDetail = ({
         </span>
       </div>
       <h1 className="mt-30 mb-30 text-3xl">{title}</h1>
-      <BaseTable dataSource={[baseInfo]} columns={columns} pagination={false} />
+      <BaseTable
+        dataSource={[tableInfo]}
+        columns={columns}
+        pagination={false}
+      />
     </div>
   )
 }
