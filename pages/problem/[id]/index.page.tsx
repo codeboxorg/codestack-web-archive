@@ -16,7 +16,7 @@ const ProblemDetailPage = () => {
       <div className="pt-50">
         <ProblemDetail />
       </div>
-      <div className="mt-10 flex justify-end">
+      <div className="mt-10 flex justify-end pb-50">
         <CodeSubmitButton id={id} language={language} />
       </div>
     </>

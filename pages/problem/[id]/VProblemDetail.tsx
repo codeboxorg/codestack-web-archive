@@ -5,6 +5,8 @@ export type VProblemDetailProps = Omit<
   'max_memory' | 'max_cpu_time'
 > & { max_memory: string; max_cpu_time: string; possibleLanguage: string }
 
+import style from './VProblemDeatil.module.scss'
+
 const columns = [
   {
     title: '시간 제한',
@@ -33,7 +35,17 @@ const columns = [
   },
 ]
 
-const VProblemDetail = ({ id, title, ...tableInfo }: VProblemDetailProps) => {
+const VProblemDetail = ({
+  id,
+  title,
+  context,
+  ...tableInfo
+}: VProblemDetailProps) => {
+  //TODO : 서버측 본문 DB 저장값 형식 변경 요청 (className -> class, fragment 삭제)
+  const tmpContext = context
+    .replace(/className/g, 'class')
+    .replace(/(\<\>|\<\/\>)/g, '')
+
   return (
     <div>
       <div>
@@ -41,12 +53,19 @@ const VProblemDetail = ({ id, title, ...tableInfo }: VProblemDetailProps) => {
           {id}번 문제
         </span>
       </div>
-      <h1 className="mt-30 mb-30 text-3xl">{title}</h1>
-      <BaseTable
-        dataSource={[tableInfo]}
-        columns={columns}
-        pagination={false}
-      />
+      <h1 className="mt-30 mb-30 text-3xl font-semibold">{title}</h1>
+      <div className="mb-30">
+        <BaseTable
+          rowKey={(row) => row.id}
+          dataSource={[{ ...tableInfo, id }]}
+          columns={columns}
+          pagination={false}
+        />
+      </div>
+      <section
+        className={style.content}
+        dangerouslySetInnerHTML={{ __html: tmpContext }}
+      ></section>
     </div>
   )
 }
