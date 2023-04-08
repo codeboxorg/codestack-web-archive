@@ -13,6 +13,7 @@
     width: 100%;
     gap: 15px;
     display: flex;
+    justify-content: space-between;
     & > div {
       width: 50%;
     }
@@ -40,5 +41,16 @@
     border: 1px solid rgb(190, 190, 190);
     text-align: justify;
     white-space: pre;
+    overflow-x: scroll;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .sample-item {
+      display: flex;
+      flex-wrap: wrap;
+      & > div {
+        width: 100%;
+      }
+    }
   }
 }
