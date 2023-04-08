@@ -79,7 +79,10 @@ const SubmitPage = () => {
         />
       </div>
       <div className="mt-15">
-        <CodeEditor handleEditorMount={handleEditorMount} />
+        <CodeEditor
+          languageId={selectedLanguageId}
+          handleEditorMount={handleEditorMount}
+        />
       </div>
       <div className="mt-15 flex justify-end gap-15 items-center">
         <LoadableButton

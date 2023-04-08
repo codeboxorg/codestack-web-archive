@@ -4,16 +4,23 @@ export type MonacoEditor = monaco.editor.IStandaloneCodeEditor
 
 type CodeEditorProps = {
   handleEditorMount: (editor: MonacoEditor) => void
+  languageId: number
 }
 
-const CodeEditor = ({ handleEditorMount }: CodeEditorProps) => {
+/**
+ * Language List
+ * https://github.com/microsoft/monaco-editor/tree/main/src/basic-languages
+ */
+const EDITOR_LANGUAGE = ['', 'c', 'cpp', 'python', 'javascript', 'go']
+
+const CodeEditor = ({ handleEditorMount, languageId }: CodeEditorProps) => {
   return (
     <>
       <div className="border-1 border-gray-300 rounded-md p-2">
         <Editor
           onMount={handleEditorMount}
           height="50vh"
-          defaultLanguage="javascript"
+          language={EDITOR_LANGUAGE[languageId]}
         />
       </div>
     </>
