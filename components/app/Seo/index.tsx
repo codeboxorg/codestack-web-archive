@@ -12,9 +12,9 @@ const DEFAULT_SEO: DefaultSeoProps = {
     site_name: 'CodeStack',
     images: [
       {
-        url: 'https://avatars.githubusercontent.com/u/118671678?s=400&v=4',
-        width: 100,
-        height: 50,
+        url: 'https://codebox-dev.s3.ap-northeast-2.amazonaws.com/opengraph.png',
+        width: 1200,
+        height: 630,
         alt: 'image',
       },
     ],
