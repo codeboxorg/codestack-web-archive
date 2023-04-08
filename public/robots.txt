@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /submission
+Disallow: /submission/*
+Disallow: /problem/*/submit
+Allow: /
