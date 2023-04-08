@@ -1,12 +1,9 @@
 import { useRootState } from '@hooks/useRootSelector'
-import dynamic from 'next/dynamic'
-import { Suspense, useEffect } from 'react'
-import VProblemDetail, { VProblemDetailProps } from './VProblemDetail'
 import { convertByte, convertMS } from '@utils/convert/convertByte'
 import { message } from 'antd'
 import { MESSAGE } from 'constant/message'
-
-const VAC = dynamic(import('react-vac'), { ssr: false })
+import { useEffect } from 'react'
+import VProblemDetail, { VProblemDetailProps } from './VProblemDetail'
 
 const ProblemDetail = () => {
   const { max_cpu_time, max_memory, ...rest } = useRootState(
@@ -51,11 +48,6 @@ const ProblemDetail = () => {
   return (
     <>
       <VProblemDetail {...vProblemDetailProps} />
-      <div className="mt-30">
-        <Suspense>
-          <VAC name="VProblemDetail" data={vProblemDetailProps} />
-        </Suspense>
-      </div>
     </>
   )
 }

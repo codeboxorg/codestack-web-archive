@@ -22,9 +22,10 @@
   .sample-item-header {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     div {
       font-size: large;
+      font-weight: 600;
     }
     button {
       border: 1px solid rgb(190, 190, 190);
