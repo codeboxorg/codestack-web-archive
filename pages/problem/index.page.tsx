@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { problemKeys } from './queryKey'
 import usePagination from 'react-use-pagination-hook'
 import ProblemList from './ProblemList'
+import { NextSeo } from 'next-seo'
 
 const ProblemPage = () => {
   const paginationMethods = usePagination({ numOfPage: 5 })
@@ -22,12 +23,15 @@ const ProblemPage = () => {
   )
 
   return (
-    <div className="pt-50">
-      <ProblemList list={problemListPagination?.content ?? []} />
-      <div className="w-full flex justify-center py-30">
-        <PaginationBar {...paginationMethods} />
+    <>
+      <NextSeo title={`문제 목록`} />
+      <div className="pt-50">
+        <ProblemList list={problemListPagination?.content ?? []} />
+        <div className="w-full flex justify-center py-30">
+          <PaginationBar {...paginationMethods} />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

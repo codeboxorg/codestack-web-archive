@@ -1,10 +1,12 @@
 import { message } from 'antd'
 import Link from 'next/link'
 import MainBanner from './MainBanner'
+import { NextSeo } from 'next-seo'
 
 const Landing = () => {
   return (
     <>
+      <NextSeo title={`메인`} />
       <MainBanner />
       <div className="pt-40">
         <h2 className="text-2xl font-bold">오늘의 문제 보러가기</h2>
