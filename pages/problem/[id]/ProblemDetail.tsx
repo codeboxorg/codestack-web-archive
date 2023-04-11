@@ -2,7 +2,7 @@ import { useRootState } from '@hooks/useRootSelector'
 import { convertByte, convertMS } from '@utils/convert/convertByte'
 import { message } from 'antd'
 import { MESSAGE } from 'constant/message'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import VProblemDetail, { VProblemDetailProps } from './VProblemDetail'
 
 const ProblemDetail = () => {
@@ -10,11 +10,25 @@ const ProblemDetail = () => {
     (state) => state.problem.problem
   )
 
+  const problemDetailRef = useRef<HTMLDivElement>(null)
+
+  const getLinkedClipboardTargetId = (event: MouseEvent) => {
+    if (!(event.target instanceof HTMLButtonElement)) return
+    return event.target.dataset.clipboardTarget
+  }
+
+  const getLinkedClipboardTargetElement = (
+    clipboardTargetId: string | undefined
+  ) => {
+    if (!clipboardTargetId || !problemDetailRef.current) return
+    return problemDetailRef.current.querySelector(clipboardTargetId)
+  }
+
   const handleClipboardCopy = async (event: MouseEvent) => {
     if (event.target instanceof HTMLButtonElement) {
-      const clipboardTargetId = event.target.dataset.clipboardTarget
-      if (!clipboardTargetId) return
-      const targetElement = document.querySelector(clipboardTargetId)
+      const targetElement = getLinkedClipboardTargetElement(
+        getLinkedClipboardTargetId(event)
+      )
       if (!targetElement) return
       try {
         await navigator.clipboard.writeText(targetElement.innerHTML)
@@ -26,8 +40,11 @@ const ProblemDetail = () => {
   }
 
   useEffect(() => {
+    if (!problemDetailRef.current) return
     const allCopyButtons = Array.from(
-      document.querySelectorAll<HTMLButtonElement>('.copy-button')
+      problemDetailRef.current.querySelectorAll<HTMLButtonElement>(
+        '.copy-button'
+      )
     )
     allCopyButtons.forEach((button) => {
       button.addEventListener('click', handleClipboardCopy)
@@ -36,7 +53,7 @@ const ProblemDetail = () => {
       allCopyButtons.forEach((button) =>
         button.removeEventListener('click', handleClipboardCopy)
       )
-  }, [])
+  }, [problemDetailRef.current])
 
   const vProblemDetailProps: VProblemDetailProps = {
     ...rest,
@@ -47,7 +64,7 @@ const ProblemDetail = () => {
 
   return (
     <>
-      <VProblemDetail {...vProblemDetailProps} />
+      <VProblemDetail ref={problemDetailRef} {...vProblemDetailProps} />
     </>
   )
 }

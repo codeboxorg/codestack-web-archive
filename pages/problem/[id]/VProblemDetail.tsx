@@ -5,6 +5,7 @@ export type VProblemDetailProps = Omit<
   'max_memory' | 'max_cpu_time'
 > & { max_memory: string; max_cpu_time: string; possibleLanguage: string }
 
+import { forwardRef } from 'react'
 import style from './VProblemDeatil.module.scss'
 
 const columns = [
@@ -35,39 +36,35 @@ const columns = [
   },
 ]
 
-const VProblemDetail = ({
-  id,
-  title,
-  context,
-  ...tableInfo
-}: VProblemDetailProps) => {
-  //TODO : 서버측 본문 DB 저장값 형식 변경 요청 (className -> class, fragment 삭제)
-  const tmpContext = context
-    .replace(/className/g, 'class')
-    .replace(/(\<\>|\<\/\>)/g, '')
+const VProblemDetail = forwardRef<HTMLDivElement, VProblemDetailProps>(
+  ({ id, title, context, ...tableInfo }: VProblemDetailProps, ref) => {
+    //TODO : 서버측 본문 DB 저장값 형식 변경 요청 (className -> class, fragment 삭제)
+    const tmpContext = context
+      .replace(/className/g, 'class')
+      .replace(/(\<\>|\<\/\>)/g, '')
 
-  return (
-    <div>
-      <div>
-        <span className="rounded-md bg-blue-500 px-15 py-10 text-white">
-          {id}번 문제
-        </span>
+    return (
+      <div ref={ref}>
+        <div>
+          <span className="rounded-md bg-blue-500 px-15 py-10 text-white">
+            {id}번 문제
+          </span>
+        </div>
+        <h1 className="mt-30 mb-30 text-3xl font-semibold">{title}</h1>
+        <div className="mb-30">
+          <BaseTable
+            rowKey={(row) => row.id}
+            dataSource={[{ ...tableInfo, id }]}
+            columns={columns}
+            pagination={false}
+          />
+        </div>
+        <section
+          className={style.content}
+          dangerouslySetInnerHTML={{ __html: tmpContext }}
+        ></section>
       </div>
-      <h1 className="mt-30 mb-30 text-3xl font-semibold">{title}</h1>
-      <div className="mb-30">
-        <BaseTable
-          rowKey={(row) => row.id}
-          dataSource={[{ ...tableInfo, id }]}
-          columns={columns}
-          pagination={false}
-        />
-      </div>
-      <section
-        className={style.content}
-        dangerouslySetInnerHTML={{ __html: tmpContext }}
-      ></section>
-    </div>
-  )
-}
-
+    )
+  }
+)
 export default VProblemDetail
