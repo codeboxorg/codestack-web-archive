@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.codestack.co.kr
+
+# Sitemaps
+Sitemap: https://www.codestack.co.kr/sitemap.xml

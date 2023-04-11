@@ -67,4 +67,7 @@ const VProblemDetail = forwardRef<HTMLDivElement, VProblemDetailProps>(
     )
   }
 )
+
+VProblemDetail.displayName = 'VProblemDetail'
+
 export default VProblemDetail
