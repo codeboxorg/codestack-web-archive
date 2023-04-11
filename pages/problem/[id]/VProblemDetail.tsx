@@ -38,11 +38,6 @@ const columns = [
 
 const VProblemDetail = forwardRef<HTMLDivElement, VProblemDetailProps>(
   ({ id, title, context, ...tableInfo }: VProblemDetailProps, ref) => {
-    //TODO : 서버측 본문 DB 저장값 형식 변경 요청 (className -> class, fragment 삭제)
-    const tmpContext = context
-      .replace(/className/g, 'class')
-      .replace(/(\<\>|\<\/\>)/g, '')
-
     return (
       <div ref={ref}>
         <div>
@@ -61,7 +56,7 @@ const VProblemDetail = forwardRef<HTMLDivElement, VProblemDetailProps>(
         </div>
         <section
           className={style.content}
-          dangerouslySetInnerHTML={{ __html: tmpContext }}
+          dangerouslySetInnerHTML={{ __html: context }}
         ></section>
       </div>
     )
