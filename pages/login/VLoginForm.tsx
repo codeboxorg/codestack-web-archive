@@ -31,20 +31,11 @@ const VLoginForm = ({
           name="email"
           rules={emailInput.roles}
           render={({ field }) => (
-            <BaseInput
-              placeholder="이메일을 입력해주세요."
-              status={emailInput.status}
-              {...field}
-            />
+            <BaseInput placeholder="이메일을 입력해주세요." {...field} />
           )}
         />
-        <div className="h-20 pt-3 w-full">
-          {emailInput.status === 'error' && (
-            <p className="text-red-500 w-full text-xs">{emailInput.message}</p>
-          )}
-        </div>
       </div>
-      <div className="mb-6">
+      <div className="mb-6 mt-20">
         <label className="block mb-5 text-sm font-medium text-gray-900">
           비밀번호
         </label>
@@ -56,19 +47,18 @@ const VLoginForm = ({
             <BaseInput
               type="password"
               placeholder="비밀번호를 입력해주세요."
-              status={passwordInput.status}
               {...field}
             />
           )}
         />
-        <div className="h-20 pt-3 w-full">
+        <div className="h-20 my-15 flex-center">
           {passwordInput.status === 'error' && (
             <p className="text-red-500 text-xs">{passwordInput.message}</p>
           )}
         </div>
         <button
           type="submit"
-          className="w-full mt-20 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm m-auto block px-5 py-2.5 text-center"
+          className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm m-auto block px-5 py-2.5 text-center"
         >
           로그인
         </button>

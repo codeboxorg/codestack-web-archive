@@ -4,10 +4,12 @@ import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import VLoginForm, { LoginForm, VLoginFromProps } from './VLoginForm'
+import { MESSAGE } from 'constant/message'
 
 const Login = () => {
   const {
     handleSubmit,
+    setError,
     formState: { errors },
     control,
   } = useForm<LoginForm>()
@@ -22,23 +24,26 @@ const Login = () => {
     router.push('/')
   }
 
+  const handleLoginFail = () =>
+    setError('password', {
+      message: MESSAGE.authMessage.error.loginFail,
+    })
+
   const onSubmit = handleSubmit((formData) =>
     loginMutation.mutate(formData, {
       onSuccess: handleLoginSuccess,
+      onError: handleLoginFail,
     })
   )
 
   const vLoginFormProps: VLoginFromProps = {
     emailInput: {
-      roles: {
-        required: '이메일을 입력해주세요.',
-      },
       status: errors.email ? 'error' : '',
       message: errors?.email?.message,
     },
     passwordInput: {
       roles: {
-        required: '비밀번호를 입력해주세요.',
+        required: '이메일과 비밀번호를 입력해주세요',
       },
       status: errors.password ? 'error' : '',
       message: errors?.password?.message,

@@ -24,7 +24,7 @@ const LoginPage = () => {
             </Link>
             <div className="under:mt-15 text-14 px-2">
               <div>
-                회원 가입은{' '}
+                CodeStack 회원 가입은{' '}
                 <Link className="text-blue-600/100" href="/register">
                   여기
                 </Link>
