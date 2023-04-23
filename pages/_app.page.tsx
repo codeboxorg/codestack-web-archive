@@ -1,20 +1,22 @@
+import { StyleProvider } from '@ant-design/cssinjs'
+import { ApolloProvider } from '@apollo/client'
+import AntdContextHolderRegister from '@components/app/AntdContextHolderRegister'
+import { GA } from '@components/app/GA'
+import Seo from '@components/app/Seo'
 import AuthChecker from '@components/auth/AuthChecker'
+import SSRErrorHandleContainer from '@components/error/SSRErrorHandleContainer'
 import Layout from '@components/layout'
+import PageLoading from '@components/shared/PageLoading'
 import wrapper from '@store/configureStore'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ConfigProvider, message } from 'antd'
+import { ConfigProvider } from 'antd'
+import { ALLOWED_ONLY_TO_MEMBERS } from 'constant/routePath'
 import { NextComponentType, NextPageContext } from 'next'
-import { StyleProvider } from '@ant-design/cssinjs'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import '../styles/globals.scss'
-import SSRErrorHandleContainer from '@components/error/SSRErrorHandleContainer'
-import AntdContextHolderRegister from '@components/app/AntdContextHolderRegister'
-import PageLoading from '@components/shared/PageLoading'
-import { ALLOWED_ONLY_TO_MEMBERS } from 'constant/routePath'
-import { DefaultSeo, DefaultSeoProps } from 'next-seo'
-import Seo from '@components/app/Seo'
-import { GA } from '@components/app/GA'
+
+import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 type PagePermissionInfoEnabledComponentConfig = {
   permission: PagePermissionInfo
@@ -40,6 +42,14 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
       })
   )
 
+  const [apolloClient] = useState(
+    () =>
+      new ApolloClient({
+        uri: process.env.NEXT_PUBLIC_GRAPHQL_BASE_API_URL,
+        cache: new InMemoryCache(),
+      })
+  )
+
   const isPermissionRequired = ALLOWED_ONLY_TO_MEMBERS.some((path) =>
     route.startsWith(path)
   )
@@ -51,31 +61,33 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Seo />
-      <GA.TrackingRoutePath />
-      <AuthChecker />
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: '#3b82f6',
-          },
-        }}
-      >
-        <StyleProvider hashPriority="high">
-          <AntdContextHolderRegister />
-          <Layout>
-            <SSRErrorHandleContainer
-              error={pageProps.error}
-              pagePermissionInfo={pagePermissionInfo}
-              isPermissionRequired={isPermissionRequired}
-            >
-              <Component {...pageProps} />
-            </SSRErrorHandleContainer>
-          </Layout>
-        </StyleProvider>
-      </ConfigProvider>
-    </QueryClientProvider>
+    <ApolloProvider client={apolloClient}>
+      <QueryClientProvider client={queryClient}>
+        <Seo />
+        <GA.TrackingRoutePath />
+        <AuthChecker />
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#3b82f6',
+            },
+          }}
+        >
+          <StyleProvider hashPriority="high">
+            <AntdContextHolderRegister />
+            <Layout>
+              <SSRErrorHandleContainer
+                error={pageProps.error}
+                pagePermissionInfo={pagePermissionInfo}
+                isPermissionRequired={isPermissionRequired}
+              >
+                <Component {...pageProps} />
+              </SSRErrorHandleContainer>
+            </Layout>
+          </StyleProvider>
+        </ConfigProvider>
+      </QueryClientProvider>
+    </ApolloProvider>
   )
 }
 

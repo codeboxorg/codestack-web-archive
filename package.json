@@ -11,6 +11,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.12",
     "@monaco-editor/react": "^4.4.6",
     "@reduxjs/toolkit": "^1.9.1",
     "@tanstack/react-query": "^4.20.4",
@@ -26,6 +27,7 @@
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "express-validator": "^6.14.2",
+    "graphql": "^16.6.0",
     "moment": "^2.29.4",
     "monaco-editor": "^0.36.0",
     "next": "13.0.4",
@@ -51,6 +53,7 @@
   "devDependencies": {
     "@svgr/webpack": "^7.0.0",
     "@tailwindcss/forms": "^0.5.3",
+    "@types/graphql": "^14.5.0",
     "@types/styled-components": "^5.1.26",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",

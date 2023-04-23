@@ -1,26 +1,22 @@
-import { api } from '@api/index'
 import PaginationBar from '@components/shared/PaginationBar'
-import { useQuery } from '@tanstack/react-query'
-import { problemKeys } from './queryKey'
+import { NextSeo } from 'next-seo'
 import usePagination from 'react-use-pagination-hook'
 import ProblemList from './ProblemList'
-import { NextSeo } from 'next-seo'
+import { useProblems } from './useProblems'
 
 const ProblemPage = () => {
   const paginationMethods = usePagination({ numOfPage: 5 })
-
   const { currentPage, setTotalPage } = paginationMethods
   const currentServerPageIndex = currentPage - 1
 
-  const { data: problemListPagination } = useQuery(
-    problemKeys.list(currentServerPageIndex, ''),
-    () => api.problemService.problemList(currentServerPageIndex),
-    {
-      onSuccess(res) {
-        setTotalPage(res.total_pages)
-      },
-    }
-  )
+  const { data: problemListPagination } = useProblems({
+    variables: {
+      pageNum: currentServerPageIndex,
+    },
+    onCompleted({ problems: { total_pages } }) {
+      setTotalPage(total_pages)
+    },
+  })
 
   return (
     <>
