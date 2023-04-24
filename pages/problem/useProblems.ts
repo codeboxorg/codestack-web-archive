@@ -22,15 +22,9 @@ const GET_PROBLEMS = gql`
 `
 
 export const useProblems = (
-  options?: QueryHookOptions<
-    Record<'problems', Pagination<Problem>>,
-    OperationVariables
-  >
+  options?: QueryHookOptions<Problems, OperationVariables>
 ) => {
-  const { data, ...rest } = useQuery<Record<'problems', Pagination<Problem>>>(
-    GET_PROBLEMS,
-    options
-  )
+  const { data, ...rest } = useQuery<Problems>(GET_PROBLEMS, options)
   return {
     data: data?.problems,
     ...rest,

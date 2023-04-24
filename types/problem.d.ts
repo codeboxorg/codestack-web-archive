@@ -9,6 +9,8 @@ interface Problem {
   language: Language[]
 }
 
+type Problems = Record<'problems', Pagination<Problem>>
+
 type SubmitRes = {
   id: number
   language_id: number
