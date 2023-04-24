@@ -39,19 +39,19 @@ const columns: SubmissionColumns = [
   },
   {
     title: '메모리 사용',
-    dataIndex: 'memory_usage',
-    key: 'memory_usage',
+    dataIndex: 'memoryUsage',
+    key: 'memoryUsage',
   },
   {
     title: '실행 시간',
-    dataIndex: 'cpu_time',
-    key: 'cpu_time',
+    dataIndex: 'cpuTime',
+    key: 'cpuTime',
   },
   {
     title: '제출 결과',
-    dataIndex: 'status_code',
-    key: 'status_code',
-    render: (status: SubmissionRow['status_code']) => {
+    dataIndex: 'statusCode',
+    key: 'statusCode',
+    render: (status: SubmissionRow['statusCode']) => {
       return <SubmissionResultTag status={status} />
     },
   },

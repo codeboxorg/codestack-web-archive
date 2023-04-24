@@ -10,9 +10,9 @@ const SubmissionList = ({ list }: Props) => {
   const router = useRouter()
 
   const vSubmissionListProps: VSubmissionListProps = {
-    list: list.map(({ memory_usage, ...data }) => ({
+    list: list.map(({ memoryUsage, ...data }) => ({
       ...data,
-      memory_usage: convertByte(memory_usage, 'KB'),
+      memoryUsage: convertByte(memoryUsage, 'KB'),
       handleRowClick: () => {
         router.push(`/submission/${data.id}`)
       },
