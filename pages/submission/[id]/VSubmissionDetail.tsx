@@ -7,7 +7,7 @@ const VSubmissionDetail = ({ detail }: Props) => {
     return <></>
   }
 
-  const { source_code, language } = detail
+  const { sourceCode, language } = detail
   return <></>
 }
 

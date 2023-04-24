@@ -9,13 +9,13 @@ export type SubmissionSlice = {
 const initialState: SubmissionSlice = {
   submission: {
     id: -1,
-    cpu_time: 0,
-    memory_usage: 0,
-    source_code: '',
+    cpuTime: 0,
+    memoryUsage: 0,
+    sourceCode: '',
     problem: { id: -1, title: '' },
     language: { id: -1, name: '' },
     member: { id: -1, nickname: '' },
-    status_code: 'AC',
+    statusCode: 'AC',
     isInit: true,
   },
 }
