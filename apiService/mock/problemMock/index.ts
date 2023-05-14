@@ -11,7 +11,7 @@ export const problemServiceMock = (): ProblemService => ({
     }
   },
   problemDetail: async (id) => {
-    return null as any
+    return problemMockData
   },
   problemSubmit: async (submit) => {
     return null as any
