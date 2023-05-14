@@ -1,5 +1,5 @@
 import { ProblemService } from '@api/service/problemService/problemService'
-import { problemMockData } from './mockData'
+import { problemMockData, problemSubmitResponseMockData } from './mockData'
 
 export const problemServiceMock = (): ProblemService => ({
   problemList: async () => {
@@ -10,10 +10,10 @@ export const problemServiceMock = (): ProblemService => ({
       total_elements: 1,
     }
   },
-  problemDetail: async (id) => {
+  problemDetail: async () => {
     return problemMockData
   },
-  problemSubmit: async (submit) => {
-    return null as any
+  problemSubmit: async () => {
+    return problemSubmitResponseMockData
   },
 })
