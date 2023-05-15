@@ -32,9 +32,6 @@ const SSRErrorHandleContainer = ({
     }
   }, [error])
 
-  /**
-   * 에러가 있는경우 Fragment 리턴 (렌더링 후 useEffect에서 리다이렉트 시키기 위해)
-   */
   if (error) {
     return <></>
   }

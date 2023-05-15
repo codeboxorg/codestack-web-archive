@@ -62,10 +62,6 @@ const sendRequestForData = async ({
   return { ...response, axiosStatus: response.status }
 }
 
-/**
- * get,delete 에 data(body)를 끼워넣고 싶을때 사용
- * @author jeongyun
- */
 const sendInsertForData = async ({
   baseUrl,
   url,

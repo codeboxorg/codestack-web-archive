@@ -1,11 +1,6 @@
 import useAuth from '@hooks/useAuth'
 import { useEffect } from 'react'
 
-/**
- * App 랜더링시 권한을 확인하는 컴포넌트
- * 추후 토큰을 검증후 결과에 따라 전역 state인 user를 분기시켜 dispatch
- */
-
 const AuthChecker = () => {
   const { user, initMember } = useAuth()
 

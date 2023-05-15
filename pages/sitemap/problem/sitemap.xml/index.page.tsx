@@ -1,4 +1,3 @@
-// pages/server-sitemap.xml/index.tsx
 import { getServerSideSitemapLegacy } from 'next-sitemap'
 import { GetServerSideProps } from 'next'
 import { api } from '@api/index'
