@@ -1,9 +1,8 @@
 import classNames from 'classnames'
-import { ROUTE_PATH } from 'constant/routePath'
 import Link from 'next/link'
 
 export type MenuItem = {
-  href: ROUTE_PATH | string
+  href: string
   name: string
   isHighlight: boolean
 }
