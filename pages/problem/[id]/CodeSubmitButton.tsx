@@ -1,15 +1,15 @@
 import { Button } from 'antd'
 import Link from 'next/link'
 
-type CodeSubmitButtonProps = Pick<Problem, 'id' | 'language'>
+type CodeSubmitButtonProps = Pick<Problem, 'id' | 'languages'>
 
-const CodeSubmitButton = ({ id, language }: CodeSubmitButtonProps) => {
+const CodeSubmitButton = ({ id, languages }: CodeSubmitButtonProps) => {
   return (
     <>
       <Link
         href={{
           pathname: `[id]/submit`,
-          query: { id, languageJSON: JSON.stringify(language) },
+          query: { id, languageJSON: JSON.stringify(languages) },
         }}
         as={`${id}/submit`}
       >

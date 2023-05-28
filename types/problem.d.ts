@@ -2,11 +2,11 @@ interface Problem {
   id: number
   title: string
   context: string
-  max_cpu_time: number
-  max_memory: number
+  maxCpuTime: number
+  maxMemory: number
   submission: number
   accepted: number
-  language: Language[]
+  languages: Language[]
 }
 
 type Problems = Record<'problems', Pagination<Problem>>

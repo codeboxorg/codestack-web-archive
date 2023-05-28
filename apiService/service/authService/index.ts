@@ -1,5 +1,5 @@
 import { api } from '@api/index'
-import { baseAPI, nextAPI } from 'apiService/core'
+import { baseAPI, nextAPI, graphqlAPI } from 'apiService/core'
 import { throwRemoteError } from 'apiService/error/remoteError'
 import { AuthService } from './authService'
 
@@ -22,6 +22,7 @@ export const authServiceRemote = (): AuthService => ({
         data: formData,
       })
       baseAPI.setDefaultAuthorizationHeader(response.data.accessToken)
+      graphqlAPI.setDefaultAuthorizationHeader(response.data.accessToken)
       const user = await api.memberService.memberInfo()
       return { ...response.data, ...user }
     } catch (error) {
@@ -44,6 +45,7 @@ export const authServiceRemote = (): AuthService => ({
         url: `api/auth/member`,
       })
       baseAPI.setDefaultAuthorizationHeader(response.data.accessToken)
+      graphqlAPI.setDefaultAuthorizationHeader(response.data.accessToken)
       return response.data
     } catch (error) {
       throwRemoteError(error)

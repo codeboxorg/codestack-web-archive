@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 import VProblemDetail, { VProblemDetailProps } from './VProblemDetail'
 
 const ProblemDetail = () => {
-  const { max_cpu_time, max_memory, ...rest } = useRootState(
+  const { maxCpuTime, maxMemory, ...rest } = useRootState(
     (state) => state.problem.problem
   )
 
@@ -57,9 +57,9 @@ const ProblemDetail = () => {
 
   const vProblemDetailProps: VProblemDetailProps = {
     ...rest,
-    max_memory: `${convertByte(max_memory, 'MB')} MB`,
-    max_cpu_time: `${convertMS(max_cpu_time, 'SEC')} 초`,
-    possibleLanguage: rest.language.map(({ name }) => name).join(', '),
+    maxMemory: `${convertByte(maxMemory, 'MB')} MB`,
+    maxCpuTime: `${convertMS(maxCpuTime, 'SEC')} 초`,
+    possibleLanguage: rest.languages.map(({ name }) => name).join(', ') ?? '',
   }
 
   return (

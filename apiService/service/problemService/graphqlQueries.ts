@@ -15,3 +15,26 @@ export const PROBLEMS = gql`
     }
   }
 `
+
+export const PROBLEM_DETAIL = gql`
+  query ProblemDetail($id: ID) {
+    problem(id: $id) {
+      id
+      maxCpuTime
+      maxMemory
+      title
+      context
+      submission
+      accepted
+      tags {
+        id
+        name
+      }
+      languages {
+        id
+        name
+        extension
+      }
+    }
+  }
+`

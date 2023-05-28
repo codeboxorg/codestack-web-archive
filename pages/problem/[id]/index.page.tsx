@@ -8,7 +8,9 @@ import CodeSubmitButton from './CodeSubmitButton'
 import ProblemDetail from './ProblemDetail'
 
 const ProblemDetailPage = () => {
-  const { id, title, language } = useRootState((state) => state.problem.problem)
+  const { id, title, languages } = useRootState(
+    (state) => state.problem.problem
+  )
 
   return (
     <>
@@ -17,7 +19,7 @@ const ProblemDetailPage = () => {
         <ProblemDetail />
       </div>
       <div className="mt-40 flex justify-end pb-50">
-        <CodeSubmitButton id={id} language={language} />
+        <CodeSubmitButton id={id} languages={languages} />
       </div>
     </>
   )

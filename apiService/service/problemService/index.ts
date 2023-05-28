@@ -1,6 +1,6 @@
 import { baseAPI, graphqlAPI } from 'apiService/core'
 import { throwRemoteError } from 'apiService/error/remoteError'
-import { PROBLEMS } from './graphqlQueries'
+import { PROBLEMS, PROBLEM_DETAIL } from './graphqlQueries'
 import { ProblemService } from './problemService'
 
 export const problemServiceRemote = (): ProblemService => ({
@@ -17,10 +17,11 @@ export const problemServiceRemote = (): ProblemService => ({
   },
   problemDetail: async (id) => {
     try {
-      const response = await baseAPI.get({
-        url: `/problem/${id}`,
+      const response = await graphqlAPI.request({
+        document: PROBLEM_DETAIL,
+        params: { id },
       })
-      return response.data
+      return response.problem
     } catch (error) {
       throwRemoteError(error)
     }

@@ -1,9 +1,10 @@
 import BaseTable from '@components/shared/BaseTable'
 
-export type VProblemDetailProps = Omit<
-  Problem,
-  'max_memory' | 'max_cpu_time'
-> & { max_memory: string; max_cpu_time: string; possibleLanguage: string }
+export type VProblemDetailProps = Omit<Problem, 'maxMemory' | 'maxCpuTime'> & {
+  maxMemory: string
+  maxCpuTime: string
+  possibleLanguage: string
+}
 
 import { forwardRef } from 'react'
 import style from './VProblemDeatil.module.scss'
@@ -11,13 +12,13 @@ import style from './VProblemDeatil.module.scss'
 const columns = [
   {
     title: '시간 제한',
-    dataIndex: 'max_cpu_time',
-    key: 'max_cpu_time',
+    dataIndex: 'maxCpuTime',
+    key: 'maxCpuTime',
   },
   {
     title: '메모리 제한',
-    dataIndex: 'max_memory',
-    key: 'max_memory',
+    dataIndex: 'maxMemory',
+    key: 'maxMemory',
   },
   {
     title: '제출',
