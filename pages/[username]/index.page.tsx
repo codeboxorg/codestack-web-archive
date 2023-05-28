@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import { useMember } from './useMember'
 import { useState } from 'react'
 import { Avatar } from 'antd'
 const Landing = () => {
@@ -7,13 +6,13 @@ const Landing = () => {
   const [nickname, setNickname] = useState('')
   const [profile, setProfile] = useState('')
   const { username } = router.query
-  useMember({
-    variables: { username },
-    onCompleted({ matchedUser }) {
-      setNickname(matchedUser.nickname)
-      setProfile(matchedUser.profileImage)
-    },
-  })
+  // useMember({
+  //   variables: { username },
+  //   onCompleted({ matchedUser }) {
+  //     setNickname(matchedUser.nickname)
+  //     setProfile(matchedUser.profileImage)
+  //   },
+  // })
   return (
     <>
       <main className="container px-20 w-full pt-[7vh]">

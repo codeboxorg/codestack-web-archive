@@ -11,7 +11,6 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.12",
     "@monaco-editor/react": "^4.4.6",
     "@reduxjs/toolkit": "^1.9.1",
     "@tanstack/react-query": "^4.20.4",
@@ -28,6 +27,7 @@
     "eslint-config-next": "13.0.4",
     "express-validator": "^6.14.2",
     "graphql": "^16.6.0",
+    "graphql-request": "^6.1.0",
     "moment": "^2.29.4",
     "monaco-editor": "^0.36.0",
     "next": "13.0.4",

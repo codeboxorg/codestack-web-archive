@@ -1,5 +1,4 @@
 import { StyleProvider } from '@ant-design/cssinjs'
-import { ApolloProvider } from '@apollo/client'
 import AntdContextHolderRegister from '@components/app/AntdContextHolderRegister'
 import { GA } from '@components/app/GA'
 import Seo from '@components/app/Seo'
@@ -15,8 +14,6 @@ import { NextComponentType, NextPageContext } from 'next'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import '../styles/globals.scss'
-
-import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 type PagePermissionInfoEnabledComponentConfig = {
   permission: PagePermissionInfo
@@ -42,14 +39,6 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
       })
   )
 
-  const [apolloClient] = useState(
-    () =>
-      new ApolloClient({
-        uri: process.env.NEXT_PUBLIC_GRAPHQL_BASE_API_URL,
-        cache: new InMemoryCache(),
-      })
-  )
-
   const isPermissionRequired = ALLOWED_ONLY_TO_MEMBERS.some((path) =>
     route.startsWith(path)
   )
@@ -61,33 +50,31 @@ const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
   }
 
   return (
-    <ApolloProvider client={apolloClient}>
-      <QueryClientProvider client={queryClient}>
-        <Seo />
-        <GA.TrackingRoutePath />
-        <AuthChecker />
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: '#3b82f6',
-            },
-          }}
-        >
-          <StyleProvider hashPriority="high">
-            <AntdContextHolderRegister />
-            <Layout>
-              <SSRErrorHandleContainer
-                error={pageProps.error}
-                pagePermissionInfo={pagePermissionInfo}
-                isPermissionRequired={isPermissionRequired}
-              >
-                <Component {...pageProps} />
-              </SSRErrorHandleContainer>
-            </Layout>
-          </StyleProvider>
-        </ConfigProvider>
-      </QueryClientProvider>
-    </ApolloProvider>
+    <QueryClientProvider client={queryClient}>
+      <Seo />
+      <GA.TrackingRoutePath />
+      <AuthChecker />
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#3b82f6',
+          },
+        }}
+      >
+        <StyleProvider hashPriority="high">
+          <AntdContextHolderRegister />
+          <Layout>
+            <SSRErrorHandleContainer
+              error={pageProps.error}
+              pagePermissionInfo={pagePermissionInfo}
+              isPermissionRequired={isPermissionRequired}
+            >
+              <Component {...pageProps} />
+            </SSRErrorHandleContainer>
+          </Layout>
+        </StyleProvider>
+      </ConfigProvider>
+    </QueryClientProvider>
   )
 }
 

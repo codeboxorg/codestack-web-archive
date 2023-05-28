@@ -1,11 +1,6 @@
-import {
-  OperationVariables,
-  QueryHookOptions,
-  gql,
-  useQuery,
-} from '@apollo/client'
+import { gql } from 'graphql-request'
 
-const GET_PROBLEMS = gql`
+export const SUBMISSIONS = gql`
   query Submissions($pageNum: Int) {
     submissions(limit: 20, page: $pageNum) {
       content {
@@ -33,13 +28,3 @@ const GET_PROBLEMS = gql`
     }
   }
 `
-
-export const useSubmissions = (
-  options?: QueryHookOptions<Submissions, OperationVariables>
-) => {
-  const { data, ...rest } = useQuery<Submissions>(GET_PROBLEMS, options)
-  return {
-    data: data?.submissions,
-    ...rest,
-  }
-}

@@ -1,5 +1,6 @@
 import renderEnv from '@utils/renderEnv'
 import { ApiCreator } from './ApiCreator'
+import { GraphqlApiCreator } from './GraphqlApiCreator'
 
 //next 자체서버 (pages/api)로의 요청용
 const nextAPI = new ApiCreator(`/`)
@@ -12,4 +13,8 @@ const baseAPI = renderEnv.isSSR
   ? new ApiCreator(`${process.env.NEXT_SERVER_BASE_API_URL}`)
   : new ApiCreator(`${process.env.NEXT_PUBLIC_BASE_API_URL}`)
 
-export { baseAPI, nextAPI }
+const graphqlAPI = renderEnv.isSSR
+  ? new GraphqlApiCreator(`${process.env.NEXT_SERVER_GRAPHQL_BASE_API_URL}`)
+  : new GraphqlApiCreator(`${process.env.NEXT_PUBLIC_GRAPHQL_BASE_API_URL}`)
+
+export { baseAPI, nextAPI, graphqlAPI }

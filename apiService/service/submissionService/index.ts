@@ -1,15 +1,16 @@
-import { baseAPI } from 'apiService/core'
+import { baseAPI, graphqlAPI } from 'apiService/core'
 import { throwRemoteError } from 'apiService/error/remoteError'
 import { SubmissionService } from './submissionService'
+import { SUBMISSIONS } from './graphqlQueries'
 
 export const submissionServiceRemote = (): SubmissionService => ({
-  submissionList: async (page) => {
+  submissionList: async (pageNum) => {
     try {
-      const response = await baseAPI.get({
-        url: `/submission`,
-        params: { page },
+      const response = await graphqlAPI.request({
+        document: SUBMISSIONS,
+        params: { pageNum },
       })
-      return response.data
+      return response.submissions
     } catch (error) {
       throwRemoteError(error)
     }
