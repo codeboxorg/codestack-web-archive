@@ -15,8 +15,7 @@ class GraphqlApiCreator {
   }
 
   async request({ document, params }: RequestWithParams): Promise<any> {
-    const d = await this.graphqlClient.request(document, params)
-    return d
+    return await this.graphqlClient.request(document, params)
   }
 }
 
