@@ -8,7 +8,7 @@ import {
 
 import axios from './interceptors'
 
-class APICreator {
+class ApiCreator {
   constructor(private baseUrl: string) {}
   get({ url, params, headers }: Omit<RequestWithParams, 'method' | 'baseUrl'>) {
     return sendRequest({
@@ -97,4 +97,4 @@ class APICreator {
   }
 }
 
-export { APICreator }
+export { ApiCreator }
