@@ -1,10 +1,10 @@
 type Props = {
-  detail?: Submission
+    detail?: Submission
 }
 
 // TODO: 추후 컴포넌트 작성
 function VSubmissionDetail({ detail }: Props) {
-  return <>{JSON.stringify(detail)}</>
+    return <>{JSON.stringify(detail)}</>
 }
 
 export default VSubmissionDetail

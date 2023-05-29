@@ -10,11 +10,11 @@ const nextAPI = new ApiCreator(`/`)
  * CSR시에 BASE_API_URL은 undefined이므로 /proxy 사용 URL로 변경된다.
  */
 const baseAPI = renderEnv.isSSR
-  ? new ApiCreator(`${process.env.NEXT_SERVER_BASE_API_URL}`)
-  : new ApiCreator(`${process.env.NEXT_PUBLIC_BASE_API_URL}`)
+    ? new ApiCreator(`${process.env.NEXT_SERVER_BASE_API_URL}`)
+    : new ApiCreator(`${process.env.NEXT_PUBLIC_BASE_API_URL}`)
 
 const graphqlAPI = renderEnv.isSSR
-  ? new GraphqlApiCreator(`${process.env.NEXT_SERVER_GRAPHQL_BASE_API_URL}`)
-  : new GraphqlApiCreator(`${process.env.NEXT_PUBLIC_GRAPHQL_BASE_API_URL}`)
+    ? new GraphqlApiCreator(`${process.env.NEXT_SERVER_GRAPHQL_BASE_API_URL}`)
+    : new GraphqlApiCreator(`${process.env.NEXT_PUBLIC_GRAPHQL_BASE_API_URL}`)
 
 export { baseAPI, nextAPI, graphqlAPI }

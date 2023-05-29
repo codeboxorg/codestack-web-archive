@@ -7,18 +7,18 @@ import { useEffect } from 'react'
  */
 
 function AuthChecker() {
-  const { user, initMember } = useAuth()
+    const { user, initMember } = useAuth()
 
-  /**
-   * 사용자가 권한이 필요한 SSR페이지를 먼저 접속했을 시 권한확인이 완료되어 유저 정보가 이미 채워진 상태이므로
-   * CSR측에서 초기 렌더링시 검증할 필요가 없음
-   */
-  useEffect(() => {
-    if (user) return
-    initMember()
-  }, [initMember, user])
+    /**
+     * 사용자가 권한이 필요한 SSR페이지를 먼저 접속했을 시 권한확인이 완료되어 유저 정보가 이미 채워진 상태이므로
+     * CSR측에서 초기 렌더링시 검증할 필요가 없음
+     */
+    useEffect(() => {
+        if (user) return
+        initMember()
+    }, [initMember, user])
 
-  return null
+    return null
 }
 
 export default AuthChecker

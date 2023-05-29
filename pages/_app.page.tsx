@@ -16,70 +16,64 @@ import { useState } from 'react'
 import '../styles/globals.scss'
 
 type PagePermissionInfoEnabledComponentConfig = {
-  permission: PagePermissionInfo
+    permission: PagePermissionInfo
 }
 
-type NextComponentWithPermission = NextComponentType<
-  NextPageContext,
-  any,
-  unknown
-> &
-  Partial<PagePermissionInfoEnabledComponentConfig>
+type NextComponentWithPermission = NextComponentType<NextPageContext, any, unknown> &
+    Partial<PagePermissionInfoEnabledComponentConfig>
 
 interface CustomAppProps extends AppProps {
-  Component: NextComponentWithPermission
+    Component: NextComponentWithPermission
 }
 
 function App({ Component, pageProps, router: { route } }: CustomAppProps) {
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            refetchOnWindowFocus: false,
-            retry: 2,
-          },
-        },
-      })
-  )
+    const [queryClient] = useState(
+        () =>
+            new QueryClient({
+                defaultOptions: {
+                    queries: {
+                        refetchOnWindowFocus: false,
+                        retry: 2,
+                    },
+                },
+            }),
+    )
 
-  const isPermissionRequired = ALLOWED_ONLY_TO_MEMBERS.some((path) =>
-    route.startsWith(path)
-  )
+    const isPermissionRequired = ALLOWED_ONLY_TO_MEMBERS.some((path) => route.startsWith(path))
 
-  const pagePermissionInfo = {
-    role: Component.permission?.role ?? 'member',
-    loadingFallback: Component.permission?.loadingFallback ?? <PageLoading />,
-    redirect: Component.permission?.redirect ?? '/login',
-  }
+    const pagePermissionInfo = {
+        role: Component.permission?.role ?? 'member',
+        loadingFallback: Component.permission?.loadingFallback ?? <PageLoading />,
+        redirect: Component.permission?.redirect ?? '/login',
+    }
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Seo />
-      <GA.TrackingRoutePath />
-      <AuthChecker />
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: '#3b82f6',
-          },
-        }}
-      >
-        <StyleProvider hashPriority="high">
-          <AntdContextHolderRegister />
-          <Layout>
-            <SSRErrorHandleContainer
-              error={pageProps.error}
-              pagePermissionInfo={pagePermissionInfo}
-              isPermissionRequired={isPermissionRequired}
+    return (
+        <QueryClientProvider client={queryClient}>
+            <Seo />
+            <GA.TrackingRoutePath />
+            <AuthChecker />
+            <ConfigProvider
+                theme={{
+                    token: {
+                        colorPrimary: '#3b82f6',
+                    },
+                }}
             >
-              <Component {...pageProps} />
-            </SSRErrorHandleContainer>
-          </Layout>
-        </StyleProvider>
-      </ConfigProvider>
-    </QueryClientProvider>
-  )
+                <StyleProvider hashPriority='high'>
+                    <AntdContextHolderRegister />
+                    <Layout>
+                        <SSRErrorHandleContainer
+                            error={pageProps.error}
+                            pagePermissionInfo={pagePermissionInfo}
+                            isPermissionRequired={isPermissionRequired}
+                        >
+                            <Component {...pageProps} />
+                        </SSRErrorHandleContainer>
+                    </Layout>
+                </StyleProvider>
+            </ConfigProvider>
+        </QueryClientProvider>
+    )
 }
 
 export default wrapper.withRedux(App)

@@ -7,36 +7,36 @@ import SubmissionList from './SubmissionList'
 import { submissionKeys } from './queryKey'
 
 function SubmissionPage() {
-  const paginationMethods = usePagination({ numOfPage: 5 })
+    const paginationMethods = usePagination({ numOfPage: 5 })
 
-  const { currentPage, setTotalPage } = paginationMethods
-  const currentServerPageIndex = currentPage - 1
+    const { currentPage, setTotalPage } = paginationMethods
+    const currentServerPageIndex = currentPage - 1
 
-  const { data: submissionListPagination } = useQuery(
-    submissionKeys.list(currentServerPageIndex, ''),
-    () => api.submissionService.submissionList(currentServerPageIndex),
-    {
-      onSuccess(res) {
-        setTotalPage(res.total_pages)
-      },
-    }
-  )
+    const { data: submissionListPagination } = useQuery(
+        submissionKeys.list(currentServerPageIndex, ''),
+        () => api.submissionService.submissionList(currentServerPageIndex),
+        {
+            onSuccess(res) {
+                setTotalPage(res.total_pages)
+            },
+        },
+    )
 
-  return (
-    <>
-      <NextSeo title="제출 근황" />
-      <div className="pt-50">
-        <SubmissionList list={submissionListPagination?.content ?? []} />
-        <div className="w-full flex justify-center py-30">
-          <PaginationBar {...paginationMethods} />
-        </div>
-      </div>
-    </>
-  )
+    return (
+        <>
+            <NextSeo title='제출 근황' />
+            <div className='pt-50'>
+                <SubmissionList list={submissionListPagination?.content ?? []} />
+                <div className='w-full flex justify-center py-30'>
+                    <PaginationBar {...paginationMethods} />
+                </div>
+            </div>
+        </>
+    )
 }
 
 const pagePermission: PagePermissionInfo = {
-  redirect: '/login',
+    redirect: '/login',
 }
 
 SubmissionPage.permission = pagePermission

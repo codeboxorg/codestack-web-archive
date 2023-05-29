@@ -10,22 +10,22 @@ const authSliceType = 'slice/auth'
  * 비 로그인 or 권한 확인 실패시 -> false
  */
 export type AuthSlice = {
-  loginUser: LoginMember | null | false
+    loginUser: LoginMember | null | false
 }
 
 const initialState: AuthSlice = {
-  loginUser: null,
+    loginUser: null,
 }
 
 const authSlice = createSlice({
-  initialState,
-  name: authSliceType,
-  reducers: {
-    setLoginUser: (
-      state,
-      action: PayloadAction<LoginMember | null | false>
-    ) => ({ ...state, loginUser: action.payload }),
-  },
+    initialState,
+    name: authSliceType,
+    reducers: {
+        setLoginUser: (state, action: PayloadAction<LoginMember | null | false>) => ({
+            ...state,
+            loginUser: action.payload,
+        }),
+    },
 })
 
 export const { setLoginUser } = authSlice.actions

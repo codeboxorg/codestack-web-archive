@@ -1,4 +1,4 @@
 interface User {
-  id: number
-  nickname: string
+    id: number
+    nickname: string
 }

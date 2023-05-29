@@ -5,8 +5,8 @@ import { useRouter } from 'next/router'
 import { ReactElement, useEffect } from 'react'
 
 interface Props {
-  children: ReactElement
-  pagePermissionInfo: Required<PagePermissionInfo>
+    children: ReactElement
+    pagePermissionInfo: Required<PagePermissionInfo>
 }
 
 /**
@@ -14,29 +14,29 @@ interface Props {
  * user의 기본 State는 AuthChecker 컴포넌트가 권한 검증을 하기 전까지는 null 상태.
  */
 const AuthContainer = ({ children, pagePermissionInfo }: Props) => {
-  const { push: routerPush } = useRouter()
-  const { user } = useAuth()
-  const { redirect, loadingFallback } = pagePermissionInfo
+    const { push: routerPush } = useRouter()
+    const { user } = useAuth()
+    const { redirect, loadingFallback } = pagePermissionInfo
 
-  useEffect(() => {
-    if (user === null) return
-    if (!user) {
-      message.info(MESSAGE.authMessage.info.requiredLogin)
-      routerPush(redirect)
+    useEffect(() => {
+        if (user === null) return
+        if (!user) {
+            message.info(MESSAGE.authMessage.info.requiredLogin)
+            routerPush(redirect)
+        }
+    }, [user, redirect, routerPush])
+
+    /**
+     * 전역에 유저정보가 있을 경우 통과 처리
+     */
+    if (user) {
+        return children
     }
-  }, [user, redirect, routerPush])
 
-  /**
-   * 전역에 유저정보가 있을 경우 통과 처리
-   */
-  if (user) {
-    return children
-  }
-
-  /**
-   * 새로고침시 AuthChecker Component가 권한 검증중인경우 loading fallback 표출
-   */
-  return loadingFallback
+    /**
+     * 새로고침시 AuthChecker Component가 권한 검증중인경우 loading fallback 표출
+     */
+    return loadingFallback
 }
 
 export default AuthContainer

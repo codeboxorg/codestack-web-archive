@@ -2,26 +2,26 @@ import { useRouter } from 'next/router'
 import VMenu, { MenuItem, VMenuProps } from './VMenu'
 
 export const menuItems: Omit<MenuItem, 'isHighlight'>[] = [
-  {
-    href: '/problem',
-    name: '문제',
-  },
-  {
-    href: '/submission',
-    name: '제출근황',
-  },
+    {
+        href: '/problem',
+        name: '문제',
+    },
+    {
+        href: '/submission',
+        name: '제출근황',
+    },
 ]
 
 function Menu() {
-  const { pathname } = useRouter()
-  const vMenuProps: VMenuProps = {
-    menus: menuItems.map((menuItem) => ({
-      ...menuItem,
-      isHighlight: pathname.startsWith(menuItem.href),
-    })),
-  }
+    const { pathname } = useRouter()
+    const vMenuProps: VMenuProps = {
+        menus: menuItems.map((menuItem) => ({
+            ...menuItem,
+            isHighlight: pathname.startsWith(menuItem.href),
+        })),
+    }
 
-  return <VMenu {...vMenuProps} />
+    return <VMenu {...vMenuProps} />
 }
 
 export default Menu

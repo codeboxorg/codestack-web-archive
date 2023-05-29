@@ -8,31 +8,31 @@ import ProblemList from './ProblemList'
 import { problemKeys } from './queryKey'
 
 function ProblemPage() {
-  const paginationMethods = usePagination({ numOfPage: 5 })
-  const { currentPage, setTotalPage } = paginationMethods
-  const currentServerPageIndex = currentPage - 1
+    const paginationMethods = usePagination({ numOfPage: 5 })
+    const { currentPage, setTotalPage } = paginationMethods
+    const currentServerPageIndex = currentPage - 1
 
-  const { data: problemListPagination } = useQuery(
-    problemKeys.list(currentServerPageIndex, ''),
-    () => api.problemService.problemList(currentServerPageIndex),
-    {
-      onSuccess(res) {
-        setTotalPage(res.total_pages)
-      },
-    }
-  )
+    const { data: problemListPagination } = useQuery(
+        problemKeys.list(currentServerPageIndex, ''),
+        () => api.problemService.problemList(currentServerPageIndex),
+        {
+            onSuccess(res) {
+                setTotalPage(res.total_pages)
+            },
+        },
+    )
 
-  return (
-    <>
-      <NextSeo title="문제 목록" />
-      <div className="pt-50">
-        <ProblemList list={problemListPagination?.content ?? []} />
-        <div className="w-full flex justify-center py-30">
-          <PaginationBar {...paginationMethods} />
-        </div>
-      </div>
-    </>
-  )
+    return (
+        <>
+            <NextSeo title='문제 목록' />
+            <div className='pt-50'>
+                <ProblemList list={problemListPagination?.content ?? []} />
+                <div className='w-full flex justify-center py-30'>
+                    <PaginationBar {...paginationMethods} />
+                </div>
+            </div>
+        </>
+    )
 }
 
 export default ProblemPage

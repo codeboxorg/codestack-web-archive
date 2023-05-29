@@ -1,3 +1,3 @@
 export interface MemberService {
-  memberInfo(): Promise<Member>
+    memberInfo(): Promise<Member>
 }
