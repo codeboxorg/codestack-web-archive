@@ -31,6 +31,7 @@ function GATrackingRoutePath() {
             Router.events.off('routeChangeComplete', changeRouteGtag)
         }
     }, [])
+    return null
 }
 
 export const GA = Object.assign(GAInit, {

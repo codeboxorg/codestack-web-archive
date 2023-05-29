@@ -28,10 +28,10 @@ function SSRErrorHandleContainer({ error, pagePermissionInfo, isPermissionRequir
     }, [error, redirect, routerPush])
 
     /**
-     * 에러가 있는경우 Fragment 리턴 (렌더링 후 useEffect에서 리다이렉트 시키기 위해)
+     * 에러가 있는경우 null 리턴 (렌더링 후 useEffect에서 리다이렉트 시키기 위해)
      */
     if (error) {
-        return
+        return null
     }
 
     /**
