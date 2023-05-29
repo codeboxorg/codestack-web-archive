@@ -3,10 +3,10 @@ import useAuth from '@hooks/useAuth'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import VLoginForm, { LoginForm, VLoginFromProps } from './VLoginForm'
 import { MESSAGE } from 'constant/message'
+import VLoginForm, { LoginForm, VLoginFromProps } from './VLoginForm'
 
-const Login = () => {
+function Login() {
   const {
     handleSubmit,
     setError,
@@ -52,11 +52,7 @@ const Login = () => {
     control,
   }
 
-  return (
-    <>
-      <VLoginForm {...vLoginFormProps} />
-    </>
-  )
+  return <VLoginForm {...vLoginFormProps} />
 }
 
 export default Login

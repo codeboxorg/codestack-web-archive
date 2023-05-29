@@ -4,7 +4,7 @@ import MemberMenu from './MemberMenu'
 import Menu from './Menu'
 import MobileMenu from './MobileMenu'
 
-const Header = () => {
+function Header() {
   const { user } = useAuth()
 
   return (

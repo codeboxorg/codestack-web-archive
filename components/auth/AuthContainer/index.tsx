@@ -14,7 +14,7 @@ interface Props {
  * user의 기본 State는 AuthChecker 컴포넌트가 권한 검증을 하기 전까지는 null 상태.
  */
 const AuthContainer = ({ children, pagePermissionInfo }: Props) => {
-  const router = useRouter()
+  const { push: routerPush } = useRouter()
   const { user } = useAuth()
   const { redirect, loadingFallback } = pagePermissionInfo
 
@@ -22,9 +22,9 @@ const AuthContainer = ({ children, pagePermissionInfo }: Props) => {
     if (user === null) return
     if (!user) {
       message.info(MESSAGE.authMessage.info.requiredLogin)
-      router.push(redirect)
+      routerPush(redirect)
     }
-  }, [user])
+  }, [user, redirect, routerPush])
 
   /**
    * 전역에 유저정보가 있을 경우 통과 처리

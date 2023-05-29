@@ -6,7 +6,7 @@ import { useEffect } from 'react'
  * 추후 토큰을 검증후 결과에 따라 전역 state인 user를 분기시켜 dispatch
  */
 
-const AuthChecker = () => {
+function AuthChecker() {
   const { user, initMember } = useAuth()
 
   /**
@@ -15,8 +15,8 @@ const AuthChecker = () => {
    */
   useEffect(() => {
     if (user) return
-    else initMember()
-  }, [])
+    initMember()
+  }, [initMember, user])
 
   return null
 }

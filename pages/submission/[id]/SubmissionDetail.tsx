@@ -1,14 +1,14 @@
-import VSubmissionDetail from './VSubmissionDetail'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import { api } from '@api/index'
-import { submissionKeys } from '../queryKey'
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
+import { submissionKeys } from '../queryKey'
+import VSubmissionDetail from './VSubmissionDetail'
 
 const VAC = dynamic(import('react-vac'), { ssr: false })
 
-const SubmissionDetail = () => {
+function SubmissionDetail() {
   const router = useRouter()
   const { id } = router.query
   const { data: submissionDetail } = useQuery(submissionKeys.detail(), () =>

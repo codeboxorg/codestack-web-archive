@@ -6,9 +6,7 @@ import { api } from '@api/index'
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const problem = await api.problemService.problemList(0)
   const fields = Array.from(Array(problem.total_pages).keys()).map((index) => ({
-    loc:
-      process.env.NEXT_SERVER_BASE_URL +
-      `/sitemap/problem/${index}/sitemap.xml`,
+    loc: `${process.env.NEXT_SERVER_BASE_URL}/sitemap/problem/${index}/sitemap.xml`,
     lastmod: new Date().toISOString(),
   }))
 

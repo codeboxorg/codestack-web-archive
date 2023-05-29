@@ -10,13 +10,13 @@ type Props = {
   children: ReactElement
 }
 
-const SSRErrorHandleContainer = ({
+function SSRErrorHandleContainer({
   error,
   pagePermissionInfo,
   isPermissionRequired,
   children,
-}: Props) => {
-  const router = useRouter()
+}: Props) {
+  const { push: routerPush } = useRouter()
   const { redirect } = pagePermissionInfo
 
   if (error) console.debug('SSRErrorHandler', error)
@@ -25,18 +25,18 @@ const SSRErrorHandleContainer = ({
     if (!error) return
     switch (error.status) {
       case 401:
-        router.push(redirect)
+        routerPush(redirect)
         break
       default:
-        router.push('/error')
+        routerPush('/error')
     }
-  }, [error])
+  }, [error, redirect, routerPush])
 
   /**
    * 에러가 있는경우 Fragment 리턴 (렌더링 후 useEffect에서 리다이렉트 시키기 위해)
    */
   if (error) {
-    return <></>
+    return
   }
 
   /**

@@ -12,7 +12,7 @@ export const menuItems: Omit<MenuItem, 'isHighlight'>[] = [
   },
 ]
 
-const Menu = () => {
+function Menu() {
   const { pathname } = useRouter()
   const vMenuProps: VMenuProps = {
     menus: menuItems.map((menuItem) => ({

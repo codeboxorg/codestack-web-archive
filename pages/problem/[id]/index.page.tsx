@@ -7,7 +7,7 @@ import { setProblem } from '../problemSlice'
 import CodeSubmitButton from './CodeSubmitButton'
 import ProblemDetail from './ProblemDetail'
 
-const ProblemDetailPage = () => {
+function ProblemDetailPage() {
   const { id, title, languages } = useRootState(
     (state) => state.problem.problem
   )

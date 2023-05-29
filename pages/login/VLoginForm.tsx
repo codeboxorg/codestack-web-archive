@@ -1,5 +1,4 @@
 import BaseInput from '@components/shared/BaseInput'
-import { Input } from 'antd'
 import { Control, Controller } from 'react-hook-form'
 
 export type LoginForm = {
@@ -14,16 +13,19 @@ export type VLoginFromProps = {
   onSubmit: HookFormSubmit
 }
 
-const VLoginForm = ({
+function VLoginForm({
   emailInput,
   passwordInput,
   onSubmit,
   control,
-}: VLoginFromProps) => {
+}: VLoginFromProps) {
   return (
     <form onSubmit={onSubmit} id="login">
       <div className="mb-6">
-        <label className="block mb-5 text-sm font-medium text-gray-900">
+        <label
+          htmlFor="email"
+          className="block mb-5 text-sm font-medium text-gray-900"
+        >
           이메일
         </label>
         <Controller
@@ -31,12 +33,19 @@ const VLoginForm = ({
           name="email"
           rules={emailInput.roles}
           render={({ field }) => (
-            <BaseInput placeholder="이메일을 입력해주세요." {...field} />
+            <BaseInput
+              id="email"
+              placeholder="이메일을 입력해주세요."
+              {...field}
+            />
           )}
         />
       </div>
       <div className="mb-6 mt-20">
-        <label className="block mb-5 text-sm font-medium text-gray-900">
+        <label
+          htmlFor="password"
+          className="block mb-5 text-sm font-medium text-gray-900"
+        >
           비밀번호
         </label>
         <Controller
@@ -45,6 +54,7 @@ const VLoginForm = ({
           rules={passwordInput.roles}
           render={({ field }) => (
             <BaseInput
+              id="password"
               type="password"
               placeholder="비밀번호를 입력해주세요."
               {...field}

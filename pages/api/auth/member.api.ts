@@ -1,4 +1,3 @@
-import { authHandler } from '@server/handlers/oauthHandler'
 import { serverToServerAPI } from '@server/serverToServerApi'
 import { NextRequest } from '@server/types'
 import { AxiosError } from 'axios'
@@ -22,7 +21,7 @@ export default async function handler(
     const user = await serverToServerAPI.authServerToServer.memberInfo(
       accessToken
     )
-    //TODO : 백엔드에 refreshToken 바꿔오는 endPoint에 expiresIn 추가요청
+    // TODO : 백엔드에 refreshToken 바꿔오는 endPoint에 expiresIn 추가요청
     res.json({ ...user, accessToken, expiresIn: 99999 })
   } catch (err) {
     if (err instanceof AxiosError) {

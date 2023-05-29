@@ -1,5 +1,5 @@
 import BaseTable from '@components/shared/BaseTable'
-import { Table, Tag } from 'antd'
+import { Tag } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 
 type SubmissionRow = Submission & { handleRowClick: () => void }
@@ -9,7 +9,7 @@ export type VSubmissionListProps = {
   list: SubmissionRow[]
 }
 
-const SubmissionResultTag = ({ status }: { status: SubmissionStatus }) => {
+function SubmissionResultTag({ status }: { status: SubmissionStatus }) {
   if (status === 'AC') return <Tag color="green">정답</Tag>
   if (status === 'WA') return <Tag color="red">오답</Tag>
   if (status === 'PE') return <Tag color="yellow">출력 형식 다름</Tag>
@@ -51,13 +51,13 @@ const columns: SubmissionColumns = [
     title: '제출 결과',
     dataIndex: 'statusCode',
     key: 'statusCode',
-    render: (status: SubmissionRow['statusCode']) => {
-      return <SubmissionResultTag status={status} />
-    },
+    render: (status: SubmissionRow['statusCode']) => (
+      <SubmissionResultTag status={status} />
+    ),
   },
 ]
 
-const VSubmissionList = ({ list }: VSubmissionListProps) => {
+function VSubmissionList({ list }: VSubmissionListProps) {
   return (
     <BaseTable
       className="border-1 border-neutral-200 rounded-md px-1"

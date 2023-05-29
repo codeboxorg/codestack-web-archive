@@ -1,13 +1,13 @@
 import BaseTable from '@components/shared/BaseTable'
 
+import { forwardRef } from 'react'
+import style from './VProblemDeatil.module.scss'
+
 export type VProblemDetailProps = Omit<Problem, 'maxMemory' | 'maxCpuTime'> & {
   maxMemory: string
   maxCpuTime: string
   possibleLanguage: string
 }
-
-import { forwardRef } from 'react'
-import style from './VProblemDeatil.module.scss'
 
 const columns = [
   {
@@ -38,30 +38,28 @@ const columns = [
 ]
 
 const VProblemDetail = forwardRef<HTMLDivElement, VProblemDetailProps>(
-  ({ id, title, context, ...tableInfo }: VProblemDetailProps, ref) => {
-    return (
-      <div ref={ref}>
-        <div>
-          <span className="rounded-md bg-blue-500 px-15 py-10 text-white">
-            {id}번 문제
-          </span>
-        </div>
-        <h1 className="mt-30 mb-30 text-3xl font-semibold">{title}</h1>
-        <div className="mb-30">
-          <BaseTable
-            rowKey={(row) => row.id}
-            dataSource={[{ ...tableInfo, id }]}
-            columns={columns}
-            pagination={false}
-          />
-        </div>
-        <section
-          className={style.content}
-          dangerouslySetInnerHTML={{ __html: context }}
-        ></section>
+  ({ id, title, context, ...tableInfo }: VProblemDetailProps, ref) => (
+    <div ref={ref}>
+      <div>
+        <span className="rounded-md bg-blue-500 px-15 py-10 text-white">
+          {id}번 문제
+        </span>
       </div>
-    )
-  }
+      <h1 className="mt-30 mb-30 text-3xl font-semibold">{title}</h1>
+      <div className="mb-30">
+        <BaseTable
+          rowKey={(row) => row.id}
+          dataSource={[{ ...tableInfo, id }]}
+          columns={columns}
+          pagination={false}
+        />
+      </div>
+      <section
+        className={style.content}
+        dangerouslySetInnerHTML={{ __html: context }}
+      />
+    </div>
+  )
 )
 
 VProblemDetail.displayName = 'VProblemDetail'

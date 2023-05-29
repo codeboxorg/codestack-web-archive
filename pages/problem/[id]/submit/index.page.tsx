@@ -14,15 +14,18 @@ export type Submit = {
   source_code: string
 }
 
-const SubmitPage = () => {
-  const router = useRouter()
-  const { id, languageJSON } = router.query
+function SubmitPage() {
+  const { isReady: routerIsReady, query, push: routerPush } = useRouter()
+  const { id, languageJSON } = query
+
   const language =
     typeof languageJSON === 'string'
-      ? (JSON.parse(languageJSON) as Language[]).map(({ name, id }) => ({
-          value: id,
-          label: name,
-        }))
+      ? (JSON.parse(languageJSON) as Language[]).map(
+          ({ name, id: languageId }) => ({
+            value: languageId,
+            label: name,
+          })
+        )
       : []
 
   const [selectedLanguageId, setSelectedLanguageId] = useState<number>(
@@ -37,8 +40,8 @@ const SubmitPage = () => {
     editorRef.current = editor
   }
 
-  const handelSubmitSuccess = ({ id: submitId }: SubmitRes) => {
-    setSubmitId(submitId)
+  const handelSubmitSuccess = ({ id: currentSubmitId }: SubmitRes) => {
+    setSubmitId(currentSubmitId)
   }
 
   const { mutate: submitMutate } = useMutation(
@@ -59,12 +62,9 @@ const SubmitPage = () => {
   }
 
   useEffect(() => {
-    if (!languageJSON && router.isReady)
-      router.push(
-        { pathname: `/problem/[id]`, query: { id } },
-        `/problem/${id}`
-      )
-  }, [languageJSON, router.isReady])
+    if (!languageJSON && routerIsReady)
+      routerPush({ pathname: `/problem/[id]`, query: { id } }, `/problem/${id}`)
+  }, [languageJSON, id, routerIsReady, routerPush])
 
   return (
     <>

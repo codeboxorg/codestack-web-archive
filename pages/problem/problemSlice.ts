@@ -24,9 +24,10 @@ const problemSlice = createSlice({
   initialState,
   name: problemSliceType,
   reducers: {
-    setProblem: (state, action: PayloadAction<Problem>) => {
-      state.problem = action.payload
-    },
+    setProblem: (state, action: PayloadAction<Problem>) => ({
+      ...state,
+      problem: action.payload,
+    }),
   },
 })
 

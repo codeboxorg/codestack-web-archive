@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import pusherClient from '@utils/pusherClient'
 
-const SubscribeBoard = () => {
+function SubscribeBoard() {
   const [state, setState] = useState('ss')
 
-  var channel = pusherClient.subscribe('subscribe')
+  const channel = pusherClient.subscribe('subscribe')
   channel.bind('subscribe:problem', (data: string) => {
     setState(JSON.stringify(data))
   })

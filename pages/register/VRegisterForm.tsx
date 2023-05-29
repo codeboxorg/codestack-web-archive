@@ -19,7 +19,7 @@ export type VRegisterFormProps = {
   onSubmit: HookFormSubmit
 }
 
-const VRegisterForm = ({
+function VRegisterForm({
   usernameInput,
   emailInput,
   passwordInput,
@@ -27,11 +27,14 @@ const VRegisterForm = ({
   nicknameInput,
   control,
   onSubmit,
-}: VRegisterFormProps) => {
+}: VRegisterFormProps) {
   return (
     <form onSubmit={onSubmit} id="login">
       <div className="mb-6">
-        <label className="block mb-5 text-sm font-medium text-gray-900">
+        <label
+          htmlFor="username"
+          className="block mb-5 text-sm font-medium text-gray-900"
+        >
           아이디
         </label>
         <Controller
@@ -40,6 +43,7 @@ const VRegisterForm = ({
           rules={usernameInput.roles}
           render={({ field }) => (
             <BaseInput
+              id="username"
               placeholder="아이디를 입력해주세요."
               status={usernameInput.status}
               {...field}
@@ -55,7 +59,10 @@ const VRegisterForm = ({
         </div>
       </div>
       <div className="mb-6">
-        <label className="block mb-5 text-sm font-medium text-gray-900">
+        <label
+          htmlFor="password"
+          className="block mb-5 text-sm font-medium text-gray-900"
+        >
           비밀번호
         </label>
         <Controller
@@ -64,6 +71,7 @@ const VRegisterForm = ({
           rules={passwordInput.roles}
           render={({ field }) => (
             <BaseInput
+              id="password"
               type="password"
               placeholder="비밀번호를 입력해주세요."
               status={passwordInput.status}
@@ -80,7 +88,10 @@ const VRegisterForm = ({
         </div>
       </div>
       <div className="mb-6">
-        <label className="block mb-5 text-sm font-medium text-gray-900">
+        <label
+          htmlFor="passwordConfirm"
+          className="block mb-5 text-sm font-medium text-gray-900"
+        >
           비밀번호 확인
         </label>
         <Controller
@@ -89,6 +100,7 @@ const VRegisterForm = ({
           rules={passwordConfirmInput.roles}
           render={({ field }) => (
             <BaseInput
+              id="passwordConfirm"
               type="password"
               placeholder="비밀번호를 한번 더 입력해주세요."
               status={passwordConfirmInput.status}
@@ -105,7 +117,10 @@ const VRegisterForm = ({
         </div>
       </div>
       <div className="mb-6">
-        <label className="block mb-5 text-sm font-medium text-gray-900">
+        <label
+          htmlFor="email"
+          className="block mb-5 text-sm font-medium text-gray-900"
+        >
           이메일
         </label>
         <Controller
@@ -114,6 +129,7 @@ const VRegisterForm = ({
           rules={emailInput.roles}
           render={({ field }) => (
             <BaseInput
+              id="email"
               placeholder="이메일을 입력해주세요."
               status={emailInput.status}
               {...field}
@@ -127,7 +143,10 @@ const VRegisterForm = ({
         </div>
       </div>
       <div className="mb-6">
-        <label className="block mb-5 text-sm font-medium text-gray-900">
+        <label
+          htmlFor="nickname"
+          className="block mb-5 text-sm font-medium text-gray-900"
+        >
           닉네임
         </label>
         <Controller
@@ -136,6 +155,7 @@ const VRegisterForm = ({
           rules={nicknameInput.roles}
           render={({ field }) => (
             <BaseInput
+              id="nickname"
               placeholder="닉네임을 입력해주세요."
               status={nicknameInput.status}
               {...field}

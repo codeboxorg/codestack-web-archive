@@ -7,6 +7,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   deleteCookie('server-key', { req, res })
-  //TODO : 실제 Remote 서버에도 key 삭제 요청 보내기
+  // TODO : 실제 Remote 서버에도 key 삭제 요청 보내기
   res.status(200).json(true)
 }

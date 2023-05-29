@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router'
-import VSubmissionList, { VSubmissionListProps } from './VSubmissionList'
 import { convertByte } from '@utils/convert/convertByte'
+import VSubmissionList, { VSubmissionListProps } from './VSubmissionList'
 
 type Props = {
   list: Submission[]
 }
 
-const SubmissionList = ({ list }: Props) => {
+function SubmissionList({ list }: Props) {
   const router = useRouter()
 
   const vSubmissionListProps: VSubmissionListProps = {

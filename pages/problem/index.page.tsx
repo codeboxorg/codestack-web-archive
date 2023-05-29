@@ -1,13 +1,13 @@
 import PaginationBar from '@components/shared/PaginationBar'
 import { NextSeo } from 'next-seo'
 import usePagination from 'react-use-pagination-hook'
-import ProblemList from './ProblemList'
 
 import { api } from '@api/index'
 import { useQuery } from '@tanstack/react-query'
+import ProblemList from './ProblemList'
 import { problemKeys } from './queryKey'
 
-const ProblemPage = () => {
+function ProblemPage() {
   const paginationMethods = usePagination({ numOfPage: 5 })
   const { currentPage, setTotalPage } = paginationMethods
   const currentServerPageIndex = currentPage - 1
@@ -24,7 +24,7 @@ const ProblemPage = () => {
 
   return (
     <>
-      <NextSeo title={`문제 목록`} />
+      <NextSeo title="문제 목록" />
       <div className="pt-50">
         <ProblemList list={problemListPagination?.content ?? []} />
         <div className="w-full flex justify-center py-30">

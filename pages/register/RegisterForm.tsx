@@ -4,10 +4,12 @@ import { message } from 'antd'
 import { MESSAGE } from 'constant/message'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import VRegisterForm, { VRegisterFormProps } from './VRegisterForm'
-import { RegisterForm } from './VRegisterForm'
+import VRegisterForm, {
+  VRegisterFormProps,
+  RegisterForm,
+} from './VRegisterForm'
 
-const Register = () => {
+function Register() {
   const {
     control,
     getValues,
@@ -70,11 +72,7 @@ const Register = () => {
     onSubmit,
   }
 
-  return (
-    <>
-      <VRegisterForm {...vRegisterFormProps} />
-    </>
-  )
+  return <VRegisterForm {...vRegisterFormProps} />
 }
 
 export default Register

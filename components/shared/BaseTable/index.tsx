@@ -1,10 +1,10 @@
 import { Table, TableProps } from 'antd'
 import { CSSProperties } from 'react'
 
-const BaseTable = <RowType extends Record<string, any>>({
+function BaseTable<RowType extends Record<string, any>>({
   style,
   ...props
-}: TableProps<RowType>) => {
+}: TableProps<RowType>) {
   const defaultStyle: CSSProperties = {
     minWidth: '500px',
   }

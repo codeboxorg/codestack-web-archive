@@ -1,14 +1,14 @@
 import Link from 'next/link'
-import LoginForm from './LoginForm'
 import GithubIcon from '@assets/icons/github.svg'
 import { NextSeo } from 'next-seo'
+import LoginForm from './LoginForm'
 
 const githubClientId = `${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`
 
-const LoginPage = () => {
+function LoginPage() {
   return (
     <>
-      <NextSeo title={`로그인`} />
+      <NextSeo title="로그인" />
       <main className="px-20 w-full pt-[7vh]">
         <div className="sm:w-full md:w-450 mx-auto">
           <h1 className="text-center text-25 my-30">로그인</h1>

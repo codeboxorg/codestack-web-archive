@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { usePaginationReturn } from 'react-use-pagination-hook'
 
-const PaginationBar = ({
+function PaginationBar({
   pageList,
   goNextSection,
   goBeforeSection,
@@ -9,24 +9,28 @@ const PaginationBar = ({
   goBefore,
   setPage,
   currentPage,
-}: usePaginationReturn) => {
+}: usePaginationReturn) {
   return (
     <div className="flex gap-5 all:rounded-md p-10">
       <button
+        type="button"
         className="h-35 w-35 hover:bg-neutral-100 transition-all duration-300 hidden sm:block"
         onClick={() => goBeforeSection()}
       >
         {'<<'}
       </button>
       <button
+        type="button"
         className="h-35 w-35 hover:bg-neutral-100 transition-all duration-300"
         onClick={() => goBefore()}
       >
         {'<'}
       </button>
-      <ul className="flex gap-5 all:cursor-pointer all:h-35 all:w-35">
+      <div className="flex gap-5 all:cursor-pointer all:h-35 all:w-35">
         {pageList.map((page) => (
-          <li
+          <button
+            type="button"
+            onKeyDown={() => setPage(page)}
             onClick={() => setPage(page)}
             className={classNames(
               'flex justify-center items-center transition-all duration-300',
@@ -37,16 +41,18 @@ const PaginationBar = ({
             key={page}
           >
             {page}
-          </li>
+          </button>
         ))}
-      </ul>
+      </div>
       <button
+        type="button"
         className="h-35 w-35 hover:bg-neutral-100 transition-all duration-300"
         onClick={() => goNext()}
       >
         {'>'}
       </button>
       <button
+        type="button"
         className="h-35 w-35 hover:bg-neutral-100 transition-all duration-300 hidden sm:block"
         onClick={() => goNextSection()}
       >

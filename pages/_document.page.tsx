@@ -1,7 +1,7 @@
 import { GA } from '@components/app/GA'
 import { Html, Head, Main, NextScript } from 'next/document'
 
-const Document = () => {
+function Document() {
   return (
     <Html>
       <Head>

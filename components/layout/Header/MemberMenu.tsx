@@ -1,13 +1,12 @@
 import useAuth from '@hooks/useAuth'
 import Link from 'next/link'
-import React from 'react'
 import VMemberMenu from './VMemberMenu'
 
 type Props = {
   profileImage: Member['profile_image']
 }
 
-const MemberMenu = ({ profileImage }: Props) => {
+function MemberMenu({ profileImage }: Props) {
   const { logout } = useAuth()
   const memberLinks = [
     {
@@ -16,6 +15,9 @@ const MemberMenu = ({ profileImage }: Props) => {
     {
       label: (
         <div
+          role="button"
+          tabIndex={0}
+          onKeyDown={() => logout({ message: true })}
           onClick={() => logout({ message: true })}
           className="w-120 text-red-500"
         >
@@ -30,15 +32,13 @@ const MemberMenu = ({ profileImage }: Props) => {
   }
 
   return (
-    <>
-      <VMemberMenu {...vMemberMenuProps}>
-        <img
-          className="rounded-full w-45 h-45 cursor-pointer shadow-md p-3"
-          src={profileImage}
-          alt="Picture of the author"
-        />
-      </VMemberMenu>
-    </>
+    <VMemberMenu {...vMemberMenuProps}>
+      <img
+        className="rounded-full w-45 h-45 cursor-pointer shadow-md p-3"
+        src={profileImage}
+        alt="ProfileImage of the author"
+      />
+    </VMemberMenu>
   )
 }
 

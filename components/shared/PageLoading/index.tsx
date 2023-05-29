@@ -1,6 +1,6 @@
 import LoadingDot from '../LoadingDot'
 
-const PageLoading = () => {
+function PageLoading() {
   return (
     <div
       style={{ zIndex: '9999' }}

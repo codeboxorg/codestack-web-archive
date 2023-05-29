@@ -1,10 +1,10 @@
 import { NextSeo } from 'next-seo'
 import SubmissionDetail from './SubmissionDetail'
 
-const SubmissionDetailPage = () => {
+function SubmissionDetailPage() {
   return (
     <>
-      <NextSeo title={`제출 결과`} />
+      <NextSeo title="제출 결과" />
       <SubmissionDetail />
     </>
   )

@@ -1,5 +1,6 @@
 import Editor from '@monaco-editor/react'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+
 export type MonacoEditor = monaco.editor.IStandaloneCodeEditor
 
 type CodeEditorProps = {
@@ -13,17 +14,15 @@ type CodeEditorProps = {
  */
 const EDITOR_LANGUAGE = ['', 'c', 'cpp', 'python', 'javascript', 'go']
 
-const CodeEditor = ({ handleEditorMount, languageId }: CodeEditorProps) => {
+function CodeEditor({ handleEditorMount, languageId }: CodeEditorProps) {
   return (
-    <>
-      <div className="border-1 border-gray-300 rounded-md p-2">
-        <Editor
-          onMount={handleEditorMount}
-          height="50vh"
-          language={EDITOR_LANGUAGE[languageId]}
-        />
-      </div>
-    </>
+    <div className="border-1 border-gray-300 rounded-md p-2">
+      <Editor
+        onMount={handleEditorMount}
+        height="50vh"
+        language={EDITOR_LANGUAGE[languageId]}
+      />
+    </div>
   )
 }
 

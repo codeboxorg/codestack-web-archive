@@ -19,14 +19,18 @@ type PagePermissionInfoEnabledComponentConfig = {
   permission: PagePermissionInfo
 }
 
-type NextComponentWithPermission = NextComponentType<NextPageContext, any, {}> &
+type NextComponentWithPermission = NextComponentType<
+  NextPageContext,
+  any,
+  unknown
+> &
   Partial<PagePermissionInfoEnabledComponentConfig>
 
 interface CustomAppProps extends AppProps {
   Component: NextComponentWithPermission
 }
 
-const App = ({ Component, pageProps, router: { route } }: CustomAppProps) => {
+function App({ Component, pageProps, router: { route } }: CustomAppProps) {
   const [queryClient] = useState(
     () =>
       new QueryClient({

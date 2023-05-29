@@ -1,11 +1,11 @@
 import { Drawer } from 'antd'
 import { useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
-import { menuItems } from './Menu'
 import Link from 'next/link'
 import classNames from 'classnames'
+import { menuItems } from './Menu'
 
-const MobileMenu = () => {
+function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
 
   const showDrawer = () => {
@@ -17,7 +17,7 @@ const MobileMenu = () => {
   }
   return (
     <>
-      <button onClick={showDrawer}>
+      <button type="button" onClick={showDrawer}>
         <AiOutlineMenu size={25} />
       </button>
       <Drawer
@@ -26,13 +26,13 @@ const MobileMenu = () => {
         bodyStyle={{ paddingTop: '15px' }}
         open={isOpen}
         width={300}
-        closeIcon={<></>}
+        closeIcon={null}
       >
         <div className="flex items-center pb-30">
           <div className="text-2xl font-semibold tracking-tight text-black">
             CodeStack
           </div>
-          <button onClick={onClose} className="ml-auto">
+          <button type="button" onClick={onClose} className="ml-auto">
             <AiOutlineClose size={25} />
           </button>
         </div>

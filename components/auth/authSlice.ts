@@ -24,9 +24,7 @@ const authSlice = createSlice({
     setLoginUser: (
       state,
       action: PayloadAction<LoginMember | null | false>
-    ) => {
-      state.loginUser = action.payload
-    },
+    ) => ({ ...state, loginUser: action.payload }),
   },
 })
 

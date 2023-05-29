@@ -11,7 +11,7 @@ export type VMenuProps = {
   menus: MenuItem[]
 }
 
-const VMenu = ({ menus }: VMenuProps) => {
+function VMenu({ menus }: VMenuProps) {
   return (
     <>
       {menus.map(({ href, name, isHighlight }) => (

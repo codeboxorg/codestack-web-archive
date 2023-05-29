@@ -2,10 +2,10 @@ import { useRootState } from '@hooks/useRootSelector'
 import { convertByte, convertMS } from '@utils/convert/convertByte'
 import { message } from 'antd'
 import { MESSAGE } from 'constant/message'
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import VProblemDetail, { VProblemDetailProps } from './VProblemDetail'
 
-const ProblemDetail = () => {
+function ProblemDetail() {
   const { maxCpuTime, maxMemory, ...rest } = useRootState(
     (state) => state.problem.problem
   )
@@ -24,7 +24,7 @@ const ProblemDetail = () => {
     return problemDetailRef.current.querySelector(clipboardTargetId)
   }
 
-  const handleClipboardCopy = async (event: MouseEvent) => {
+  const handleClipboardCopy = useCallback(async (event: MouseEvent) => {
     if (event.target instanceof HTMLButtonElement) {
       const targetElement = getLinkedClipboardTargetElement(
         getLinkedClipboardTargetId(event)
@@ -37,7 +37,7 @@ const ProblemDetail = () => {
         message.error(MESSAGE.functionMessage.error.clipboardCopy)
       }
     }
-  }
+  }, [])
 
   useEffect(() => {
     if (!problemDetailRef.current) return
@@ -53,7 +53,7 @@ const ProblemDetail = () => {
       allCopyButtons.forEach((button) =>
         button.removeEventListener('click', handleClipboardCopy)
       )
-  }, [problemDetailRef.current])
+  }, [handleClipboardCopy])
 
   const vProblemDetailProps: VProblemDetailProps = {
     ...rest,
@@ -62,11 +62,7 @@ const ProblemDetail = () => {
     possibleLanguage: rest.languages.map(({ name }) => name).join(', ') ?? '',
   }
 
-  return (
-    <>
-      <VProblemDetail ref={problemDetailRef} {...vProblemDetailProps} />
-    </>
-  )
+  return <VProblemDetail ref={problemDetailRef} {...vProblemDetailProps} />
 }
 
 export default ProblemDetail

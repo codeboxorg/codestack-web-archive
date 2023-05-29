@@ -1,10 +1,9 @@
 import { message } from 'antd'
-import React from 'react'
 
-const AntdContextHolderRegister = () => {
+function AntdContextHolderRegister() {
   const [_, messageContextHolder] = message.useMessage()
 
-  return <>{messageContextHolder}</>
+  return messageContextHolder
 }
 
 export default AntdContextHolderRegister

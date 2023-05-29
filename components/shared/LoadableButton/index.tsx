@@ -3,12 +3,11 @@ import { Button, ButtonProps } from 'antd'
 
 type LoadableButtonProps = ButtonProps & { mutationKey: string }
 
-const LoadableButton = ({
+function LoadableButton({
   children,
   mutationKey,
-  loading,
   ...props
-}: LoadableButtonProps) => {
+}: LoadableButtonProps) {
   const isMutating = Boolean(useIsMutating({ mutationKey: [mutationKey] }))
   return (
     <Button loading={isMutating} {...props}>

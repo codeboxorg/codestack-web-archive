@@ -28,7 +28,7 @@ const DEFAULT_SEO: DefaultSeoProps = {
   },
 }
 
-const Seo = () => {
+function Seo() {
   return <DefaultSeo {...DEFAULT_SEO} />
 }
 

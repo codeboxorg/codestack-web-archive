@@ -1,5 +1,4 @@
 import BaseTable from '@components/shared/BaseTable'
-import { Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 
 type ProblemRow = Problem & { handleRowClick: () => void; acceptPer: string }
@@ -37,7 +36,7 @@ const columns: ProblemColumn = [
   },
 ]
 
-const VProblemList = ({ list }: VProblemProps) => {
+function VProblemList({ list }: VProblemProps) {
   return (
     <BaseTable
       rowClassName="cursor-pointer"
