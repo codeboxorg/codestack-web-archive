@@ -9,9 +9,9 @@ import { useEffect, useRef, useState } from 'react'
 import CodeEditor, { MonacoEditor } from './CodeEditor'
 
 export type Submit = {
-    problem_id: number
-    language_id: number
-    source_code: string
+    problemId: number
+    languageId: number
+    sourceCode: string
 }
 
 function SubmitPage() {
@@ -47,9 +47,9 @@ function SubmitPage() {
     const handleCodeSubmit = () => {
         setSubmitId(null)
         submitMutate({
-            problem_id: Number(id),
-            language_id: selectedLanguageId,
-            source_code: editorRef.current?.getValue() ?? '',
+            problemId: Number(id),
+            languageId: selectedLanguageId,
+            sourceCode: editorRef.current?.getValue() ?? '',
         })
     }
 
