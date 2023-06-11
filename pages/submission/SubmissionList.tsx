@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { convertByte } from '@utils/convert/convertByte'
+import CommonConverter from '@utils/convert/CommonConverter'
 import VSubmissionList, { VSubmissionListProps } from './VSubmissionList'
 
 type Props = {
@@ -12,7 +12,7 @@ function SubmissionList({ list }: Props) {
     const vSubmissionListProps: VSubmissionListProps = {
         list: list.map(({ memoryUsage, ...data }) => ({
             ...data,
-            memoryUsage: convertByte(memoryUsage, 'KB'),
+            memoryUsage: CommonConverter.convertByte(memoryUsage, 'KB'),
             handleRowClick: () => {
                 router.push(`/submission/${data.id}`)
             },

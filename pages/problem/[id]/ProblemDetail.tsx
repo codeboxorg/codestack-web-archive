@@ -1,5 +1,5 @@
 import { useRootState } from '@hooks/useRootSelector'
-import { convertByte, convertMS } from '@utils/convert/convertByte'
+import CommonConverter from '@utils/convert/CommonConverter'
 import { message } from 'antd'
 import { MESSAGE } from 'constant/message'
 import { useCallback, useEffect, useRef } from 'react'
@@ -44,8 +44,8 @@ function ProblemDetail() {
 
     const vProblemDetailProps: VProblemDetailProps = {
         ...rest,
-        maxMemory: `${convertByte(maxMemory, 'MB')} MB`,
-        maxCpuTime: `${convertMS(maxCpuTime, 'SEC')} 초`,
+        maxMemory: `${CommonConverter.convertByte(maxMemory, 'MB')} MB`,
+        maxCpuTime: `${CommonConverter.convertMillisecond(maxCpuTime, 'SEC')} 초`,
         possibleLanguage: rest.languages.map(({ name }) => name).join(', ') ?? '',
     }
 
