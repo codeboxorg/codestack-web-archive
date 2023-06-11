@@ -73,7 +73,7 @@ function SubmitPage() {
                 <CodeEditor languageId={selectedLanguageId} handleEditorMount={handleEditorMount} />
             </div>
             <div className='mt-15 flex justify-end gap-15 items-center'>
-                <LoadableButton mutationKey='submission' type='primary' className='min-w-80' onClick={handleCodeSubmit}>
+                <LoadableButton mutationKey='submission' type='primary' className='min-w-80 bg-blue-500' onClick={handleCodeSubmit}>
                     {submitId ? '다시 제출' : '제출'}
                 </LoadableButton>
                 {submitId && (
