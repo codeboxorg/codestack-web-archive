@@ -1,4 +1,5 @@
 import { StyleProvider } from '@ant-design/cssinjs'
+import AntdAndTailwindConflictResolver from '@components/app/AntdAndTailwindConflictResolver'
 import AntdContextHolderRegister from '@components/app/AntdContextHolderRegister'
 import { GA } from '@components/app/GA'
 import Seo from '@components/app/Seo'
@@ -49,6 +50,7 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
 
     return (
         <QueryClientProvider client={queryClient}>
+            <AntdAndTailwindConflictResolver />
             <Seo />
             <GA.TrackingRoutePath />
             <AuthChecker />
@@ -59,7 +61,7 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
                     },
                 }}
             >
-                <StyleProvider hashPriority='high'>
+                <StyleProvider>
                     <AntdContextHolderRegister />
                     <Layout>
                         <SSRErrorHandleContainer
