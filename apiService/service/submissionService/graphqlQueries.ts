@@ -28,3 +28,27 @@ export const SUBMISSIONS = gql`
         }
     }
 `
+
+export const SUBMISSION_DETAIL = gql`
+    query Submission($id: ID) {
+        submission(id: $id) {
+            id
+            sourceCode
+            cpuTime
+            memoryUsage
+            statusCode
+            problem {
+                id
+                title
+            }
+            member {
+                nickname
+            }
+            language {
+                id
+                name
+            }
+            createdAt
+        }
+    }
+`

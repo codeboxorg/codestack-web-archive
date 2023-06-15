@@ -6,7 +6,7 @@ interface Submission {
     cpuTime: number
     memoryUsage: number
     problem: Pick<Problem, 'id' | 'title'>
-    member: Pick<User, 'id' | 'nickname'>
+    member: Pick<User, 'nickname'>
     language: Pick<Language, 'id' | 'name'>
     statusCode: SubmissionStatus
 }
