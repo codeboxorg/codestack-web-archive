@@ -43,6 +43,7 @@ export const PROBLEM_SUBMIT = gql`
     mutation ProblemSubmit($submit: CreateSubmissionInput!) {
         createSubmission(input: $submit) {
             sourceCode
+            id
         }
     }
 `

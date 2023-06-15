@@ -36,7 +36,7 @@ function SubmitPage() {
         editorRef.current = editor
     }
 
-    const handelSubmitSuccess = ({ id: currentSubmitId }: SubmitRes) => {
+    const handelSubmitSuccess = ({ createSubmission: { id: currentSubmitId } }: SubmitRes) => {
         setSubmitId(currentSubmitId)
     }
 
