@@ -50,7 +50,6 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <AntdAndTailwindConflictResolver />
             <Seo />
             <GA.TrackingRoutePath />
             <AuthChecker />
@@ -61,7 +60,7 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
                     },
                 }}
             >
-                <StyleProvider>
+                <StyleProvider hashPriority='high'>
                     <AntdContextHolderRegister />
                     <Layout>
                         <SSRErrorHandleContainer
