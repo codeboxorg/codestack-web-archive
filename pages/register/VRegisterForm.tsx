@@ -37,7 +37,6 @@ function VRegisterForm({
                 <Controller
                     control={control}
                     name='username'
-                    rules={usernameInput.roles}
                     render={({ field }) => (
                         <BaseInput
                             id='username'
@@ -60,7 +59,6 @@ function VRegisterForm({
                 <Controller
                     control={control}
                     name='password'
-                    rules={passwordInput.roles}
                     render={({ field }) => (
                         <BaseInput
                             id='password'
@@ -84,7 +82,6 @@ function VRegisterForm({
                 <Controller
                     control={control}
                     name='passwordConfirm'
-                    rules={passwordConfirmInput.roles}
                     render={({ field }) => (
                         <BaseInput
                             id='passwordConfirm'
@@ -108,7 +105,6 @@ function VRegisterForm({
                 <Controller
                     control={control}
                     name='email'
-                    rules={emailInput.roles}
                     render={({ field }) => (
                         <BaseInput
                             id='email'
@@ -131,7 +127,6 @@ function VRegisterForm({
                 <Controller
                     control={control}
                     name='nickname'
-                    rules={nicknameInput.roles}
                     render={({ field }) => (
                         <BaseInput
                             id='nickname'
