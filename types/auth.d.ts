@@ -5,6 +5,12 @@ type Member = {
     profile_image: string
 }
 
+type OAuthCodeInfo = {
+    provider: 'github'
+    code: string
+    user?: unknown
+}
+
 type TokenInfo = {
     refreshToken: string
     accessToken: string
