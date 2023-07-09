@@ -10,38 +10,26 @@ type AuthService = {
 
 export const authServerToServerRemote = (): AuthService => ({
     async login(formData) {
-        try {
-            const response = await baseAPI.post({
-                url: `/auth/login`,
-                data: formData,
-            })
-            return response.data
-        } catch (error) {
-            throw error
-        }
+        const response = await baseAPI.post({
+            url: `/auth/login`,
+            data: formData,
+        })
+        return response.data
     },
     async refreshTokenToAccessToken(refreshToken) {
-        try {
-            const response = await baseAPI.post({
-                url: `/auth/token`,
-                data: { refreshToken },
-            })
-            return response.data
-        } catch (error) {
-            throw error
-        }
+        const response = await baseAPI.post({
+            url: `/auth/token`,
+            data: { refreshToken },
+        })
+        return response.data
     },
     async memberInfo(accessToken) {
-        try {
-            const response = await baseAPI.get({
-                url: `/auth/me`,
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            })
-            return response.data
-        } catch (error) {
-            throw error
-        }
+        const response = await baseAPI.get({
+            url: `/auth/me`,
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        })
+        return response.data
     },
 })
