@@ -4,7 +4,7 @@ import { RequestWithData, RequestWithParams, sendInsertForData, sendRequest, sen
 class RestAPI {
     constructor(private axiosInstance: AxiosInstance) {}
 
-    get({ url, params, headers }: Omit<RequestWithParams, 'method' | 'baseUrl'>) {
+    get({ url, params, headers }: Omit<RequestWithParams, 'method' | 'baseUrl' | 'axiosInstance'>) {
         return sendRequest({
             axiosInstance: this.axiosInstance,
             url,
@@ -14,7 +14,7 @@ class RestAPI {
         })
     }
 
-    post({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl'>) {
+    post({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl' | 'axiosInstance'>) {
         return sendRequestForData({
             axiosInstance: this.axiosInstance,
             url,
@@ -26,7 +26,7 @@ class RestAPI {
         })
     }
 
-    put({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl'>) {
+    put({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl' | 'axiosInstance'>) {
         return sendRequestForData({
             axiosInstance: this.axiosInstance,
             url,
@@ -38,7 +38,7 @@ class RestAPI {
         })
     }
 
-    patch({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl'>) {
+    patch({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl' | 'axiosInstance'>) {
         return sendRequestForData({
             axiosInstance: this.axiosInstance,
             url,
@@ -50,7 +50,7 @@ class RestAPI {
         })
     }
 
-    delete({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl'>) {
+    delete({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl' | 'axiosInstance'>) {
         return sendInsertForData({
             axiosInstance: this.axiosInstance,
             url,
