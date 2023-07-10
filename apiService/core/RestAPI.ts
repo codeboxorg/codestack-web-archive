@@ -1,21 +1,22 @@
+import { AxiosInstance } from 'axios'
 import { RequestWithData, RequestWithParams, sendInsertForData, sendRequest, sendRequestForData } from './methods'
 
-import axios from './interceptors'
+class RestAPI {
+    constructor(private axiosInstance: AxiosInstance) {}
 
-class ApiCreator {
-    constructor(private baseUrl: string) {}
     get({ url, params, headers }: Omit<RequestWithParams, 'method' | 'baseUrl'>) {
         return sendRequest({
-            baseUrl: this.baseUrl,
+            axiosInstance: this.axiosInstance,
             url,
             params,
             method: 'get',
             headers,
         })
     }
+
     post({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl'>) {
         return sendRequestForData({
-            baseUrl: this.baseUrl,
+            axiosInstance: this.axiosInstance,
             url,
             data,
             params,
@@ -24,9 +25,10 @@ class ApiCreator {
             type: type ?? 'json',
         })
     }
+
     put({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl'>) {
         return sendRequestForData({
-            baseUrl: this.baseUrl,
+            axiosInstance: this.axiosInstance,
             url,
             data,
             params,
@@ -35,9 +37,10 @@ class ApiCreator {
             type: type ?? 'json',
         })
     }
+
     patch({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl'>) {
         return sendRequestForData({
-            baseUrl: this.baseUrl,
+            axiosInstance: this.axiosInstance,
             url,
             data,
             params,
@@ -46,9 +49,10 @@ class ApiCreator {
             type: type ?? 'json',
         })
     }
+
     delete({ url, data, params, headers, type }: Omit<RequestWithData, 'method' | 'baseUrl'>) {
         return sendInsertForData({
-            baseUrl: this.baseUrl,
+            axiosInstance: this.axiosInstance,
             url,
             params,
             data,
@@ -57,13 +61,15 @@ class ApiCreator {
             type: type ?? 'json',
         })
     }
+
     setDefaultAuthorizationHeader(token: string) {
-        token && (axios.defaults.headers.common['Authorization'] = `Bearer ${token}`)
+        if (token) this.axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`
     }
+
     deleteDefaultAuthorizationHeader() {
-        const { Authorization, ...rest } = axios.defaults.headers.common
-        axios.defaults.headers.common = rest
+        const { Authorization: _, ...rest } = this.axiosInstance.defaults.headers.common
+        this.axiosInstance.defaults.headers.common = rest
     }
 }
 
-export { ApiCreator }
+export default RestAPI

@@ -1,4 +1,4 @@
-import axios from './interceptors'
+import { AxiosInstance } from 'axios'
 
 const basePublicHeaders = {
     Accept: `*/*`,
@@ -11,7 +11,7 @@ const basePublicMultipartHeaders = {
 }
 
 interface Request {
-    baseUrl: string
+    axiosInstance: AxiosInstance
     url: string
     headers?: object
     method: 'get' | 'post' | 'put' | 'delete' | 'patch'
@@ -27,9 +27,9 @@ export interface RequestWithData extends Request {
     type?: 'multipart' | 'json'
 }
 
-const sendRequest = async ({ baseUrl, url, params, method, headers }: RequestWithParams) => {
+const sendRequest = async ({ axiosInstance, url, params, method, headers }: RequestWithParams) => {
     const baseHeaders = basePublicHeaders
-    const response = await axios[method](baseUrl + url, {
+    const response = await axiosInstance[method](url, {
         headers: { ...baseHeaders, ...headers },
         params,
         withCredentials: true,
@@ -37,9 +37,9 @@ const sendRequest = async ({ baseUrl, url, params, method, headers }: RequestWit
     return { ...response, axiosStatus: response.status }
 }
 
-const sendRequestForData = async ({ baseUrl, url, params, data, method, headers, type }: RequestWithData) => {
+const sendRequestForData = async ({ axiosInstance, url, params, data, method, headers, type }: RequestWithData) => {
     const baseHeaders = type === 'json' ? basePublicHeaders : basePublicMultipartHeaders
-    const response = await axios[method](baseUrl + url, data, {
+    const response = await axiosInstance[method](url, data, {
         headers: { ...baseHeaders, ...headers },
         params,
         withCredentials: true,
@@ -47,13 +47,10 @@ const sendRequestForData = async ({ baseUrl, url, params, data, method, headers,
     return { ...response, axiosStatus: response.status }
 }
 
-/**
- * get,delete 에 data(body)를 끼워넣고 싶을때 사용
- * @author jeongyun
- */
-const sendInsertForData = async ({ baseUrl, url, params, data, headers, method, type }: RequestWithData) => {
+// get, delete 에 data(body)를 끼워넣고 싶을때 사용
+const sendInsertForData = async ({ axiosInstance, url, params, data, headers, method, type }: RequestWithData) => {
     const baseHeaders = type === 'json' ? basePublicHeaders : basePublicMultipartHeaders
-    const response = await axios[method](baseUrl + url, {
+    const response = await axiosInstance[method](url, {
         headers: { ...baseHeaders, ...headers },
         data,
         params,
