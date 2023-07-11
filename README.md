@@ -9,17 +9,17 @@
     </div>
     <br/>
     <div>테스트 계정</div>
-    <div>ID : test123@test.com</div>
+    <div>ID : testuser@testuser.com</div>
     <div>PW : xptmxm123@</div>
 </center>
 
 <br/>
 <br/>
 
-|                        백엔드                         |               백엔드, 프론트엔드, 채점서버                |                        프론트엔드                        |
-| :---------------------------------------------------: | :-------------------------------------------------------: | :------------------------------------------------------: |
-| <img src="https://github.com/jeyog.png" width="300"/> | <img src="https://github.com/rrrmaster.png" width="300"/> | <img src="https://github.com/je0ngyun.png" width="300"/> |
-|           [jeyog](https://github.com/jeyog)           |         [rrrmaster](https://github.com/rrrmaster)         |         [je0ngyun](https://github.com/je0ngyun)          |
+|                        백엔드                         |               백엔드, 프론트엔드, 채점서버                |                        프론트엔드                        |                            IOS                             |
+| :---------------------------------------------------: | :-------------------------------------------------------: | :------------------------------------------------------: | :--------------------------------------------------------: |
+| <img src="https://github.com/jeyog.png" width="300"/> | <img src="https://github.com/rrrmaster.png" width="300"/> | <img src="https://github.com/je0ngyun.png" width="300"/> | <img src="https://github.com/hyeonghwan.png" width="300"/> |
+|           [jeyog](https://github.com/jeyog)           |         [rrrmaster](https://github.com/rrrmaster)         |         [je0ngyun](https://github.com/je0ngyun)          |        [hyeonghwan](https://github.com/hyeonghwan)         |
 
 <br/>
 
