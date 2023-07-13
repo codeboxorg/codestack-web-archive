@@ -6,8 +6,8 @@ import { NextApiRequest, NextApiResponse } from 'next'
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { isMobile, code } = req.query
 
-    if (isMobile) {
-        res.redirect(301, 'codestackios://git/auth')
+    if (isMobile && code) {
+        res.redirect(301, `codestackios://git/auth?code=${code}`)
     }
 
     const githubCodeInfo: OAuthCodeInfo = {
