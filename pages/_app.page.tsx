@@ -15,6 +15,7 @@ import { NextComponentType, NextPageContext } from 'next'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import '../styles/globals.scss'
+import { COLOR } from '@styles/color'
 
 type PagePermissionInfoEnabledComponentConfig = {
     permission: PagePermissionInfo
@@ -56,7 +57,7 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
             <ConfigProvider
                 theme={{
                     token: {
-                        colorPrimary: '#3b82f6',
+                        colorPrimary: COLOR.primary,
                     },
                 }}
             >
