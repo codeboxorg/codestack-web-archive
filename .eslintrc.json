@@ -47,6 +47,8 @@
             }
         ],
 
+        "react/no-unknown-property": ["error", { "ignore": ["css", "tw"] }],
+
         //TODO: 추후 삭제
         "@typescript-eslint/naming-convention": "off",
         "import/no-cycle": "off"
