@@ -4,7 +4,11 @@ import { setCookie } from 'cookies-next'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const { code } = req.query
+    const { isMobile, code } = req.query
+
+    if (isMobile && code) {
+        res.redirect(301, `codestackios://git/auth?code=${code}`)
+    }
 
     const githubCodeInfo: OAuthCodeInfo = {
         provider: 'github',
