@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
+
+const path = require('path')
+
+const includedDirs = [
+    path.resolve(__dirname, 'components'),
+    path.resolve(__dirname, 'pages'),
+    path.resolve(__dirname, 'styles'),
+]
+
 const nextConfig = {
     reactStrictMode: false,
     swcMinify: true,
@@ -15,10 +24,32 @@ const nextConfig = {
             },
         ]
     },
-    webpack: (config) => {
+    webpack: (config, options) => {
+        const { dev, isServer } = options
+
         config.module.rules.push({
             test: /\.svg$/,
             use: ['@svgr/webpack'],
+        })
+
+        config.module.rules.push({
+            test: /\.(tsx|ts)$/,
+            include: includedDirs,
+            use: [
+                options.defaultLoaders.babel,
+                {
+                    loader: 'babel-loader',
+                    options: {
+                        sourceMaps: dev,
+                        presets: [['@babel/preset-react', { runtime: 'automatic', importSource: '@emotion/react' }]],
+                        plugins: [
+                            require.resolve('babel-plugin-macros'),
+                            require.resolve('@emotion/babel-plugin'),
+                            [require.resolve('@babel/plugin-syntax-typescript'), { isTSX: true }],
+                        ],
+                    },
+                },
+            ],
         })
         return config
     },

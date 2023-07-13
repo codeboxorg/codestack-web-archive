@@ -14,6 +14,10 @@ const custom = plugin(({ addUtilities, addVariant }) => {
             'align-items': 'center',
             'justify-content': 'center',
         },
+        '.flex-align-center': {
+            display: 'flex',
+            'align-items': 'center',
+        },
         '.keep-words': {
             'word-break': 'keep-all',
         },
@@ -39,6 +43,9 @@ module.exports = {
             padding: px0_100,
             margin: px0_100,
             spacing: px0_300,
+            colors: {
+                primary: '#3b82f6',
+            },
         },
         container: {
             center: true,
