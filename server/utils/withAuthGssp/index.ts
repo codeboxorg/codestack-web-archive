@@ -1,6 +1,4 @@
-import { baseAPI } from '@api/core'
-import { RemoteError } from '@api/error/remoteError'
-import { api } from '@api/index'
+import { RemoteError } from '@api/error/RemoteError'
 import { setLoginUser } from '@components/auth/authSlice'
 import { serverToServerAPI } from '@server/serverToServerApi'
 import wrapper from '@store/configureStore'
@@ -23,7 +21,7 @@ export default function withAuthGssp(getServerSideProps: GetServerSideProps): Ge
                     refreshToken,
                 )
                 const user = await serverToServerAPI.authServerToServer.memberInfo(accessToken)
-                //TODO : 백엔드에 refreshToken 바꿔오는 endPoint에 expiresIn 추가요청
+                // TODO : 백엔드에 refreshToken 바꿔오는 endPoint에 expiresIn 추가요청
                 store.dispatch(setLoginUser({ ...user, accessToken, expiresIn: 99999 }))
             }
             return await getServerSideProps(context)

@@ -1,4 +1,4 @@
-import { RemoteError } from '@api/error/remoteError'
+import { RemoteError } from '@api/error/RemoteError'
 import { GetServerSideProps } from 'next'
 
 /**
