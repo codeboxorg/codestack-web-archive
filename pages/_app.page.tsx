@@ -1,6 +1,5 @@
 import { StyleProvider } from '@ant-design/cssinjs'
-import AntdAndTailwindConflictResolver from '@components/app/AntdAndTailwindConflictResolver'
-import AntdContextHolderRegister from '@components/app/AntdContextHolderRegister'
+import AntdContextRoot from '@components/app/AntdContextRoot'
 import { GA } from '@components/app/GA'
 import Seo from '@components/app/Seo'
 import AuthChecker from '@components/auth/AuthChecker'
@@ -62,7 +61,7 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
                 }}
             >
                 <StyleProvider hashPriority='high'>
-                    <AntdContextHolderRegister />
+                    <AntdContextRoot />
                     <Layout>
                         <SSRErrorHandleContainer
                             error={pageProps.error}

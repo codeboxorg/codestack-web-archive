@@ -1,9 +1,9 @@
 import { message } from 'antd'
 
-function AntdContextHolderRegister() {
+function AntdContextRoot() {
     const [_, messageContextHolder] = message.useMessage()
 
     return messageContextHolder
 }
 
-export default AntdContextHolderRegister
+export default AntdContextRoot
