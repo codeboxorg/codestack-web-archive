@@ -1,7 +1,7 @@
 import { StyleProvider } from '@ant-design/cssinjs'
 import AntdContextRoot from '@components/app/AntdContextRoot'
 import { GA } from '@components/app/GA'
-import Seo from '@components/app/Seo'
+import SEO from '@components/app/SEO'
 import AuthChecker from '@components/auth/AuthChecker'
 import SSRErrorHandleContainer from '@components/error/SSRErrorHandleContainer'
 import Layout from '@components/layout'
@@ -50,7 +50,7 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <Seo />
+            <SEO />
             <GA.TrackingRoutePath />
             <AuthChecker />
             <ConfigProvider

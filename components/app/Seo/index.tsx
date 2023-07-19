@@ -28,8 +28,8 @@ const DEFAULT_SEO: DefaultSeoProps = {
     },
 }
 
-function Seo() {
+function SEO() {
     return <DefaultSeo {...DEFAULT_SEO} />
 }
 
-export default Seo
+export default SEO
