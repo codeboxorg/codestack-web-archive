@@ -29,5 +29,7 @@ const authSlice = createSlice({
 })
 
 export const { setLoginUser } = authSlice.actions
+
 export const getLoginUser = (state: RootState) => state.auth.loginUser
+
 export default authSlice
