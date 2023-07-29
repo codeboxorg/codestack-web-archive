@@ -10,7 +10,7 @@ export const problemServiceRemote = (): ProblemService => ({
                 document: PROBLEMS,
                 params: { pageNum },
             })
-            return response.problems
+            return response.getProblems
         } catch (error) {
             throwRemoteError(error)
         }

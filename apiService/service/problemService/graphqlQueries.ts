@@ -2,7 +2,7 @@ import { gql } from 'graphql-request'
 
 export const PROBLEMS = gql`
     query Problems($pageNum: Int) {
-        problems(limit: 20, page: $pageNum) {
+        getProblems(limit: 20, offset: $pageNum) {
             content {
                 id
                 title
