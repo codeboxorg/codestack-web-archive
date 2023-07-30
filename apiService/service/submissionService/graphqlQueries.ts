@@ -2,7 +2,7 @@ import { gql } from 'graphql-request'
 
 export const SUBMISSIONS = gql`
     query Submissions($pageNum: Int) {
-        submissions(limit: 20, page: $pageNum) {
+        getSubmissions(limit: 20, offset: $pageNum) {
             content {
                 id
                 sourceCode
@@ -30,8 +30,8 @@ export const SUBMISSIONS = gql`
 `
 
 export const SUBMISSION_DETAIL = gql`
-    query Submission($id: ID) {
-        submission(id: $id) {
+    query Submission($id: ID!) {
+        getSubmissionById(id: $id) {
             id
             sourceCode
             cpuTime

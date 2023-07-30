@@ -10,7 +10,7 @@ export const submissionServiceRemote = (): SubmissionService => ({
                 document: SUBMISSIONS,
                 params: { pageNum },
             })
-            return response.submissions
+            return response.getSubmissions
         } catch (error) {
             throwRemoteError(error)
         }
@@ -21,7 +21,7 @@ export const submissionServiceRemote = (): SubmissionService => ({
                 document: SUBMISSION_DETAIL,
                 params: { id },
             })
-            return response.submission
+            return response.getSubmissionById
         } catch (error) {
             throwRemoteError(error)
         }

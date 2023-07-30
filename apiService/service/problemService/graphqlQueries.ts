@@ -17,8 +17,8 @@ export const PROBLEMS = gql`
 `
 
 export const PROBLEM_DETAIL = gql`
-    query ProblemDetail($id: ID) {
-        problem(id: $id) {
+    query ProblemDetail($id: ID!) {
+        getProblemById(id: $id) {
             id
             maxCpuTime
             maxMemory

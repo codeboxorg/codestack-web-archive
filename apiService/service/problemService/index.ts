@@ -21,7 +21,7 @@ export const problemServiceRemote = (): ProblemService => ({
                 document: PROBLEM_DETAIL,
                 params: { id },
             })
-            return response.problem
+            return response.getProblemById
         } catch (error) {
             throwRemoteError(error)
         }
