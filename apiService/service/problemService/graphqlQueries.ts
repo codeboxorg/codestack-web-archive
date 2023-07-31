@@ -40,8 +40,8 @@ export const PROBLEM_DETAIL = gql`
 `
 
 export const PROBLEM_SUBMIT = gql`
-    mutation ProblemSubmit($submit: CreateSubmissionInput!) {
-        createSubmission(input: $submit) {
+    mutation ProblemSubmit($problemId: ID!, $languageId: ID!, $sourceCode: String!) {
+        createSubmission(problemId: $problemId, languageId: $languageId, sourceCode: $sourceCode) {
             sourceCode
             id
         }

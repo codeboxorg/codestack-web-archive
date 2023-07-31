@@ -30,7 +30,11 @@ export const problemServiceRemote = (): ProblemService => ({
         try {
             const response = await graphqlAPI.request({
                 document: PROBLEM_SUBMIT,
-                params: { submit },
+                params: {
+                    problemId: submit.problemId,
+                    languageId: submit.languageId,
+                    sourceCode: submit.sourceCode,
+                },
             })
             return response
         } catch (error) {
