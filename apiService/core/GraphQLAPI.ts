@@ -1,8 +1,10 @@
 import { GraphQLClient, RequestDocument } from 'graphql-request'
+import { GraphQLClientRequestHeaders } from 'graphql-request/build/esm/types'
 
 type RequestWithParams = {
     document: RequestDocument
-    params: Record<string, unknown>
+    params?: Record<string, unknown>
+    requestHeaders?: GraphQLClientRequestHeaders
 }
 
 class GraphQLAPI {
@@ -12,8 +14,8 @@ class GraphQLAPI {
         this.graphQLInstance = graphQLInstance
     }
 
-    async request({ document, params }: RequestWithParams): Promise<any> {
-        return this.graphQLInstance.request(document, params)
+    async request({ document, params, requestHeaders }: RequestWithParams): Promise<any> {
+        return this.graphQLInstance.request(document, params, requestHeaders)
     }
 
     setDefaultAuthorizationHeader(token: string) {
