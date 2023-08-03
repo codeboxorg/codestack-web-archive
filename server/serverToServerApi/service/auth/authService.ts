@@ -1,6 +1,7 @@
-import { baseAPI } from '@api/core'
+import { baseAPI, graphqlAPI } from '@api/core'
 import { LoginForm } from '@pages/login/VLoginForm'
 import { CookieValueTypes } from 'cookies-next'
+import { MY_INFO } from './graphqlQueries'
 
 type AuthService = {
     login(formData: LoginForm): Promise<TokenInfo>
@@ -24,12 +25,10 @@ export const authServerToServerRemote = (): AuthService => ({
         return response.data
     },
     async memberInfo(accessToken) {
-        const response = await baseAPI.get({
-            url: `/auth/me`,
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
+        const response = await graphqlAPI.request({
+            document: MY_INFO,
+            requestHeaders: { Authorization: `Bearer ${accessToken}` },
         })
-        return response.data
+        return response.getMe
     },
 })
