@@ -1,8 +1,8 @@
 import useAuth from '@hooks/useAuth'
 import { message } from 'antd'
-import { MESSAGE } from 'constant/message'
 import { useRouter } from 'next/router'
 import { ReactElement, useEffect } from 'react'
+import { MESSAGE } from '@constants/message'
 
 interface Props {
     children: ReactElement

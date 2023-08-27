@@ -3,7 +3,7 @@ import useAuth from '@hooks/useAuth'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { MESSAGE } from 'constant/message'
+import { MESSAGE } from '@constants/message'
 import VLoginForm, { LoginForm, VLoginFromProps } from './VLoginForm'
 
 function Login() {

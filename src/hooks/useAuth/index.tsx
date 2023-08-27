@@ -1,11 +1,11 @@
 import { api } from '@api/index'
 import { getLoginUser, setLoginUser } from '@components/auth/authSlice'
 import { useMutation } from '@tanstack/react-query'
-import { MESSAGE } from 'constant/message'
 import { message as messageCall } from 'antd'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { MESSAGE } from '@constants/message'
 
 type LoginMethodOption = {
     message: boolean

@@ -1,7 +1,7 @@
 import { api } from '@api/index'
 import { useMutation } from '@tanstack/react-query'
 import { message } from 'antd'
-import { MESSAGE } from 'constant/message'
+import { MESSAGE } from '@constants/message'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'

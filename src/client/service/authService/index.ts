@@ -1,6 +1,6 @@
 import { api } from '@api/index'
-import { baseAPI, nextAPI, graphqlAPI } from 'apiService/core'
 import { throwRemoteError } from '@api/error/throwRemoteError'
+import { baseAPI, graphqlAPI, nextAPI } from '@api/core'
 import { AuthService } from './authService'
 
 export const authServiceRemote = (): AuthService => ({

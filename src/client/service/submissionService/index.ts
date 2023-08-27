@@ -1,4 +1,4 @@
-import { graphqlAPI } from 'apiService/core'
+import { graphqlAPI } from '@api/core'
 import { throwRemoteError } from '@api/error/throwRemoteError'
 import { SubmissionService } from './submissionService'
 import { SUBMISSIONS, SUBMISSION_DETAIL } from './graphqlQueries'

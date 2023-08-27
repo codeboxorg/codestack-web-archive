@@ -1,7 +1,7 @@
 import eventBus from '@utils/eventBus'
 import renderEnv from '@utils/renderEnv'
 import axios from 'axios'
-import { EVENT_BUS_KEY } from 'constant/eventBusKey'
+import { EVENT_BUS_KEY } from '@constants/eventBusKey'
 
 const createAxiosInstance = (baseURL: string) => {
     const instance = axios.create({ baseURL })
