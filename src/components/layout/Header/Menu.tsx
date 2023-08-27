@@ -10,6 +10,10 @@ export const menuItems: Omit<MenuItem, 'isHighlight'>[] = [
         href: '/submission',
         name: '제출근황',
     },
+    {
+        href: '/tags',
+        name: '태그',
+    },
 ]
 
 function Menu() {
