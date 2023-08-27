@@ -1,4 +1,4 @@
-import { RootState } from '@store/configureStore'
+import { RootState } from 'src/store/configureStore'
 import { useSelector } from 'react-redux'
 
 type StateSelector<T> = (state: RootState) => T

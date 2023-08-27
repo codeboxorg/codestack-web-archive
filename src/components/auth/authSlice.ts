@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '@store/configureStore'
+import { RootState } from 'src/store/configureStore'
 
 const authSliceType = 'slice/auth'
 

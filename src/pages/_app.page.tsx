@@ -6,15 +6,15 @@ import AuthChecker from '@components/auth/AuthChecker'
 import SSRErrorHandleContainer from '@components/error/SSRErrorHandleContainer'
 import Layout from '@components/layout'
 import PageLoading from '@components/shared/PageLoading'
-import wrapper from '@store/configureStore'
+import wrapper from 'src/store/configureStore'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ConfigProvider } from 'antd'
-import { ALLOWED_ONLY_TO_MEMBERS } from 'constant/routePath'
 import { NextComponentType, NextPageContext } from 'next'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import '../styles/globals.scss'
 import { COLOR } from '@styles/color'
+import { ALLOWED_ONLY_TO_MEMBERS } from 'src/constant/routePath'
 
 type PagePermissionInfoEnabledComponentConfig = {
     permission: PagePermissionInfo

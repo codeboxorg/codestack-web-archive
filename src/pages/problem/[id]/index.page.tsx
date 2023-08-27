@@ -1,7 +1,7 @@
 import { api } from '@api/index'
 import { useRootState } from '@hooks/useRootSelector'
 import withGssp from '@server/utils/withGssp'
-import wrapper from '@store/configureStore'
+import wrapper from 'src/store/configureStore'
 import { NextSeo } from 'next-seo'
 import { setProblem } from '../problemSlice'
 import CodeSubmitButton from './CodeSubmitButton'
