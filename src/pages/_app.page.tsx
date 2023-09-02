@@ -14,7 +14,7 @@ import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import '../styles/globals.scss'
 import { COLOR } from '@styles/color'
-import { ALLOWED_ONLY_TO_MEMBERS } from '@constants/routePath'
+import { ALLOWED_ONLY_TO_MEMBERS } from '@constants/route'
 
 type PagePermissionInfoEnabledComponentConfig = {
     permission: PagePermissionInfo
