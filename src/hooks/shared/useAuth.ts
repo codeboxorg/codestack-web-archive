@@ -23,7 +23,7 @@ const logoutDefaultOption: LogoutMethodOption = {
     message: false,
 }
 
-const useAuth = () => {
+export const useAuth = () => {
     const user = useSelector(getLoginUser)
     const router = useRouter()
 
@@ -68,5 +68,3 @@ const useAuth = () => {
         initMember,
     }
 }
-
-export default useAuth

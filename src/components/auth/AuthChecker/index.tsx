@@ -1,4 +1,4 @@
-import useAuth from '@hooks/useAuth'
+import { useAuth } from '@hooks/shared'
 import { useEffect } from 'react'
 
 function AuthChecker() {

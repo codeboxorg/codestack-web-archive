@@ -1,5 +1,5 @@
-import useAuth from '@hooks/useAuth'
 import Link from 'next/link'
+import { useAuth } from '@hooks/shared'
 import MemberMenu from './MemberMenu'
 import Menu from './Menu'
 import MobileMenu from './MobileMenu'

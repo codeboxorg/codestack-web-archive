@@ -1,5 +1,5 @@
-import useAuth from '@hooks/useAuth'
 import Link from 'next/link'
+import { useAuth } from '@hooks/shared'
 import VMemberMenu from './VMemberMenu'
 
 type Props = {

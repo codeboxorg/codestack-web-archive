@@ -1,9 +1,9 @@
 import { api } from '@api/index'
-import useAuth from '@hooks/useAuth'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { MESSAGE } from '@constants/message'
+import { useAuth } from '@hooks/shared'
 import VLoginForm, { LoginForm, VLoginFromProps } from './VLoginForm'
 
 function Login() {

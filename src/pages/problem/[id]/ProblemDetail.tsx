@@ -1,8 +1,8 @@
-import { useRootState } from '@hooks/useRootSelector'
 import CommonConverter from '@utils/convert/CommonConverter'
 import { message } from 'antd'
 import { MESSAGE } from '@constants/message'
 import { useCallback, useEffect, useRef } from 'react'
+import { useRootState } from '@hooks/shared'
 import VProblemDetail, { VProblemDetailProps } from './VProblemDetail'
 
 function ProblemDetail() {
