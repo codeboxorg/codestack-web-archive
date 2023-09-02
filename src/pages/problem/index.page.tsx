@@ -17,7 +17,7 @@ function ProblemPage() {
         () => api.problemService.problemList(currentServerPageIndex),
         {
             onSuccess(res) {
-                setTotalPage(res.total_pages)
+                setTotalPage(res.pageInfo.totalPage)
             },
         },
     )

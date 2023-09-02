@@ -12,9 +12,12 @@ export interface ReducerStates {
 
 const getNeedChangeState = (actionPayload: any) => {
     const newActionPayload: { [key: string]: any } = {}
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const rootKey in actionPayload) {
+        // eslint-disable-next-line no-restricted-syntax
         for (const key in actionPayload[rootKey]) {
-            if (actionPayload[rootKey][key] === null || actionPayload[rootKey][key]['isInit']) {
+            if (actionPayload[rootKey][key] === null || actionPayload[rootKey][key].isInit) {
+                // eslint-disable-next-line no-continue
                 continue
             }
             newActionPayload[rootKey] = { [key]: actionPayload[rootKey][key] }

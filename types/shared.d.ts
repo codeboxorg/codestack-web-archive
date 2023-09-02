@@ -1,7 +1,8 @@
 interface Pagination<T> {
     content: T[]
-    totalPages: number
-    totalContent: number
+    pageInfo: {
+        totalPage: number
+    }
 }
 
 type ReduxSliceItem<T> = T & { isInit?: boolean }

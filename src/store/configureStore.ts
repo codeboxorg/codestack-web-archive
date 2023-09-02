@@ -1,7 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { AnyAction, Reducer, configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 import rootReducer, { ReducerStates } from './rootReducer'
-import { Reducer, AnyAction } from 'redux'
 
 const isDev = process.env.NODE_ENV === 'development'
 

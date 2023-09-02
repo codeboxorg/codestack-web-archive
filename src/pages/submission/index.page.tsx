@@ -17,7 +17,7 @@ function SubmissionPage() {
         () => api.submissionService.submissionList(currentServerPageIndex),
         {
             onSuccess(res) {
-                setTotalPage(res.total_pages)
+                setTotalPage(res.pageInfo.totalPage)
             },
         },
     )

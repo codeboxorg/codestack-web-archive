@@ -1,11 +1,11 @@
 import { api } from '@api/index'
 import { getLoginUser, setLoginUser } from '@components/auth/authSlice'
+import { MESSAGE } from '@constants/message'
 import { useMutation } from '@tanstack/react-query'
 import { message as messageCall } from 'antd'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { MESSAGE } from '@constants/message'
 
 type LoginMethodOption = {
     message: boolean
@@ -29,10 +29,14 @@ const useAuth = () => {
 
     const dispatch = useDispatch()
 
-    const login = useCallback((user: LoginMember, option: LoginMethodOption = loginDefaultOption) => {
-        dispatch(setLoginUser(user))
-        option.message && messageCall.success(MESSAGE.authMessage.success.login)
-    }, [])
+    const login = useCallback(
+        (loginUser: LoginMember, option: LoginMethodOption = loginDefaultOption) => {
+            dispatch(setLoginUser(loginUser))
+
+            if (option.message) messageCall.success(MESSAGE.authMessage.success.login)
+        },
+        [dispatch],
+    )
 
     const logoutMutation = useMutation(api.authService.logout, {
         onSuccess: () => {
@@ -41,16 +45,20 @@ const useAuth = () => {
         },
     })
 
-    const logout = useCallback((option: LogoutMethodOption = logoutDefaultOption) => {
-        logoutMutation.mutate()
-        option.message && messageCall.success(MESSAGE.authMessage.success.logout)
-    }, [])
+    const logout = useCallback(
+        (option: LogoutMethodOption = logoutDefaultOption) => {
+            logoutMutation.mutate()
+            if (option.message) messageCall.success(MESSAGE.authMessage.success.logout)
+        },
+        [logoutMutation],
+    )
 
     const getMemberMutation = useMutation(api.authService.member, {
-        onSuccess: (user) => login(user),
+        onSuccess: (loginUser) => login(loginUser),
         onError: logout,
     })
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const initMember = useCallback(() => getMemberMutation.mutate(), [])
 
     return {

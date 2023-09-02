@@ -32,8 +32,7 @@ function TagsPage() {
         () => api.tagService.tagList(currentServerPageIndex),
         {
             onSuccess(res) {
-                console.log(data)
-                setTotalPage(res.totalPages!)
+                setTotalPage(res.pageInfo.totalPage)
             },
         },
     )
