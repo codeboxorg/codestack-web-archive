@@ -3,10 +3,10 @@ import { useRouter } from 'next/router'
 import VProblemList, { VProblemProps } from './VProblemList'
 
 type Props = {
-    list: Problem[]
+    list?: Problem[]
 }
 
-function ProblemList({ list }: Props) {
+function ProblemList({ list = [] }: Props) {
     const router = useRouter()
     const vProblemListProps: VProblemProps = {
         list: list.map((data) => ({
