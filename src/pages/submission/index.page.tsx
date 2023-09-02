@@ -1,10 +1,10 @@
 import { api } from '@api/index'
 import PaginationBar from '@components/shared/PaginationBar'
+import { submissionKeys } from '@constants/query-key'
 import { useQuery } from '@tanstack/react-query'
-import usePagination from 'react-use-pagination-hook'
 import { NextSeo } from 'next-seo'
+import usePagination from 'react-use-pagination-hook'
 import SubmissionList from './SubmissionList'
-import { submissionKeys } from './queryKey'
 
 function SubmissionPage() {
     const paginationMethods = usePagination({ numOfPage: 5 })

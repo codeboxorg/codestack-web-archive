@@ -1,11 +1,11 @@
 import { api } from '@api/index'
+import PaginationBar from '@components/shared/PaginationBar'
+import { tagKeys } from '@constants/query-key'
 import { useQuery } from '@tanstack/react-query'
-import { Table, Tag } from 'antd'
+import { Table } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import Link from 'next/link'
-import PaginationBar from '@components/shared/PaginationBar'
 import usePagination from 'react-use-pagination-hook'
-import { tagKeys } from './queryKey'
 
 const columns: ColumnsType<Tag> = [
     {
