@@ -20,7 +20,7 @@ const AuthContainer = ({ children, pagePermissionInfo }: Props) => {
         if (user === null) return
 
         if (user === false) {
-            message.info(MESSAGE.authMessage.info.requiredLogin)
+            message.info(MESSAGE.AUTH_MESSAGE.info.requiredLogin)
             routerPush(redirect)
         }
     }, [user, redirect, routerPush])

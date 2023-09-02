@@ -26,9 +26,9 @@ function ProblemDetail() {
             if (!targetElement) return
             try {
                 await navigator.clipboard.writeText(targetElement.innerHTML)
-                message.success(MESSAGE.functionMessage.success.clipboardCopy)
+                message.success(MESSAGE.FUNCTION_MESSAGE.success.clipboardCopy)
             } catch (_) {
-                message.error(MESSAGE.functionMessage.error.clipboardCopy)
+                message.error(MESSAGE.FUNCTION_MESSAGE.error.clipboardCopy)
             }
         }
     }, [])

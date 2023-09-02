@@ -26,7 +26,7 @@ function Login() {
 
     const handleLoginFail = () =>
         setError('password', {
-            message: MESSAGE.authMessage.error.loginFail,
+            message: MESSAGE.AUTH_MESSAGE.error.loginFail,
         })
 
     const onSubmit = handleSubmit((formData) =>

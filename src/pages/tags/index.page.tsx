@@ -1,6 +1,6 @@
 import { api } from '@api/index'
 import PaginationBar from '@components/shared/PaginationBar'
-import { tagKeys } from '@constants/query-key'
+import { TAG_KEYS } from '@constants/query-key'
 import { useQuery } from '@tanstack/react-query'
 import { Table } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
@@ -28,7 +28,7 @@ function TagsPage() {
     const currentServerPageIndex = currentPage - 1
 
     const data = useQuery(
-        tagKeys.list(currentServerPageIndex, ''),
+        TAG_KEYS.list(currentServerPageIndex, ''),
         () => api.tagService.tagList(currentServerPageIndex),
         {
             onSuccess(res) {

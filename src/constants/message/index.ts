@@ -1,5 +1,5 @@
-import { authMessage } from './auth'
-import { userMessage } from './user'
-import { functionMessage } from './function'
+import { AUTH_MESSAGE } from './auth'
+import { USER_MESSAGE } from './user'
+import { FUNCTION_MESSAGE } from './function'
 
-export const MESSAGE = { authMessage, userMessage, functionMessage } as const
+export const MESSAGE = { AUTH_MESSAGE, USER_MESSAGE, FUNCTION_MESSAGE } as const

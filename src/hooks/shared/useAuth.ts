@@ -33,7 +33,7 @@ export const useAuth = () => {
         (loginUser: LoginMember, option: LoginMethodOption = loginDefaultOption) => {
             dispatch(setLoginUser(loginUser))
 
-            if (option.message) messageCall.success(MESSAGE.authMessage.success.login)
+            if (option.message) messageCall.success(MESSAGE.AUTH_MESSAGE.success.login)
         },
         [dispatch],
     )
@@ -48,7 +48,7 @@ export const useAuth = () => {
     const logout = useCallback(
         (option: LogoutMethodOption = logoutDefaultOption) => {
             logoutMutation.mutate()
-            if (option.message) messageCall.success(MESSAGE.authMessage.success.logout)
+            if (option.message) messageCall.success(MESSAGE.AUTH_MESSAGE.success.logout)
         },
         [logoutMutation],
     )

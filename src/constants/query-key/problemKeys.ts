@@ -1,5 +1,5 @@
-export const problemKeys = {
+export const PROBLEM_KEYS = {
     all: ['problem'] as const,
-    lists: () => [...problemKeys.all, 'list'] as const,
-    list: (pageNum: number, filters: string) => [...problemKeys.lists(), { filters, pageNum }] as const,
+    lists: () => [...PROBLEM_KEYS.all, 'list'] as const,
+    list: (pageNum: number, filters: string) => [...PROBLEM_KEYS.lists(), { filters, pageNum }] as const,
 }

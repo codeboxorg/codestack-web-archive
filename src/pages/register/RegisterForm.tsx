@@ -49,7 +49,7 @@ function Register() {
     const router = useRouter()
 
     const handleMutationSuccess = async () => {
-        message.success(MESSAGE.userMessage.success.register)
+        message.success(MESSAGE.USER_MESSAGE.success.register)
         router.push('/login')
     }
     const registerMutation = useMutation(api.authService.register, {
