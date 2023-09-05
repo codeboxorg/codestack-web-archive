@@ -1,7 +1,5 @@
-import { api } from '@api/index'
 import PaginationBar from '@components/shared/PaginationBar'
-import { TAG_KEYS } from '@constants/query-key'
-import { useQuery } from '@tanstack/react-query'
+import { useTagList } from '@hooks/tag/useTagList'
 import { Table } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import Link from 'next/link'
@@ -23,22 +21,20 @@ const columns: ColumnsType<Tag> = [
 ]
 
 function TagsPage() {
-    const paginationMethods = usePagination({ numOfPage: 2 })
+    const paginationMethods = usePagination({ numOfPage: 5 })
+
     const { currentPage, setTotalPage } = paginationMethods
     const currentServerPageIndex = currentPage - 1
 
-    const data = useQuery(
-        TAG_KEYS.list(currentServerPageIndex, ''),
-        () => api.tagService.tagList(currentServerPageIndex),
-        {
-            onSuccess(res) {
-                setTotalPage(res.pageInfo.totalPage)
-            },
+    const { data: tagListPagination } = useTagList(currentServerPageIndex, {
+        onSuccess({ pageInfo: { totalPage } }) {
+            setTotalPage(totalPage)
         },
-    )
+    })
+
     return (
         <div className='pt-50'>
-            <Table columns={columns} dataSource={data.data?.content} pagination={false} />
+            <Table columns={columns} dataSource={tagListPagination?.content} pagination={false} />
             <div className='w-full flex justify-center py-30'>
                 <PaginationBar {...paginationMethods} />
             </div>
