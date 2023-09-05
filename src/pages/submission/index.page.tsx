@@ -1,7 +1,5 @@
-import { api } from '@api/index'
 import PaginationBar from '@components/shared/PaginationBar'
-import { SUBMISSION_KEYS } from '@constants/query-key'
-import { useQuery } from '@tanstack/react-query'
+import { useSubmissionList } from '@hooks/submission'
 import { NextSeo } from 'next-seo'
 import usePagination from 'react-use-pagination-hook'
 import SubmissionList from './SubmissionList'
@@ -12,15 +10,11 @@ function SubmissionPage() {
     const { currentPage, setTotalPage } = paginationMethods
     const currentServerPageIndex = currentPage - 1
 
-    const { data: submissionListPagination } = useQuery(
-        SUBMISSION_KEYS.list(currentServerPageIndex, ''),
-        () => api.submissionService.submissionList(currentServerPageIndex),
-        {
-            onSuccess(res) {
-                setTotalPage(res.pageInfo.totalPage)
-            },
+    const { data: submissionListPagination } = useSubmissionList(currentServerPageIndex, {
+        onSuccess({ pageInfo: { totalPage } }) {
+            setTotalPage(totalPage)
         },
-    )
+    })
 
     return (
         <>
