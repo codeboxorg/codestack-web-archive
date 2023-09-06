@@ -1,24 +1,19 @@
 import classNames from 'classnames'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-export type MenuItem = {
-    href: string
-    name: string
-    isHighlight: boolean
-}
+import { NAVIGATE_ITEM_LIST } from '../constants/navigateItemList'
 
-export type VMenuProps = {
-    menus: MenuItem[]
-}
+function MainNavigates() {
+    const { pathname } = useRouter()
 
-function VMenu({ menus }: VMenuProps) {
     return (
         <>
-            {menus.map(({ href, name, isHighlight }) => (
+            {NAVIGATE_ITEM_LIST.map(({ href, name }) => (
                 <Link
                     className={classNames(
                         'block hover:text-blue-500 lg:inline-block',
-                        isHighlight ? 'text-blue-500' : 'text-black',
+                        pathname.startsWith(href) ? 'text-blue-500' : 'text-black',
                     )}
                     key={`${href}-${name}`}
                     href={href}
@@ -30,4 +25,4 @@ function VMenu({ menus }: VMenuProps) {
     )
 }
 
-export default VMenu
+export default MainNavigates

@@ -4,17 +4,17 @@ import { GA } from '@components/app/GA'
 import SEO from '@components/app/SEO'
 import AuthChecker from '@components/auth/AuthChecker'
 import SSRErrorHandleContainer from '@components/error/SSRErrorHandleContainer'
-import Layout from '@components/layout'
+import { DefaultPageLayout } from '@components/layout'
 import PageLoading from '@components/shared/PageLoading'
-import wrapper from 'src/store/configureStore'
+import { ALLOWED_ONLY_TO_MEMBERS } from '@constants/route'
+import { COLOR } from '@styles/color'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ConfigProvider } from 'antd'
 import { NextComponentType, NextPageContext } from 'next'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
+import wrapper from 'src/store/configureStore'
 import '../styles/globals.scss'
-import { COLOR } from '@styles/color'
-import { ALLOWED_ONLY_TO_MEMBERS } from '@constants/route'
 
 type PagePermissionInfoEnabledComponentConfig = {
     permission: PagePermissionInfo
@@ -62,7 +62,7 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
             >
                 <StyleProvider hashPriority='high'>
                     <AntdContextRoot />
-                    <Layout>
+                    <DefaultPageLayout>
                         <SSRErrorHandleContainer
                             error={pageProps.error}
                             pagePermissionInfo={pagePermissionInfo}
@@ -70,7 +70,7 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
                         >
                             <Component {...pageProps} />
                         </SSRErrorHandleContainer>
-                    </Layout>
+                    </DefaultPageLayout>
                 </StyleProvider>
             </ConfigProvider>
         </QueryClientProvider>

@@ -2,7 +2,7 @@ type Member = {
     id: number
     email: string
     nickname: string
-    profile_image: string
+    profileImage: string
 }
 
 type OAuthCodeInfo = {
