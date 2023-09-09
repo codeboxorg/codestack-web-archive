@@ -2,7 +2,7 @@ import { AnyAction, CombinedState, combineReducers } from 'redux'
 import { HYDRATE } from 'next-redux-wrapper'
 import problemSlice, { ProblemSlice } from '@pages/problem/problemSlice'
 import submissionSlice, { SubmissionSlice } from '@pages/submission/submissionSlice'
-import authSlice, { AuthSlice } from '@components/auth/authSlice'
+import authSlice, { AuthSlice } from '@components/utils/authSlice'
 
 export interface ReducerStates {
     problem: ProblemSlice

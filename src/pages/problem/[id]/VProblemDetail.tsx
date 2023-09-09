@@ -1,4 +1,4 @@
-import BaseTable from '@components/shared/BaseTable'
+import BaseTable from '@components/core/BaseTable'
 
 import { forwardRef } from 'react'
 import style from './VProblemDeatil.module.scss'

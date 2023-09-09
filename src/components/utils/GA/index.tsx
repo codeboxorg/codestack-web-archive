@@ -35,6 +35,6 @@ function GATrackingRoutePath() {
     return null
 }
 
-export const GA = Object.assign(GAInit, {
+export default Object.assign(GAInit, {
     TrackingRoutePath: GATrackingRoutePath,
 })

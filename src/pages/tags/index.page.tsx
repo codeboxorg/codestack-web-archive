@@ -1,4 +1,4 @@
-import PaginationBar from '@components/shared/PaginationBar'
+import PaginationBar from '@components/core/PaginationBar'
 import { useTagList } from '@hooks/tag/useTagList'
 import { NextSeo } from 'next-seo'
 import usePagination from 'react-use-pagination-hook'

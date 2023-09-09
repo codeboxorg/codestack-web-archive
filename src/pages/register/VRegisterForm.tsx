@@ -1,4 +1,4 @@
-import BaseInput from '@components/shared/BaseInput'
+import BaseInput from '@components/core/BaseInput'
 import { Control, Controller } from 'react-hook-form'
 
 export type RegisterForm = {

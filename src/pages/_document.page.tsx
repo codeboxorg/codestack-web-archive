@@ -1,4 +1,4 @@
-import { GA } from '@components/app/GA'
+import { GA } from '@components/utils'
 import { Html, Head, Main, NextScript } from 'next/document'
 
 function Document() {

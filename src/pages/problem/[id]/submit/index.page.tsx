@@ -1,5 +1,5 @@
 import { api } from '@api/index'
-import LoadableButton from '@components/shared/LoadableButton'
+import LoadableButton from '@components/core/LoadableButton'
 import { useMutation } from '@tanstack/react-query'
 import { Button, Select } from 'antd'
 import { NextSeo } from 'next-seo'

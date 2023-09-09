@@ -1,5 +1,5 @@
 import { api } from '@api/index'
-import { getLoginUser, setLoginUser } from '@components/auth/authSlice'
+import { getLoginUser, setLoginUser } from '@components/utils/authSlice'
 import { MESSAGE } from '@constants/message'
 import { useMutation } from '@tanstack/react-query'
 import { message as messageCall } from 'antd'

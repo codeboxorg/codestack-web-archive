@@ -1,5 +1,5 @@
 import { RemoteError } from '@api/error/RemoteError'
-import { setLoginUser } from '@components/auth/authSlice'
+import { setLoginUser } from '@components/utils/authSlice'
 import { serverToServerAPI } from '@server/serverToServerApi'
 import wrapper from 'src/store/configureStore'
 import { getCookie } from 'cookies-next'
