@@ -1,2 +1,4 @@
 tailwind.config.js
 next.config.js
+next-sitemap.config.js
+postcss.config.js
