@@ -10,6 +10,7 @@ interface Opener {
 declare global {
     interface Window {
         oAuthRedirectCallback?: OAuthRedirectCallback
+        // eslint-disable-next-line @typescript-eslint/ban-types
         gtag: Function
     }
     interface Location {
