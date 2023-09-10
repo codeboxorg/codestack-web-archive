@@ -1,25 +1,16 @@
-type Member = {
-    id: number
-    email: string
-    nickname: string
-    profileImage: string
-}
-
-type OAuthCodeInfo = {
+interface OAuthCodeInfo {
     provider: 'github'
     code: string
     user?: unknown
 }
 
-type TokenInfo = {
+interface TokenInfo {
     refreshToken: string
     accessToken: string
     expiresIn: number
 }
 
-type LoginMember = Member & Omit<TokenInfo, 'refreshToken'>
-
-type PagePermissionInfo = {
+interface PagePermissionInfo {
     role?: 'admin' | 'member'
     loadingFallback?: React.ReactElement
     redirect?: string
