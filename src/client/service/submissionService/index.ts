@@ -1,7 +1,7 @@
-import { graphqlAPI } from '@api/core'
-import { throwRemoteError } from '@api/error/throwRemoteError'
-import { SubmissionService } from './submissionService'
+import { graphqlAPI } from '@client/core'
+import { throwRemoteError } from '@client/error'
 import { SUBMISSIONS, SUBMISSION_DETAIL } from './graphqlQueries'
+import { SubmissionService } from './submissionService'
 
 export const submissionServiceRemote = (): SubmissionService => ({
     submissionList: async (pageNum) => {

@@ -1,9 +1,10 @@
-import { baseAPI, graphqlAPI } from '@api/core'
+import { baseAPI, graphqlAPI } from '@client/core'
 import { LoginForm } from '@pages/login/VLoginForm'
 import { CookieValueTypes } from 'cookies-next'
+
 import { MY_INFO } from './graphqlQueries'
 
-type AuthService = {
+interface AuthService {
     login(formData: LoginForm): Promise<TokenInfo>
     refreshTokenToAccessToken(refreshToken: CookieValueTypes): Promise<Pick<TokenInfo, 'accessToken'>>
     memberInfo(accessToken: string): Promise<Member>
@@ -17,6 +18,7 @@ export const authServerToServerRemote = (): AuthService => ({
         })
         return response.data
     },
+
     async refreshTokenToAccessToken(refreshToken) {
         const response = await baseAPI.post({
             url: `/auth/token`,
@@ -24,6 +26,7 @@ export const authServerToServerRemote = (): AuthService => ({
         })
         return response.data
     },
+
     async memberInfo(accessToken) {
         const response = await graphqlAPI.request({
             document: MY_INFO,

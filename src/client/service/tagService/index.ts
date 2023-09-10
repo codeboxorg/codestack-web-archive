@@ -1,5 +1,5 @@
-import { graphqlAPI } from '@api/core'
-import { throwRemoteError } from '@api/error/throwRemoteError'
+import { graphqlAPI } from '@client/core'
+import { throwRemoteError } from '@client/error'
 import { TAGS } from './graphqlQueries'
 import { TagService } from './tagService'
 

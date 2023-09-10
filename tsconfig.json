@@ -11,7 +11,7 @@
             "@utils/*": ["src/utils/*"],
             "@hooks/*": ["src/hooks/*"],
             "@store/*": ["src/store/*"],
-            "@api/*": ["src/client/*"],
+            "@client/*": ["src/client/*"],
             "@types/*": ["types/*"],
             "@server/*": ["src/server/*"]
         },

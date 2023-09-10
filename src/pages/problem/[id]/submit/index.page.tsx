@@ -1,4 +1,4 @@
-import { api } from '@api/index'
+import { API } from '@client/index'
 import LoadableButton from '@components/core/LoadableButton'
 import { useMutation } from '@tanstack/react-query'
 import { Button, Select } from 'antd'
@@ -6,6 +6,7 @@ import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
+
 import CodeEditor, { MonacoEditor } from './CodeEditor'
 
 export type Submit = {
@@ -40,7 +41,7 @@ function SubmitPage() {
         setSubmitId(currentSubmitId)
     }
 
-    const { mutate: submitMutate } = useMutation(['submission'], api.problemService.problemSubmit, {
+    const { mutate: submitMutate } = useMutation(['submission'], API.problemService.problemSubmit, {
         onSuccess: handelSubmitSuccess,
     })
 

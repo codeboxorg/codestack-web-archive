@@ -1,4 +1,4 @@
-import { serverToServerAPI } from '@server/serverToServerApi'
+import { API } from '@server/index'
 import { AxiosError } from 'axios'
 import { setCookie } from 'cookies-next'
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         code: code?.toString() ?? '',
     }
     try {
-        const { refreshToken } = await serverToServerAPI.oAuthServerToServer.oAuthCodeToAccessToken(githubCodeInfo)
+        const { refreshToken } = await API.oAuthServerToServer.oAuthCodeToAccessToken(githubCodeInfo)
 
         setCookie('server-key', refreshToken, {
             req,

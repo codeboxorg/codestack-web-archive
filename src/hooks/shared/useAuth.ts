@@ -1,4 +1,4 @@
-import { api } from '@api/index'
+import { API } from '@client/index'
 import { MESSAGE } from '@constants/message'
 import { setLoginUser } from '@store/auth'
 import { useMutation } from '@tanstack/react-query'
@@ -40,7 +40,7 @@ export const useAuth = () => {
         [dispatch],
     )
 
-    const logoutMutation = useMutation(api.authService.logout, {
+    const logoutMutation = useMutation(API.authService.logout, {
         onSuccess: () => {
             dispatch(setLoginUser(false))
             router.push('/')
@@ -55,7 +55,7 @@ export const useAuth = () => {
         [logoutMutation],
     )
 
-    const getMemberMutation = useMutation(api.authService.member, {
+    const getMemberMutation = useMutation(API.authService.member, {
         onSuccess: (loginUser) => login(loginUser),
         onError: logout,
     })

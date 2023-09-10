@@ -1,4 +1,4 @@
-import { api } from '@api/index'
+import { API } from '@client/index'
 import { SUBMISSION_KEYS } from '@constants/query-key'
 import { useQuery } from '@tanstack/react-query'
 import dynamic from 'next/dynamic'
@@ -12,7 +12,7 @@ function SubmissionDetail() {
     const router = useRouter()
     const { id } = router.query
     const { data: submissionDetail } = useQuery(SUBMISSION_KEYS.detail(), () =>
-        api.submissionService.submissionDetail(Number(id)),
+        API.submissionService.submissionDetail(Number(id)),
     )
     const vSubmissionDetailProps = {
         detail: submissionDetail,

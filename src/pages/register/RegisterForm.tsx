@@ -1,11 +1,11 @@
-import { api } from '@api/index'
+import { API } from '@client/index'
+import { MESSAGE } from '@constants/message'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import { message } from 'antd'
-import { MESSAGE } from '@constants/message'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
 import VRegisterForm, { VRegisterFormProps } from './VRegisterForm'
 
 const RegisterFormSchema = z
@@ -52,7 +52,7 @@ function Register() {
         message.success(MESSAGE.USER_MESSAGE.success.register)
         router.push('/login')
     }
-    const registerMutation = useMutation(api.authService.register, {
+    const registerMutation = useMutation(API.authService.register, {
         onSuccess: handleMutationSuccess,
     })
 

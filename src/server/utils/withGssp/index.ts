@@ -1,4 +1,4 @@
-import { RemoteError } from '@api/error/RemoteError'
+import { RemoteError } from '@client/error'
 import { GetServerSideProps } from 'next'
 
 /**
@@ -12,7 +12,7 @@ export default function withGssp(getServerSideProps: GetServerSideProps): GetSer
             return await getServerSideProps(context)
         } catch (error) {
             if (!(error instanceof RemoteError)) {
-                console.error('unhandled error', error)
+                console.debug('unhandled error', error)
                 throw error
             }
             return {

@@ -1,4 +1,4 @@
-import { NextRequest } from '@server/types'
+import { NextRequest } from '@server/index'
 import { deleteCookie } from 'cookies-next'
 import { NextApiResponse } from 'next'
 

@@ -1,10 +1,10 @@
 // pages/server-sitemap.xml/index.tsx
-import { getServerSideSitemapLegacy } from 'next-sitemap'
+import { API } from '@client/index'
 import { GetServerSideProps } from 'next'
-import { api } from '@api/index'
+import { getServerSideSitemapLegacy } from 'next-sitemap'
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    const problem = await api.problemService.problemList(0)
+    const problem = await API.problemService.problemList(0)
     const fields = Array.from(Array(problem.pageInfo.totalPage).keys()).map((index) => ({
         loc: `${process.env.NEXT_SERVER_BASE_URL}/sitemap/problem/${index}/sitemap.xml`,
         lastmod: new Date().toISOString(),

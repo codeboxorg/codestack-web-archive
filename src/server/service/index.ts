@@ -4,10 +4,11 @@ import { oAuthServerToServerRemote } from './service/oauth/oAuthService'
 const provideAPIService = () => {
     const authServerToServer = authServerToServerRemote()
     const oAuthServerToServer = oAuthServerToServerRemote()
+
     return {
         authServerToServer,
         oAuthServerToServer,
     }
 }
 
-export const serverToServerAPI = provideAPIService()
+export default provideAPIService()

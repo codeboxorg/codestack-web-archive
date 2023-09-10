@@ -1,4 +1,4 @@
-import { RemoteError } from '@api/error/RemoteError'
+import { RemoteError } from '@client/error'
 import { AuthContainer } from '@components/utils'
 import { useRouter } from 'next/router'
 import { ReactElement, useEffect } from 'react'

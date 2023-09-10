@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios'
-import { RequestWithData, RequestWithParams, sendInsertForData, sendRequest, sendRequestForData } from './methods'
+import { RequestWithData, RequestWithParams, sendInsertForData, sendRequest, sendRequestForData } from './restMethods'
 
 class RestAPI {
     constructor(private axiosInstance: AxiosInstance) {}

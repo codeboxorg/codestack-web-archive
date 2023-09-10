@@ -1,8 +1,10 @@
-import { authServiceRemote } from './service/authService/index'
-import { memberServiceRemote } from './service/memberService'
-import { problemServiceRemote } from './service/problemService'
-import { submissionServiceRemote } from './service/submissionService'
-import { tagServiceRemote } from './service/tagService'
+import {
+    authServiceRemote,
+    memberServiceRemote,
+    problemServiceRemote,
+    submissionServiceRemote,
+    tagServiceRemote,
+} from './service'
 
 const provideAPIService = () => {
     const authService = authServiceRemote()
@@ -20,4 +22,4 @@ const provideAPIService = () => {
     }
 }
 
-export const api = provideAPIService()
+export const API = provideAPIService()

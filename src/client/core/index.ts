@@ -1,8 +1,6 @@
 import renderEnv from '@utils/renderEnv'
-import RestAPI from './RestAPI'
-import GraphQLAPI from './GraphQLAPI'
-import createAxiosInstance from './createAxiosInstance'
-import createGraphQLInstance from './createGraphQLInstance'
+import { GraphQLAPI, createGraphQLInstance } from './graphql'
+import { RestAPI, createAxiosInstance } from './rest'
 
 const nextAPI = new RestAPI(createAxiosInstance(`/`))
 
@@ -18,4 +16,4 @@ const graphqlAPI = renderEnv.isSSR
     ? new GraphQLAPI(createGraphQLInstance(`${process.env.NEXT_SERVER_GRAPHQL_BASE_API_URL}`))
     : new GraphQLAPI(createGraphQLInstance(`${process.env.NEXT_PUBLIC_GRAPHQL_BASE_API_URL}`))
 
-export { baseAPI, nextAPI, graphqlAPI }
+export { baseAPI, graphqlAPI, nextAPI }

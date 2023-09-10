@@ -1,6 +1,5 @@
 import { LoginForm } from '@pages/login/VLoginForm'
-import { serverToServerAPI } from '@server/serverToServerApi'
-import { NextRequest } from '@server/types'
+import { API, NextRequest } from '@server/index'
 import { AxiosError } from 'axios'
 import { setCookie } from 'cookies-next'
 
@@ -9,7 +8,7 @@ import type { NextApiResponse } from 'next'
 export default async function handler(req: NextRequest<LoginForm>, res: NextApiResponse) {
     const formData = req.body
     try {
-        const { accessToken, refreshToken, expiresIn } = await serverToServerAPI.authServerToServer.login(formData)
+        const { accessToken, refreshToken, expiresIn } = await API.authServerToServer.login(formData)
         setCookie('server-key', refreshToken, {
             req,
             res,

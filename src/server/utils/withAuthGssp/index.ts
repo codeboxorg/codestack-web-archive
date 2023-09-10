@@ -1,5 +1,5 @@
-import { RemoteError } from '@api/error/RemoteError'
-import { serverToServerAPI } from '@server/serverToServerApi'
+import { RemoteError } from '@client/error'
+import { API } from '@server/index'
 import { setLoginUser } from '@store/auth'
 import wrapper from '@store/configureStore'
 import { getCookie } from 'cookies-next'
@@ -17,10 +17,8 @@ export default function withAuthGssp(getServerSideProps: GetServerSideProps): Ge
             const refreshToken = getCookie('server-key', { req, res })
             if (!refreshToken) store.dispatch(setLoginUser(null))
             if (refreshToken) {
-                const { accessToken } = await serverToServerAPI.authServerToServer.refreshTokenToAccessToken(
-                    refreshToken,
-                )
-                const user = await serverToServerAPI.authServerToServer.memberInfo(accessToken)
+                const { accessToken } = await API.authServerToServer.refreshTokenToAccessToken(refreshToken)
+                const user = await API.authServerToServer.memberInfo(accessToken)
                 // TODO : 백엔드에 refreshToken 바꿔오는 endPoint에 expiresIn 추가요청
                 store.dispatch(setLoginUser({ ...user, accessToken, expiresIn: 99999 }))
             }

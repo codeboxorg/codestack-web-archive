@@ -1,9 +1,10 @@
-import { api } from '@api/index'
+import { API } from '@client/index'
+import { MESSAGE } from '@constants/message'
+import { useAuth } from '@hooks/shared'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { MESSAGE } from '@constants/message'
-import { useAuth } from '@hooks/shared'
+
 import VLoginForm, { LoginForm, VLoginFromProps } from './VLoginForm'
 
 function Login() {
@@ -17,7 +18,7 @@ function Login() {
     const router = useRouter()
     const { login } = useAuth()
 
-    const loginMutation = useMutation(api.authService.login)
+    const loginMutation = useMutation(API.authService.login)
 
     const handleLoginSuccess = (user: LoginMember) => {
         login(user, { message: true })

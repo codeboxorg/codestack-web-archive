@@ -1,6 +1,6 @@
-import { baseAPI } from '@api/core'
+import { baseAPI } from '@client/core'
 
-type OAuthService = {
+interface OAuthService {
     oAuthCodeToAccessToken(OAuthCodeInfo: OAuthCodeInfo): Promise<TokenInfo>
 }
 
