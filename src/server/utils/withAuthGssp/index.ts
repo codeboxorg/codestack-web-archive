@@ -1,7 +1,7 @@
 import { RemoteError } from '@api/error/RemoteError'
-import { setLoginUser } from '@components/utils/authSlice'
 import { serverToServerAPI } from '@server/serverToServerApi'
-import wrapper from 'src/store/configureStore'
+import { setLoginUser } from '@store/auth'
+import wrapper from '@store/configureStore'
 import { getCookie } from 'cookies-next'
 import { GetServerSideProps } from 'next'
 

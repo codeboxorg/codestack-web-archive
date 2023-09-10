@@ -1,11 +1,13 @@
 import { api } from '@api/index'
-import { getLoginUser, setLoginUser } from '@components/utils/authSlice'
 import { MESSAGE } from '@constants/message'
+import { setLoginUser } from '@store/auth'
 import { useMutation } from '@tanstack/react-query'
 import { message as messageCall } from 'antd'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+
+import { useRootState } from './useRootSelector'
 
 type LoginMethodOption = {
     message: boolean
@@ -24,7 +26,7 @@ const logoutDefaultOption: LogoutMethodOption = {
 }
 
 export const useAuth = () => {
-    const user = useSelector(getLoginUser)
+    const user = useRootState((state) => state.auth).loginUser
     const router = useRouter()
 
     const dispatch = useDispatch()

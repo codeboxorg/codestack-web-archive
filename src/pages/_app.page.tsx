@@ -1,15 +1,16 @@
 import { StyleProvider } from '@ant-design/cssinjs'
 import PageLoading from '@components/core/PageLoading'
 import { DefaultPageLayout } from '@components/on-demand/layout'
-import { AntdContextRoot, GA, AuthChecker, SEO, SSRErrorHandleContainer } from '@components/utils'
+import { AntdContextRoot, AuthChecker, GA, SEO, SSRErrorHandleContainer } from '@components/utils'
 import { ALLOWED_ONLY_TO_MEMBERS } from '@constants/route'
+import wrapper from '@store/configureStore'
 import { COLOR } from '@styles/color'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ConfigProvider } from 'antd'
 import { NextComponentType, NextPageContext } from 'next'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
-import wrapper from 'src/store/configureStore'
+
 import '../styles/globals.scss'
 
 type PagePermissionInfoEnabledComponentConfig = {

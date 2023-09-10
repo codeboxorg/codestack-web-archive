@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const submissionSliceType = 'slice/submission'
+const SUBMISSION_STORE_NAME = 'STORE/SUBMISSION'
 
-export type SubmissionSlice = {
-    submission: ReduxSliceItem<Submission>
+export type SubmissionStore = {
+    submission: ReduxStoreItem<Submission>
 }
 
-const initialState: SubmissionSlice = {
+const initialState: SubmissionStore = {
     submission: {
         id: -1,
         cpuTime: 0,
@@ -20,9 +20,9 @@ const initialState: SubmissionSlice = {
     },
 }
 
-const submissionSlice = createSlice({
+const submissionStore = createSlice({
     initialState,
-    name: submissionSliceType,
+    name: SUBMISSION_STORE_NAME,
     reducers: {
         setSubmission: (state, action: PayloadAction<Submission>) => ({
             ...state,
@@ -31,5 +31,6 @@ const submissionSlice = createSlice({
     },
 })
 
-export const { setSubmission } = submissionSlice.actions
-export default submissionSlice
+export const { setSubmission } = submissionStore.actions
+
+export default submissionStore

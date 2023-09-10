@@ -14,5 +14,6 @@ const createStore = () => {
 
 const stored = createStore()
 export type RootState = ReturnType<typeof stored.getState>
+
 const wrapper = createWrapper(createStore)
 export default wrapper

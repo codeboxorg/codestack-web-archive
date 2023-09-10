@@ -1,9 +1,10 @@
 import { api } from '@api/index'
-import withGssp from '@server/utils/withGssp'
-import wrapper from 'src/store/configureStore'
-import { NextSeo } from 'next-seo'
 import { useRootState } from '@hooks/shared'
-import { setProblem } from '../problemSlice'
+import withGssp from '@server/utils/withGssp'
+import { setProblem } from '@store/problem'
+import { NextSeo } from 'next-seo'
+import wrapper from '@store/configureStore'
+
 import CodeSubmitButton from './CodeSubmitButton'
 import ProblemDetail from './ProblemDetail'
 
@@ -24,6 +25,7 @@ function ProblemDetailPage() {
 }
 
 export default ProblemDetailPage
+
 export const getServerSideProps = withGssp(
     wrapper.getServerSideProps((store) => async (context) => {
         const problem = await api.problemService.problemDetail(Number(context.params!.id))

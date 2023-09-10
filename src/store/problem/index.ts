@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const problemSliceType = 'slice/problem'
+const PROBLEM_STORE_NAME = 'STORE/PROBLEM'
 
-export type ProblemSlice = {
-    problem: ReduxSliceItem<Problem>
+export type ProblemStore = {
+    problem: ReduxStoreItem<Problem>
 }
 
-const initialState: ProblemSlice = {
+const initialState: ProblemStore = {
     problem: {
         id: -1,
         title: '',
@@ -20,9 +20,9 @@ const initialState: ProblemSlice = {
     },
 }
 
-const problemSlice = createSlice({
+const problemStore = createSlice({
     initialState,
-    name: problemSliceType,
+    name: PROBLEM_STORE_NAME,
     reducers: {
         setProblem: (state, action: PayloadAction<Problem>) => ({
             ...state,
@@ -31,5 +31,6 @@ const problemSlice = createSlice({
     },
 })
 
-export const { setProblem } = problemSlice.actions
-export default problemSlice
+export const { setProblem } = problemStore.actions
+
+export default problemStore

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from 'src/store/configureStore'
 
-const authSliceType = 'slice/auth'
+const AUTH_STORE_NAME = 'STORE/AUTH'
 
 /**
  * 유저의 상태 타입
@@ -9,17 +9,17 @@ const authSliceType = 'slice/auth'
  * 로그인 완료시 -> LoginMember
  * 비 로그인 or 권한 확인 실패시 -> false
  */
-export type AuthSlice = {
+export type AuthStore = {
     loginUser: LoginMember | null | false
 }
 
-const initialState: AuthSlice = {
+const initialState: AuthStore = {
     loginUser: null,
 }
 
-const authSlice = createSlice({
+const authStore = createSlice({
     initialState,
-    name: authSliceType,
+    name: AUTH_STORE_NAME,
     reducers: {
         setLoginUser: (state, action: PayloadAction<LoginMember | null | false>) => ({
             ...state,
@@ -28,8 +28,8 @@ const authSlice = createSlice({
     },
 })
 
-export const { setLoginUser } = authSlice.actions
+export const { setLoginUser } = authStore.actions
 
 export const getLoginUser = (state: RootState) => state.auth.loginUser
 
-export default authSlice
+export default authStore

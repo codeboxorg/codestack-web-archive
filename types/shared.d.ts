@@ -5,7 +5,7 @@ interface Pagination<T> {
     }
 }
 
-type ReduxSliceItem<T> = T & { isInit?: boolean }
+type ReduxStoreItem<T> = T & { isInit?: boolean }
 
 type HookFormSubmit = (e?: BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>
 

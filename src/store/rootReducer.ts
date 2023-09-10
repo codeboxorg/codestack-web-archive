@@ -1,17 +1,18 @@
-import { AnyAction, CombinedState, combineReducers } from 'redux'
 import { HYDRATE } from 'next-redux-wrapper'
-import problemSlice, { ProblemSlice } from '@pages/problem/problemSlice'
-import submissionSlice, { SubmissionSlice } from '@pages/submission/submissionSlice'
-import authSlice, { AuthSlice } from '@components/utils/authSlice'
+import { AnyAction, CombinedState, combineReducers } from 'redux'
+
+import authStore, { AuthStore } from './auth'
+import problemStore, { ProblemStore } from './problem'
+import submissionStore, { SubmissionStore } from './submission'
 
 export interface ReducerStates {
-    problem: ProblemSlice
-    submission: SubmissionSlice
-    auth: AuthSlice
+    problem: ProblemStore
+    submission: SubmissionStore
+    auth: AuthStore
 }
 
 const getNeedChangeState = (actionPayload: any) => {
-    const newActionPayload: { [key: string]: any } = {}
+    const newActionPayload: Record<string, unknown> = {}
     // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const rootKey in actionPayload) {
         // eslint-disable-next-line no-restricted-syntax
@@ -32,9 +33,9 @@ const rootReducer = (state: ReducerStates, action: AnyAction): CombinedState<Red
             return { ...state, ...getNeedChangeState(action.payload) }
         default: {
             const combinedReducer = combineReducers({
-                problem: problemSlice.reducer,
-                submission: submissionSlice.reducer,
-                auth: authSlice.reducer,
+                problem: problemStore.reducer,
+                submission: submissionStore.reducer,
+                auth: authStore.reducer,
             })
             return combinedReducer(state, action)
         }
