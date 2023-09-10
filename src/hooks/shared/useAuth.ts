@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { useRootState } from './useRootSelector'
+import { useRootState } from './useRootState'
 
 type LoginMethodOption = {
     message: boolean
