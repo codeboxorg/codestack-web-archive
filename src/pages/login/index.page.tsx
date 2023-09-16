@@ -25,7 +25,7 @@ function LoginPage() {
                         <div className='under:mt-15 text-14 px-2'>
                             <div>
                                 CodeStack 회원 가입은{' '}
-                                <Link className='text-blue-600/100' href='/register'>
+                                <Link className='text-blue-600/100' href='/sign-up'>
                                     여기
                                 </Link>
                                 에서 할 수 있어요!

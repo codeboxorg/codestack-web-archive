@@ -1,5 +1,5 @@
 import BaseInput from '@components/core/BaseInput'
-import { Control, Controller } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 
 export type LoginForm = {
     email: string
@@ -7,10 +7,11 @@ export type LoginForm = {
 }
 
 export type VLoginFromProps = {
-    emailInput: HookFormInput<'email'>
-    passwordInput: HookFormInput<'password'>
-    control: Control<LoginForm>
-    onSubmit: HookFormSubmit
+    // TODO: VAC 제거
+    emailInput: any
+    passwordInput: any
+    onSubmit: any
+    control: any
 }
 
 function VLoginForm({ emailInput, passwordInput, onSubmit, control }: VLoginFromProps) {

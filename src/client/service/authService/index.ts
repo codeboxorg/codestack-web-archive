@@ -5,7 +5,7 @@ import { API } from '@client/index'
 import { AuthService } from './authService'
 
 export const authServiceRemote = (): AuthService => ({
-    async register(formData) {
+    async signUp(formData) {
         try {
             const response = await baseAPI.post({
                 url: `/auth/register`,

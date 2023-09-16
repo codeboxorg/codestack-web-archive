@@ -1,33 +1,37 @@
+import { API } from '@client/index'
 import BaseInput from '@components/core/BaseInput'
-import { Control, Controller } from 'react-hook-form'
+import { SIGN_UP_FORM_SCHEMA, SignUpFormSchema } from '@constants/form'
+import { MESSAGE } from '@constants/message'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
+import { message } from 'antd'
+import { useRouter } from 'next/router'
+import { Controller, useForm } from 'react-hook-form'
 
-export type RegisterForm = {
-    username: string
-    email: string
-    password: string
-    passwordConfirm: string
-    nickname: string
-}
+function SignUpForm() {
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<SignUpFormSchema>({
+        resolver: zodResolver(SIGN_UP_FORM_SCHEMA),
+        mode: 'onChange',
+    })
 
-export type VRegisterFormProps = {
-    usernameInput: HookFormInput<'username'>
-    emailInput: HookFormInput<'email'>
-    passwordInput: HookFormInput<'password'>
-    passwordConfirmInput: HookFormInput<'passwordConfirm'>
-    nicknameInput: HookFormInput<'nickname'>
-    control: Control<RegisterForm>
-    onSubmit: HookFormSubmit
-}
+    const router = useRouter()
 
-function VRegisterForm({
-    usernameInput,
-    emailInput,
-    passwordInput,
-    passwordConfirmInput,
-    nicknameInput,
-    control,
-    onSubmit,
-}: VRegisterFormProps) {
+    const handleMutationSuccess = async () => {
+        message.success(MESSAGE.USER_MESSAGE.success.signUp)
+        router.push('/login')
+    }
+    const signUpMutation = useMutation(API.authService.signUp, {
+        onSuccess: handleMutationSuccess,
+    })
+
+    const onSubmit = handleSubmit((signUpFormData) => {
+        signUpMutation.mutate(signUpFormData)
+    })
+
     return (
         <form onSubmit={onSubmit} id='login'>
             <div className='mb-6'>
@@ -41,15 +45,13 @@ function VRegisterForm({
                         <BaseInput
                             id='username'
                             placeholder='아이디를 입력해주세요.'
-                            status={usernameInput.status}
+                            status={errors.username && 'error'}
                             {...field}
                         />
                     )}
                 />
                 <div className='h-20 pt-3 w-full'>
-                    {usernameInput.status === 'error' && (
-                        <p className='text-red-500 w-full text-xs'>{usernameInput.message}</p>
-                    )}
+                    {errors.username && <p className='text-red-500 w-full text-xs'>{errors.username.message}</p>}
                 </div>
             </div>
             <div className='mb-6'>
@@ -64,15 +66,13 @@ function VRegisterForm({
                             id='password'
                             type='password'
                             placeholder='비밀번호를 입력해주세요.'
-                            status={passwordInput.status}
+                            status={errors.password && 'error'}
                             {...field}
                         />
                     )}
                 />
                 <div className='h-20 pt-3 w-full'>
-                    {passwordInput.status === 'error' && (
-                        <p className='text-red-500 w-full text-xs'>{passwordInput.message}</p>
-                    )}
+                    {errors.password && <p className='text-red-500 w-full text-xs'>{errors.password.message}</p>}
                 </div>
             </div>
             <div className='mb-6'>
@@ -87,14 +87,14 @@ function VRegisterForm({
                             id='passwordConfirm'
                             type='password'
                             placeholder='비밀번호를 한번 더 입력해주세요.'
-                            status={passwordConfirmInput.status}
+                            status={errors.passwordConfirm && 'error'}
                             {...field}
                         />
                     )}
                 />
                 <div className='h-20 pt-3 w-full'>
-                    {passwordConfirmInput.status === 'error' && (
-                        <p className='text-red-500 w-full text-xs'>{passwordConfirmInput.message}</p>
+                    {errors.passwordConfirm && (
+                        <p className='text-red-500 w-full text-xs'>{errors.passwordConfirm.message}</p>
                     )}
                 </div>
             </div>
@@ -109,15 +109,13 @@ function VRegisterForm({
                         <BaseInput
                             id='email'
                             placeholder='이메일을 입력해주세요.'
-                            status={emailInput.status}
+                            status={errors.email && 'error'}
                             {...field}
                         />
                     )}
                 />
                 <div className='h-20 pt-3 w-full'>
-                    {emailInput.status === 'error' && (
-                        <p className='text-red-500 w-full text-xs'>{emailInput.message}</p>
-                    )}
+                    {errors.email && <p className='text-red-500 w-full text-xs'>{errors.email.message}</p>}
                 </div>
             </div>
             <div className='mb-6'>
@@ -131,15 +129,13 @@ function VRegisterForm({
                         <BaseInput
                             id='nickname'
                             placeholder='닉네임을 입력해주세요.'
-                            status={nicknameInput.status}
+                            status={errors.nickname && 'error'}
                             {...field}
                         />
                     )}
                 />
                 <div className='h-20 pt-3 w-full'>
-                    {nicknameInput.status === 'error' && (
-                        <p className='text-red-500 w-full text-xs'>{nicknameInput.message}</p>
-                    )}
+                    {errors.nickname && <p className='text-red-500 w-full text-xs'>{errors.nickname.message}</p>}
                 </div>
             </div>
             <button
@@ -152,4 +148,4 @@ function VRegisterForm({
     )
 }
 
-export default VRegisterForm
+export default SignUpForm
