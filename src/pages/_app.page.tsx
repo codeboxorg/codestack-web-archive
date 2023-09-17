@@ -1,4 +1,3 @@
-import { StyleProvider } from '@ant-design/cssinjs'
 import PageLoading from '@components/core/PageLoading'
 import { DefaultPageLayout } from '@components/on-demand/layout'
 import { AntdContextRoot, AuthChecker, GA, SEO, SSRErrorHandleContainer } from '@components/utils'
@@ -57,18 +56,16 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
                     },
                 }}
             >
-                <StyleProvider hashPriority='high'>
-                    <AntdContextRoot />
-                    <DefaultPageLayout>
-                        <SSRErrorHandleContainer
-                            error={pageProps.error}
-                            pagePermissionInfo={pagePermissionInfo}
-                            isPermissionRequired={isPermissionRequired}
-                        >
-                            <Component {...pageProps} />
-                        </SSRErrorHandleContainer>
-                    </DefaultPageLayout>
-                </StyleProvider>
+                <AntdContextRoot />
+                <DefaultPageLayout>
+                    <SSRErrorHandleContainer
+                        error={pageProps.error}
+                        pagePermissionInfo={pagePermissionInfo}
+                        isPermissionRequired={isPermissionRequired}
+                    >
+                        <Component {...pageProps} />
+                    </SSRErrorHandleContainer>
+                </DefaultPageLayout>
             </ConfigProvider>
         </QueryClientProvider>
     )

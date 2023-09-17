@@ -1,13 +1,10 @@
 import { Input, InputProps, InputRef } from 'antd'
-import React, { CSSProperties } from 'react'
+import React from 'react'
+import 'twin.macro'
 
-const BaseInput = React.forwardRef(({ style, ...props }: InputProps, ref?: React.Ref<InputRef>) => {
-    const defaultStyle: CSSProperties = {
-        paddingTop: '8px',
-        paddingBottom: '8px',
-    }
-    return <Input ref={ref} style={{ ...defaultStyle, ...style }} {...props} />
-})
+const BaseInput = React.forwardRef((props: InputProps, ref?: React.Ref<InputRef>) => (
+    <Input ref={ref} {...props} tw='py-8 rounded-md text-sm outline-none focus:ring-0! border-neutral-300' />
+))
 
 BaseInput.displayName = 'BaseInput'
 
