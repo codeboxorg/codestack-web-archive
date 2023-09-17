@@ -21,7 +21,7 @@ function SubmissionPage() {
             <NextSeo title='제출 근황' />
             <div className='pt-50'>
                 <SubmissionList list={submissionListPagination?.content ?? []} />
-                <div className='w-full flex justify-center py-30'>
+                <div className='flex justify-center w-full py-30'>
                     <PaginationBar {...paginationMethods} />
                 </div>
             </div>
@@ -30,7 +30,7 @@ function SubmissionPage() {
 }
 
 const pagePermission: PagePermissionInfo = {
-    redirect: '/login',
+    redirect: '/sign-in',
 }
 
 SubmissionPage.permission = pagePermission

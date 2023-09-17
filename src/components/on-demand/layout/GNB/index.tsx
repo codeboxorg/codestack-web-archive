@@ -27,7 +27,7 @@ function GNB() {
                         <MainNavigates />
                     </div>
                     <div tw='inline-block ml-auto text-lg text-black'>
-                        {user ? <Avatar /> : <Link href='/login'>로그인</Link>}
+                        {user ? <Avatar /> : <Link href='/sign-in'>로그인</Link>}
                     </div>
                 </div>
                 <div tw='ml-auto block sm:hidden'>

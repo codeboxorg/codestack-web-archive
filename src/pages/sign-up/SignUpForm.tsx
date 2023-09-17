@@ -22,7 +22,7 @@ function SignUpForm() {
 
     const handleMutationSuccess = async () => {
         message.success(MESSAGE.USER_MESSAGE.success.signUp)
-        router.push('/login')
+        router.push('/sign-in')
     }
     const signUpMutation = useMutation(API.authService.signUp, {
         onSuccess: handleMutationSuccess,
@@ -50,8 +50,8 @@ function SignUpForm() {
                         />
                     )}
                 />
-                <div className='h-20 pt-3 w-full'>
-                    {errors.username && <p className='text-red-500 w-full text-xs'>{errors.username.message}</p>}
+                <div className='w-full h-20 pt-3'>
+                    {errors.username && <p className='w-full text-xs text-red-500'>{errors.username.message}</p>}
                 </div>
             </div>
             <div className='mb-6'>
@@ -71,8 +71,8 @@ function SignUpForm() {
                         />
                     )}
                 />
-                <div className='h-20 pt-3 w-full'>
-                    {errors.password && <p className='text-red-500 w-full text-xs'>{errors.password.message}</p>}
+                <div className='w-full h-20 pt-3'>
+                    {errors.password && <p className='w-full text-xs text-red-500'>{errors.password.message}</p>}
                 </div>
             </div>
             <div className='mb-6'>
@@ -92,9 +92,9 @@ function SignUpForm() {
                         />
                     )}
                 />
-                <div className='h-20 pt-3 w-full'>
+                <div className='w-full h-20 pt-3'>
                     {errors.passwordConfirm && (
-                        <p className='text-red-500 w-full text-xs'>{errors.passwordConfirm.message}</p>
+                        <p className='w-full text-xs text-red-500'>{errors.passwordConfirm.message}</p>
                     )}
                 </div>
             </div>
@@ -114,8 +114,8 @@ function SignUpForm() {
                         />
                     )}
                 />
-                <div className='h-20 pt-3 w-full'>
-                    {errors.email && <p className='text-red-500 w-full text-xs'>{errors.email.message}</p>}
+                <div className='w-full h-20 pt-3'>
+                    {errors.email && <p className='w-full text-xs text-red-500'>{errors.email.message}</p>}
                 </div>
             </div>
             <div className='mb-6'>
@@ -134,8 +134,8 @@ function SignUpForm() {
                         />
                     )}
                 />
-                <div className='h-20 pt-3 w-full'>
-                    {errors.nickname && <p className='text-red-500 w-full text-xs'>{errors.nickname.message}</p>}
+                <div className='w-full h-20 pt-3'>
+                    {errors.nickname && <p className='w-full text-xs text-red-500'>{errors.nickname.message}</p>}
                 </div>
             </div>
             <button

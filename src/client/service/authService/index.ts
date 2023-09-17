@@ -18,7 +18,7 @@ export const authServiceRemote = (): AuthService => ({
         }
     },
 
-    async login(formData) {
+    async signIn(formData) {
         try {
             const response = await nextAPI.post({
                 url: `api/auth/login`,

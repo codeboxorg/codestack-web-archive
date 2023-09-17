@@ -42,7 +42,7 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
     const pagePermissionInfo = {
         role: Component.permission?.role ?? 'member',
         loadingFallback: Component.permission?.loadingFallback ?? <PageLoading />,
-        redirect: Component.permission?.redirect ?? '/login',
+        redirect: Component.permission?.redirect ?? '/sign-in',
     }
 
     return (

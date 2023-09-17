@@ -1,9 +1,8 @@
-import { SignUpFormSchema } from '@constants/form'
-import { LoginForm } from '@pages/login/VLoginForm'
+import { SignUpFormSchema, SignInFormSchema } from '@constants/form'
 
 export interface AuthService {
     signUp(formData: SignUpFormSchema): Promise<unknown>
-    login(formData: LoginForm): Promise<LoginMember>
+    signIn(formData: SignInFormSchema): Promise<LoginMember>
     logout(): Promise<unknown>
     member(): Promise<LoginMember>
 }

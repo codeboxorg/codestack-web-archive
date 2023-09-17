@@ -1,11 +1,11 @@
-import { LoginForm } from '@pages/login/VLoginForm'
+import { SignInFormSchema } from '@constants/form'
 import { API, NextRequest } from '@server/index'
 import { AxiosError } from 'axios'
 import { setCookie } from 'cookies-next'
 
 import type { NextApiResponse } from 'next'
 
-export default async function handler(req: NextRequest<LoginForm>, res: NextApiResponse) {
+export default async function handler(req: NextRequest<SignInFormSchema>, res: NextApiResponse) {
     const formData = req.body
     try {
         const { accessToken, refreshToken, expiresIn } = await API.authServerToServer.login(formData)
