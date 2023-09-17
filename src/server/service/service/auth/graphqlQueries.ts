@@ -6,6 +6,7 @@ export const MY_INFO = gql`
             username
             nickname
             email
+            profileImage
         }
     }
 `

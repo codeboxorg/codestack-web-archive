@@ -8,7 +8,7 @@ import type { NextApiResponse } from 'next'
 export default async function handler(req: NextRequest<SignInFormSchema>, res: NextApiResponse) {
     const formData = req.body
     try {
-        const { accessToken, refreshToken, expiresIn } = await API.authServerToServer.login(formData)
+        const { accessToken, refreshToken, expiresIn } = await API.authServerToServer.signIn(formData)
         setCookie('server-key', refreshToken, {
             req,
             res,

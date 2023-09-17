@@ -1,17 +1,16 @@
 import { baseAPI, graphqlAPI } from '@client/core'
-import { LoginForm } from '@pages/login/VLoginForm'
 import { CookieValueTypes } from 'cookies-next'
-
+import { SignInFormSchema } from '@constants/form'
 import { MY_INFO } from './graphqlQueries'
 
 interface AuthService {
-    login(formData: LoginForm): Promise<TokenInfo>
+    signIn(formData: SignInFormSchema): Promise<TokenInfo>
     refreshTokenToAccessToken(refreshToken: CookieValueTypes): Promise<Pick<TokenInfo, 'accessToken'>>
     memberInfo(accessToken: string): Promise<Member>
 }
 
 export const authServerToServerRemote = (): AuthService => ({
-    async login(formData) {
+    async signIn(formData) {
         const response = await baseAPI.post({
             url: `/auth/login`,
             data: formData,

@@ -1,11 +1,7 @@
-import { API } from '@client/index'
 import BaseInput from '@components/core/BaseInput'
 import { SIGN_UP_FORM_SCHEMA, SignUpFormSchema } from '@constants/form'
-import { MESSAGE } from '@constants/message'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation } from '@tanstack/react-query'
-import { message } from 'antd'
-import { useRouter } from 'next/router'
+import { useSignUp } from '@hooks/auth/useSignUp'
 import { Controller, useForm } from 'react-hook-form'
 
 function SignUpForm() {
@@ -18,22 +14,14 @@ function SignUpForm() {
         mode: 'onChange',
     })
 
-    const router = useRouter()
+    const signUpMutation = useSignUp()
 
-    const handleMutationSuccess = async () => {
-        message.success(MESSAGE.USER_MESSAGE.success.signUp)
-        router.push('/sign-in')
-    }
-    const signUpMutation = useMutation(API.authService.signUp, {
-        onSuccess: handleMutationSuccess,
-    })
-
-    const onSubmit = handleSubmit((signUpFormData) => {
+    const handleSignUpFormSubmit = handleSubmit((signUpFormData) => {
         signUpMutation.mutate(signUpFormData)
     })
 
     return (
-        <form onSubmit={onSubmit} id='login'>
+        <form onSubmit={handleSignUpFormSubmit} id='login'>
             <div className='mb-6'>
                 <label htmlFor='username' className='block mb-5 text-sm font-medium text-gray-900'>
                     아이디

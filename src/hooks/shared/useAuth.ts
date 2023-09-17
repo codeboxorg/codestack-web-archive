@@ -40,7 +40,7 @@ export const useAuth = () => {
         [dispatch],
     )
 
-    const logoutMutation = useMutation(API.authService.logout, {
+    const logoutMutation = useMutation(API.authService.signOut, {
         onSuccess: () => {
             dispatch(setLoginUser(false))
             router.push('/')

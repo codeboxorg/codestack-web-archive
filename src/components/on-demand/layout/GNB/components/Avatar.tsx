@@ -32,8 +32,10 @@ function Avatar() {
     return (
         <Dropdown overlayStyle={tw`w-120`} menu={{ items: avatarActionList }} placement='bottomRight'>
             <Image
-                tw='rounded-full w-45 h-45 cursor-pointer shadow-md p-3'
+                tw='rounded-full cursor-pointer shadow-md p-3'
                 src={user.profileImage}
+                width={45}
+                height={45}
                 alt='ProfileImage of the author'
             />
         </Dropdown>

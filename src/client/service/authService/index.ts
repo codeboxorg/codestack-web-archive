@@ -21,7 +21,7 @@ export const authServiceRemote = (): AuthService => ({
     async signIn(formData) {
         try {
             const response = await nextAPI.post({
-                url: `api/auth/login`,
+                url: `api/auth/sign-in`,
                 data: formData,
             })
 
@@ -36,10 +36,10 @@ export const authServiceRemote = (): AuthService => ({
         }
     },
 
-    async logout() {
+    async signOut() {
         try {
             const response = await nextAPI.post({
-                url: `api/auth/logout`,
+                url: `api/auth/sign-out`,
             })
 
             return response.data
