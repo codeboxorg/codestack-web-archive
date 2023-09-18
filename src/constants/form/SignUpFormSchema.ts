@@ -29,5 +29,5 @@ const baseSchema = zod.object({
         }),
 })
 
-export const SIGN_UP_FORM_SCHEMA = zod.intersection(baseSchema, passwordSchema)
+export const SIGN_UP_FORM_SCHEMA = passwordSchema.and(baseSchema)
 export type SignUpFormSchema = zod.infer<typeof SIGN_UP_FORM_SCHEMA>
