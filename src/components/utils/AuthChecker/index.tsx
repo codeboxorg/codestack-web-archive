@@ -2,12 +2,12 @@ import { useAuth } from '@hooks/shared'
 import { useEffect } from 'react'
 
 function AuthChecker() {
-    const { user, initMember } = useAuth()
+    const { signInMember, initMember } = useAuth()
 
     useEffect(() => {
-        if (user) return
+        if (signInMember) return
         initMember()
-    }, [initMember, user])
+    }, [initMember, signInMember])
 
     return null
 }

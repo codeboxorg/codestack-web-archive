@@ -6,30 +6,30 @@ const AUTH_STORE_NAME = 'STORE/AUTH'
 /**
  * 유저의 상태 타입
  * 권한 확인중 -> null
- * 로그인 완료시 -> LoginMember
+ * 로그인 완료시 -> SignInMember
  * 비 로그인 or 권한 확인 실패시 -> false
  */
 export type AuthStore = {
-    loginUser: LoginMember | null | false
+    signInMember: SignInMember | null | false
 }
 
 const initialState: AuthStore = {
-    loginUser: null,
+    signInMember: null,
 }
 
 const authStore = createSlice({
     initialState,
     name: AUTH_STORE_NAME,
     reducers: {
-        setLoginUser: (state, action: PayloadAction<LoginMember | null | false>) => ({
+        setSignInMember: (state, action: PayloadAction<SignInMember | null | false>) => ({
             ...state,
-            loginUser: action.payload,
+            signInMember: action.payload,
         }),
     },
 })
 
-export const { setLoginUser } = authStore.actions
+export const { setSignInMember } = authStore.actions
 
-export const getLoginUser = (state: RootState) => state.auth.loginUser
+export const getSignInUser = (state: RootState) => state.auth.signInMember
 
 export default authStore

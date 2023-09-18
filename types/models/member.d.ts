@@ -5,4 +5,4 @@ interface Member {
     profileImage: string
 }
 
-type LoginMember = Member & Omit<TokenInfo, 'refreshToken'>
+type SignInMember = Member & Omit<TokenInfo, 'refreshToken'>

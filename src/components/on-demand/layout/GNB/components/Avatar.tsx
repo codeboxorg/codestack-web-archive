@@ -5,7 +5,7 @@ import Link from 'next/link'
 import tw from 'twin.macro'
 
 function Avatar() {
-    const { user, logout } = useAuth()
+    const { signInMember, signOut } = useAuth()
 
     const avatarActionList = [
         {
@@ -17,8 +17,8 @@ function Avatar() {
                 <button
                     tw='flex justify-start text-red-500'
                     type='button'
-                    onKeyDown={() => logout({ message: true })}
-                    onClick={() => logout({ message: true })}
+                    onKeyDown={() => signOut({ message: true })}
+                    onClick={() => signOut({ message: true })}
                 >
                     로그아웃
                 </button>
@@ -27,13 +27,13 @@ function Avatar() {
         },
     ]
 
-    if (!user) return null
+    if (!signInMember) return null
 
     return (
         <Dropdown overlayStyle={tw`w-120`} menu={{ items: avatarActionList }} placement='bottomRight'>
             <Image
                 tw='rounded-full cursor-pointer shadow-md p-3'
-                src={user.profileImage}
+                src={signInMember.profileImage}
                 width={45}
                 height={45}
                 alt='ProfileImage of the author'

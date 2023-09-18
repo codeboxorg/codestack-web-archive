@@ -12,20 +12,20 @@ interface Props {
 const AuthContainer = ({ children, pagePermissionInfo }: Props) => {
     const { push: routerPush } = useRouter()
 
-    const { user } = useAuth()
+    const { signInMember } = useAuth()
 
     const { redirect, loadingFallback } = pagePermissionInfo
 
     useEffect(() => {
-        if (user === null) return
+        if (signInMember === null) return
 
-        if (user === false) {
-            message.info(MESSAGE.AUTH_MESSAGE.info.requiredLogin)
+        if (signInMember === false) {
+            message.info(MESSAGE.AUTH_MESSAGE.info.requiredSignIn)
             routerPush(redirect)
         }
-    }, [user, redirect, routerPush])
+    }, [signInMember, redirect, routerPush])
 
-    if (user) {
+    if (signInMember) {
         return children
     }
 

@@ -20,7 +20,7 @@ function SignIn() {
 
     const handleSignInFail = () =>
         setError('password', {
-            message: MESSAGE.AUTH_MESSAGE.error.loginFail,
+            message: MESSAGE.AUTH_MESSAGE.error.signInFail,
         })
 
     const handleSignInFormSubmit = handleSubmit((formData) =>

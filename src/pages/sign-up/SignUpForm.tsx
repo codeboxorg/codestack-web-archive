@@ -21,7 +21,7 @@ function SignUpForm() {
     })
 
     return (
-        <form onSubmit={handleSignUpFormSubmit} id='login'>
+        <form onSubmit={handleSignUpFormSubmit} id='sign-in'>
             <div className='mb-6'>
                 <label htmlFor='username' className='block mb-5 text-sm font-medium text-gray-900'>
                     아이디

@@ -12,7 +12,7 @@ const gnbShadowStyle = css`
 `
 
 function GNB() {
-    const { user } = useAuth()
+    const { signInMember } = useAuth()
 
     return (
         <header tw='h-64' css={[tw`h-64`, gnbShadowStyle]}>
@@ -27,7 +27,7 @@ function GNB() {
                         <MainNavigates />
                     </div>
                     <div tw='inline-block ml-auto text-lg text-black'>
-                        {user ? <Avatar /> : <Link href='/sign-in'>로그인</Link>}
+                        {signInMember ? <Avatar /> : <Link href='/sign-in'>로그인</Link>}
                     </div>
                 </div>
                 <div tw='ml-auto block sm:hidden'>

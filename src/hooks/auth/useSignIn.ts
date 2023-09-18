@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 
 export const useSignIn = () => {
     const router = useRouter()
-    const { login } = useAuth()
+    const { signIn } = useAuth()
 
-    const handleMutationSuccess = (user: LoginMember) => {
-        login(user, { message: true })
+    const handleMutationSuccess = (member: SignInMember) => {
+        signIn(member, { message: true })
         router.push('/')
     }
 
