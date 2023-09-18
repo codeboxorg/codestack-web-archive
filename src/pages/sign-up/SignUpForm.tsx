@@ -1,7 +1,7 @@
 import BaseInput from '@components/core/BaseInput'
 import { SIGN_UP_FORM_SCHEMA, SignUpFormSchema } from '@constants/form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useSignUp } from '@hooks/auth/useSignUp'
+import { useSignUp } from '@hooks/auth'
 import { Controller, useForm } from 'react-hook-form'
 
 function SignUpForm() {
