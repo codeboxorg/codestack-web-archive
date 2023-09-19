@@ -1,6 +1,6 @@
 import PageLoading from '@components/core/PageLoading'
 import { DefaultPageLayout } from '@components/on-demand/layout'
-import { AntdContextRoot, AuthChecker, GA, SEO, SSRErrorHandleContainer } from '@components/utils'
+import { AntdContextRoot, GA, SEO, SSRErrorHandleContainer } from '@components/utils'
 import { ALLOWED_ONLY_TO_MEMBERS } from '@constants/route'
 import wrapper from '@store/configureStore'
 import { COLOR } from '@styles/color'
@@ -48,7 +48,6 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
         <QueryClientProvider client={queryClient}>
             <SEO />
             <GA.TrackingRoutePath />
-            <AuthChecker />
             <ConfigProvider
                 theme={{
                     token: {

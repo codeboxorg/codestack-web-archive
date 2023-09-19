@@ -1,6 +1,5 @@
 export { default as AntdAndTailwindConflictResolver } from './AntdAndTailwindConflictResolver'
 export { default as AntdContextRoot } from './AntdContextRoot'
-export { default as AuthChecker } from './AuthChecker'
 export { default as AuthContainer } from './AuthContainer'
 export { default as GA } from './GA'
 export { default as SEO } from './SEO'
