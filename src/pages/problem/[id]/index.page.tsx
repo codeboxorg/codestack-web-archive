@@ -4,9 +4,7 @@ import { withGssp } from '@server/index'
 import wrapper from '@store/configureStore'
 import { setProblem } from '@store/problem'
 import { NextSeo } from 'next-seo'
-
-import CodeSubmitButton from './CodeSubmitButton'
-import ProblemDetail from './ProblemDetail'
+import { CodeSubmitButton, ProblemDetail } from './components'
 
 function ProblemDetailPage() {
     const { id, title, languages } = useRootState((state) => state.problem.problem)
