@@ -1,73 +1,62 @@
-import { ComponentProps } from 'react'
-import { css } from 'twin.macro'
+import { useClipboard } from '@hooks/shared'
+import { ComponentProps, useCallback, useEffect, useRef } from 'react'
+import { problemContentStyle } from './ProblemContent.style'
 
-const problemBodyStyle = css`
-    h1 {
-        font-size: x-large;
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
+const isHTMLButtonElement = (targetElement: EventTarget | null): targetElement is HTMLButtonElement =>
+    targetElement instanceof HTMLButtonElement
 
-    p {
-        margin-bottom: 30px;
-    }
+const getClipboardTargetId = (event: MouseEvent) => {
+    if (!isHTMLButtonElement(event.target)) return ''
 
-    .sample-item {
-        width: 100%;
-        gap: 15px;
-        display: flex;
-        margin-top: 35px;
-        justify-content: space-between;
-        & > div {
-            width: 50%;
-        }
-    }
-
-    .sample-item-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        div {
-            font-size: large;
-            font-weight: 600;
-        }
-        button {
-            border: 1px solid rgb(190, 190, 190);
-            border-radius: 5px;
-            padding: 2px 10px;
-            font-size: small;
-        }
-    }
-
-    .sample-data {
-        margin-top: 10px;
-        border-radius: 5px;
-        background-color: rgb(244, 244, 244);
-        border: 1px solid rgb(190, 190, 190);
-        padding: 10px 7px;
-        text-align: justify;
-        white-space: pre;
-        overflow-x: scroll;
-    }
-
-    @media only screen and (max-width: 767px) {
-        .sample-item {
-            display: flex;
-            flex-wrap: wrap;
-            & > div {
-                width: 100%;
-            }
-        }
-    }
-`
+    return event.target.dataset.clipboardTarget ?? ''
+}
 
 interface Props extends ComponentProps<'section'> {
-    contentHtml: string
+    contentHTML: string
 }
 
-function ProblemBody({ contentHtml }: Props) {
-    // eslint-disable-next-line react/no-danger
-    return <section css={problemBodyStyle} dangerouslySetInnerHTML={{ __html: contentHtml }} />
+function ProblemContent({ contentHTML }: Props) {
+    const problemContentRef = useRef<HTMLDivElement>(null)
+    const { copy: clipboardCopy } = useClipboard()
+
+    const getClipboardTargetElement = (clipboardTargetId: string) => {
+        if (!problemContentRef.current) return
+
+        return problemContentRef.current.querySelector(clipboardTargetId)
+    }
+
+    const handleClipboardCopy = useCallback(
+        async (event: MouseEvent) => {
+            if (!isHTMLButtonElement(event.target)) return
+
+            const clipBoardTargetId = getClipboardTargetId(event)
+            const clipBoardTargetElement = getClipboardTargetElement(clipBoardTargetId)
+
+            if (!clipBoardTargetElement) return
+            await clipboardCopy(clipBoardTargetElement.innerHTML)
+        },
+        [clipboardCopy],
+    )
+
+    useEffect(() => {
+        if (!problemContentRef.current) return
+
+        const allCopyButtonList = Array.from(
+            problemContentRef.current.querySelectorAll<HTMLButtonElement>('.copy-button'),
+        )
+
+        allCopyButtonList.forEach((copyButton) => {
+            copyButton.addEventListener('click', handleClipboardCopy)
+        })
+
+        return () =>
+            allCopyButtonList.forEach((copyButton) => copyButton.removeEventListener('click', handleClipboardCopy))
+    }, [handleClipboardCopy])
+
+    return (
+        // eslint-disable-next-line react/no-danger
+        <section ref={problemContentRef} css={problemContentStyle} dangerouslySetInnerHTML={{ __html: contentHTML }} />
+    )
 }
 
-export default ProblemBody
+export default ProblemContent
