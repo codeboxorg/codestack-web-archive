@@ -1,3 +1,4 @@
-export { default as CodeSubmitButton } from './CodeSubmitButton'
+export { default as CodeSubmitButton } from './ProblemSubmitButton'
 export { default as ProblemContent } from './ProblemContent'
-export { default as ProblemDetail } from './ProblemDetail'
+export { default as ProblemInfoTable } from './ProblemInfoTable'
+export { default as ProblemSubmitButton } from './ProblemSubmitButton'

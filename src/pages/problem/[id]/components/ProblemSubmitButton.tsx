@@ -1,9 +1,10 @@
+import { useRootState } from '@hooks/shared'
 import { Button } from 'antd'
 import Link from 'next/link'
 
-type CodeSubmitButtonProps = Pick<Problem, 'id' | 'languages'>
+function ProblemSubmitButton() {
+    const { id, languages } = useRootState((state) => state.problem.problem)
 
-function CodeSubmitButton({ id, languages }: CodeSubmitButtonProps) {
     return (
         <Link
             href={{
@@ -17,4 +18,4 @@ function CodeSubmitButton({ id, languages }: CodeSubmitButtonProps) {
     )
 }
 
-export default CodeSubmitButton
+export default ProblemSubmitButton

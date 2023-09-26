@@ -1,5 +1,5 @@
-import { useClipboard } from '@hooks/shared'
-import { ComponentProps, useCallback, useEffect, useRef } from 'react'
+import { useClipboard, useRootState } from '@hooks/shared'
+import { useCallback, useEffect, useRef } from 'react'
 import { problemContentStyle } from './ProblemContent.style'
 
 const isHTMLButtonElement = (targetElement: EventTarget | null): targetElement is HTMLButtonElement =>
@@ -11,12 +11,11 @@ const getClipboardTargetId = (event: MouseEvent) => {
     return event.target.dataset.clipboardTarget ?? ''
 }
 
-interface Props extends ComponentProps<'section'> {
-    contentHTML: string
-}
+function ProblemContent() {
+    const { context } = useRootState((state) => state.problem.problem)
 
-function ProblemContent({ contentHTML }: Props) {
     const problemContentRef = useRef<HTMLDivElement>(null)
+
     const { copy: clipboardCopy } = useClipboard()
 
     const getClipboardTargetElement = (clipboardTargetId: string) => {
@@ -54,8 +53,12 @@ function ProblemContent({ contentHTML }: Props) {
     }, [handleClipboardCopy])
 
     return (
-        // eslint-disable-next-line react/no-danger
-        <section ref={problemContentRef} css={problemContentStyle} dangerouslySetInnerHTML={{ __html: contentHTML }} />
+        <section
+            ref={problemContentRef}
+            css={problemContentStyle}
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: context }}
+        />
     )
 }
 
