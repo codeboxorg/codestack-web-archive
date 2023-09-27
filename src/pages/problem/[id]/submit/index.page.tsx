@@ -7,13 +7,15 @@ import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import { LoadableButton } from '@components/core/common'
 
-import CodeEditor, { MonacoEditor } from './CodeEditor'
+import CodeEditor, { MonacoEditor } from '@components/on-demand/CodeEditor'
 
 export type Submit = {
     problemId: number
     languageId: number
     sourceCode: string
 }
+
+const EDITOR_LANGUAGE = ['', 'c', 'cpp', 'python', 'javascript', 'go'] as const
 
 function SubmitPage() {
     const { isReady: routerIsReady, query, push: routerPush } = useRouter()
@@ -32,10 +34,6 @@ function SubmitPage() {
     const [submitId, setSubmitId] = useState<number | null>(null)
 
     const editorRef = useRef<MonacoEditor>()
-
-    const handleEditorMount = (editor: MonacoEditor) => {
-        editorRef.current = editor
-    }
 
     const handelSubmitSuccess = ({ createSubmission: { id: currentSubmitId } }: SubmitResponse) => {
         setSubmitId(currentSubmitId)
@@ -71,7 +69,7 @@ function SubmitPage() {
                 />
             </div>
             <div className='mt-15'>
-                <CodeEditor languageId={selectedLanguageId} handleEditorMount={handleEditorMount} />
+                <CodeEditor ref={editorRef} language={EDITOR_LANGUAGE[selectedLanguageId]} />
             </div>
             <div className='mt-15 flex justify-end gap-15 items-center'>
                 <LoadableButton
