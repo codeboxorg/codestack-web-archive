@@ -1,4 +1,4 @@
-import LoadingDot from '../LoadingDot'
+import { LoadingDot } from '..'
 
 function PageLoading() {
     return (

@@ -1,4 +1,4 @@
-import BaseTable from '@components/core/BaseTable'
+import { BaseTable } from '@components/core/common'
 import { ColumnsType } from 'antd/es/table'
 
 type TagRow = Tag

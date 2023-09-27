@@ -1,7 +1,8 @@
-import PaginationBar from '@components/core/PaginationBar'
+import { PaginationBar } from '@components/core/common'
 import { useSubmissionList } from '@hooks/submission'
 import { NextSeo } from 'next-seo'
 import usePagination from 'react-use-pagination-hook'
+
 import SubmissionList from './SubmissionList'
 
 function SubmissionPage() {

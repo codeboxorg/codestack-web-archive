@@ -1,4 +1,4 @@
-import BaseInput from '@components/core/BaseInput'
+import { BaseInput } from '@components/core/common'
 import { SIGN_IN_FORM_SCHEMA, SignInFormSchema } from '@constants/form'
 import { MESSAGE } from '@constants/message'
 import { zodResolver } from '@hookform/resolvers/zod'

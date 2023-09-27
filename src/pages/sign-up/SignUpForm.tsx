@@ -1,4 +1,4 @@
-import BaseInput from '@components/core/BaseInput'
+import { BaseInput } from '@components/core/common'
 import { SIGN_UP_FORM_SCHEMA, SignUpFormSchema } from '@constants/form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useSignUp } from '@hooks/auth'

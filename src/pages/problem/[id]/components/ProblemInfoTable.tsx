@@ -1,4 +1,4 @@
-import BaseTable from '@components/core/BaseTable'
+import { BaseTable } from '@components/core/common'
 import { useRootState } from '@hooks/shared'
 import CommonConverter from '@utils/convert/CommonConverter'
 import 'twin.macro'

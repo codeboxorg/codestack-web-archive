@@ -1,7 +1,7 @@
-import PaginationBar from '@components/core/PaginationBar'
 import { useProblemList } from '@hooks/problem'
 import { NextSeo } from 'next-seo'
 import usePagination from 'react-use-pagination-hook'
+import { PaginationBar } from '@components/core/common'
 
 import ProblemList from './ProblemList'
 

@@ -1,11 +1,11 @@
 import { API } from '@client/index'
-import LoadableButton from '@components/core/LoadableButton'
 import { useMutation } from '@tanstack/react-query'
 import { Button, Select } from 'antd'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
+import { LoadableButton } from '@components/core/common'
 
 import CodeEditor, { MonacoEditor } from './CodeEditor'
 

@@ -1,5 +1,4 @@
-import PageLoading from '@components/core/PageLoading'
-import { DefaultPageLayout } from '@components/on-demand/layout'
+import { DefaultPageLayout } from '@components/on-demand'
 import { AntdContextRoot, GA, SEO, SSRErrorHandleContainer } from '@components/utils'
 import { ALLOWED_ONLY_TO_MEMBERS } from '@constants/route'
 import wrapper from '@store/configureStore'
@@ -9,6 +8,7 @@ import { ConfigProvider } from 'antd'
 import { NextComponentType, NextPageContext } from 'next'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
+import { PageLoading } from '@components/core/layout'
 
 import '../styles/globals.scss'
 
