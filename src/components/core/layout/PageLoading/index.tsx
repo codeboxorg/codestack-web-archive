@@ -1,4 +1,4 @@
-import { LoadingDot } from '..'
+import { LoadingDot } from '@components/core/common'
 
 function PageLoading() {
     return (

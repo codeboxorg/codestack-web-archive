@@ -1,7 +1,6 @@
+import { GNB } from '@components/core/layout'
 import { ReactNode } from 'react'
 import 'twin.macro'
-
-import GNB from '../GNB'
 
 interface Props {
     children: ReactNode
