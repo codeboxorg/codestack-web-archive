@@ -9,7 +9,7 @@ function ProblemSubmitButton() {
         <Link
             href={{
                 pathname: `[id]/submit`,
-                query: { id, languageJSON: JSON.stringify(languages) },
+                query: { id, languageListJSON: JSON.stringify(languages) },
             }}
             as={`${id}/submit`}
         >
