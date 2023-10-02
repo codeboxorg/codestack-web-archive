@@ -1,6 +1,6 @@
 import { Input, InputProps, InputRef } from 'antd'
 import React from 'react'
-import { Field, FieldError } from 'react-hook-form'
+import { FieldError } from 'react-hook-form'
 import 'twin.macro'
 
 interface Props extends Omit<InputProps, 'error'> {
