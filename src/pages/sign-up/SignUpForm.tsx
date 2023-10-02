@@ -33,7 +33,7 @@ function SignUpForm() {
                         <BaseInput
                             id='username'
                             placeholder='아이디를 입력해주세요.'
-                            status={errors.username && 'error'}
+                            error={errors.username}
                             {...field}
                         />
                     )}
@@ -50,7 +50,7 @@ function SignUpForm() {
                             id='password'
                             type='password'
                             placeholder='비밀번호를 입력해주세요.'
-                            status={errors.password && 'error'}
+                            error={errors.password}
                             {...field}
                         />
                     )}
@@ -67,7 +67,7 @@ function SignUpForm() {
                             id='passwordConfirm'
                             type='password'
                             placeholder='비밀번호를 한번 더 입력해주세요.'
-                            status={errors.passwordConfirm && 'error'}
+                            error={errors.passwordConfirm}
                             {...field}
                         />
                     )}
@@ -80,12 +80,7 @@ function SignUpForm() {
                     control={control}
                     name='email'
                     render={({ field }) => (
-                        <BaseInput
-                            id='email'
-                            placeholder='이메일을 입력해주세요.'
-                            status={errors.email && 'error'}
-                            {...field}
-                        />
+                        <BaseInput id='email' placeholder='이메일을 입력해주세요.' error={errors.email} {...field} />
                     )}
                 />
                 <FieldErrorMessage error={errors.email}>{errors?.email?.message}</FieldErrorMessage>
@@ -99,7 +94,7 @@ function SignUpForm() {
                         <BaseInput
                             id='nickname'
                             placeholder='닉네임을 입력해주세요.'
-                            status={errors.nickname && 'error'}
+                            error={errors.nickname}
                             {...field}
                         />
                     )}

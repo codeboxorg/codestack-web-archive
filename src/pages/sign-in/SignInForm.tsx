@@ -39,12 +39,7 @@ function SignIn() {
                     control={control}
                     name='email'
                     render={({ field }) => (
-                        <BaseInput
-                            id='email'
-                            placeholder='이메일을 입력해주세요.'
-                            status={errors.email && 'error'}
-                            {...field}
-                        />
+                        <BaseInput id='email' placeholder='이메일을 입력해주세요.' error={errors.email} {...field} />
                     )}
                 />
             </div>
@@ -58,7 +53,7 @@ function SignIn() {
                             id='password'
                             type='password'
                             placeholder='비밀번호를 입력해주세요.'
-                            status={errors.password && 'error'}
+                            error={errors.password}
                             {...field}
                         />
                     )}
