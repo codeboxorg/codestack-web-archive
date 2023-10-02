@@ -26,14 +26,13 @@ export const problemServiceRemote = (): ProblemService => ({
             throwRemoteError(error)
         }
     },
-    problemSubmit: async (submit) => {
+    problemSubmit: async (id, submitData) => {
         try {
             const response = await graphqlAPI.request({
                 document: PROBLEM_SUBMIT,
                 params: {
-                    problemId: submit.problemId,
-                    languageId: submit.languageId,
-                    sourceCode: submit.sourceCode,
+                    problemId: id,
+                    ...submitData,
                 },
             })
             return response

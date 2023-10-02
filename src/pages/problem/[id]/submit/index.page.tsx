@@ -1,8 +1,6 @@
-import { API } from '@client/index'
 import { LoadableButton } from '@components/core/common'
-import CodeEditor, { MonacoEditor } from '@components/on-demand/CodeEditor'
-import { useProblemInfoForSubmit } from '@hooks/problem'
-import { useMutation } from '@tanstack/react-query'
+import { CodeEditor, MonacoEditor } from '@components/on-demand'
+import { useProblemInfoForSubmit, useProblemSubmit } from '@hooks/problem'
 import { Button, Select } from 'antd'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
@@ -11,6 +9,8 @@ import { useRef, useState } from 'react'
 const EDITOR_LANGUAGE = ['', 'c', 'cpp', 'python', 'javascript', 'go'] as const
 
 function SubmitPage() {
+    const editorRef = useRef<MonacoEditor>()
+
     const { problemId, languageList } = useProblemInfoForSubmit()
 
     const languageSelectOptionList = languageList.map((language) => ({
@@ -20,23 +20,10 @@ function SubmitPage() {
 
     const [selectedLanguageId, setSelectedLanguageId] = useState(() => languageSelectOptionList[0]?.value)
 
-    const [submitId, setSubmitId] = useState<number | null>(null)
-
-    const editorRef = useRef<MonacoEditor>()
-
-    const handelSubmitSuccess = ({ createSubmission: { id: currentSubmitId } }: SubmitResponse) => {
-        setSubmitId(currentSubmitId)
-    }
-
-    const { mutate: submitMutate } = useMutation(['submission'], API.problemService.problemSubmit, {
-        onSuccess: handelSubmitSuccess,
-    })
+    const { submitId, mutate: submitMutate } = useProblemSubmit(problemId)
 
     const handleCodeSubmit = () => {
-        setSubmitId(null)
-
         submitMutate({
-            problemId: Number(problemId),
             languageId: selectedLanguageId,
             sourceCode: editorRef.current?.getValue() ?? '',
         })

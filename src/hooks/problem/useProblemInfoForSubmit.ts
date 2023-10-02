@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router'
 import { isString } from 'lodash-es'
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 export const useProblemInfoForSubmit = () => {
@@ -16,7 +16,7 @@ export const useProblemInfoForSubmit = () => {
     }, [languageListJSON, id, routerIsReady, routerPush])
 
     return {
-        problemId: id,
+        problemId: Number(id),
         languageList,
     }
 }

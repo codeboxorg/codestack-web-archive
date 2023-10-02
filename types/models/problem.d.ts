@@ -11,13 +11,12 @@ interface Problem {
 
 type Problems = Record<'problems', Pagination<Problem>>
 
-interface SubmitRequest {
-    problemId: number
+interface ProblemSubmitRequest {
     languageId: number
     sourceCode: string
 }
 
-interface SubmitResponse {
+interface ProblemSubmitResponse {
     createSubmission: {
         id: number
         source_code: string
