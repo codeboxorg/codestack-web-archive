@@ -1,8 +1,10 @@
 import { BaseInput } from '@components/core/common'
+import { FieldErrorMessage, FieldLabel } from '@components/core/form'
 import { SIGN_UP_FORM_SCHEMA, SignUpFormSchema } from '@constants/form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useSignUp } from '@hooks/auth'
 import { Controller, useForm } from 'react-hook-form'
+import 'twin.macro'
 
 function SignUpForm() {
     const {
@@ -23,9 +25,7 @@ function SignUpForm() {
     return (
         <form onSubmit={handleSignUpFormSubmit} id='sign-in'>
             <div className='mb-6'>
-                <label htmlFor='username' className='block mb-5 text-sm font-medium text-gray-900'>
-                    아이디
-                </label>
+                <FieldLabel htmlFor='username'>아이디</FieldLabel>
                 <Controller
                     control={control}
                     name='username'
@@ -38,14 +38,10 @@ function SignUpForm() {
                         />
                     )}
                 />
-                <div className='w-full h-20 pt-3'>
-                    {errors.username && <p className='w-full text-xs text-red-500'>{errors.username.message}</p>}
-                </div>
+                <FieldErrorMessage error={errors.username}>{errors?.username?.message}</FieldErrorMessage>
             </div>
             <div className='mb-6'>
-                <label htmlFor='password' className='block mb-5 text-sm font-medium text-gray-900'>
-                    비밀번호
-                </label>
+                <FieldLabel htmlFor='password'>비밀번호</FieldLabel>
                 <Controller
                     control={control}
                     name='password'
@@ -59,14 +55,10 @@ function SignUpForm() {
                         />
                     )}
                 />
-                <div className='w-full h-20 pt-3'>
-                    {errors.password && <p className='w-full text-xs text-red-500'>{errors.password.message}</p>}
-                </div>
+                <FieldErrorMessage error={errors.password}>{errors?.password?.message}</FieldErrorMessage>
             </div>
             <div className='mb-6'>
-                <label htmlFor='passwordConfirm' className='block mb-5 text-sm font-medium text-gray-900'>
-                    비밀번호 확인
-                </label>
+                <FieldLabel htmlFor='passwordConfirm'>비밀번호 확인</FieldLabel>
                 <Controller
                     control={control}
                     name='passwordConfirm'
@@ -80,16 +72,10 @@ function SignUpForm() {
                         />
                     )}
                 />
-                <div className='w-full h-20 pt-3'>
-                    {errors.passwordConfirm && (
-                        <p className='w-full text-xs text-red-500'>{errors.passwordConfirm.message}</p>
-                    )}
-                </div>
+                <FieldErrorMessage error={errors.passwordConfirm}>{errors?.passwordConfirm?.message}</FieldErrorMessage>
             </div>
             <div className='mb-6'>
-                <label htmlFor='email' className='block mb-5 text-sm font-medium text-gray-900'>
-                    이메일
-                </label>
+                <FieldLabel htmlFor='email'>이메일</FieldLabel>
                 <Controller
                     control={control}
                     name='email'
@@ -102,14 +88,10 @@ function SignUpForm() {
                         />
                     )}
                 />
-                <div className='w-full h-20 pt-3'>
-                    {errors.email && <p className='w-full text-xs text-red-500'>{errors.email.message}</p>}
-                </div>
+                <FieldErrorMessage error={errors.email}>{errors?.email?.message}</FieldErrorMessage>
             </div>
             <div className='mb-6'>
-                <label htmlFor='nickname' className='block mb-5 text-sm font-medium text-gray-900'>
-                    닉네임
-                </label>
+                <FieldLabel htmlFor='nickname'>닉네임</FieldLabel>
                 <Controller
                     control={control}
                     name='nickname'
@@ -122,13 +104,11 @@ function SignUpForm() {
                         />
                     )}
                 />
-                <div className='w-full h-20 pt-3'>
-                    {errors.nickname && <p className='w-full text-xs text-red-500'>{errors.nickname.message}</p>}
-                </div>
+                <FieldErrorMessage error={errors.nickname}>{errors?.nickname?.message}</FieldErrorMessage>
             </div>
             <button
                 type='submit'
-                className='w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm m-auto block px-5 py-2.5 text-center'
+                className='w-full mt-20 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm m-auto block px-5 py-2.5 text-center'
             >
                 회원가입
             </button>
