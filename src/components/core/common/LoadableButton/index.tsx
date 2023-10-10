@@ -1,12 +1,15 @@
 import { useIsMutating } from '@tanstack/react-query'
 import { Button, ButtonProps } from 'antd'
 
-type LoadableButtonProps = ButtonProps & { mutationKey: string }
+interface LoadableButtonProps extends ButtonProps {
+    mutationKey: string
+}
 
 function LoadableButton({ children, mutationKey, ...props }: LoadableButtonProps) {
-    const isMutating = Boolean(useIsMutating({ mutationKey: [mutationKey] }))
+    const isLoading = Boolean(useIsMutating({ mutationKey: [mutationKey] }))
+
     return (
-        <Button loading={isMutating} {...props}>
+        <Button loading={isLoading} {...props}>
             {children}
         </Button>
     )
