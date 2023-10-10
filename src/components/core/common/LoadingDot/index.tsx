@@ -1,11 +1,9 @@
-import classNames from 'classnames/bind'
-import style from './index.module.scss'
-
-const cx = classNames.bind(style)
+import { loadingDotStyle } from './index.style'
+import 'twin.macro'
 
 function LoadingDot() {
     return (
-        <div className={cx('loading', 'all:bg-blue-600')}>
+        <div css={loadingDotStyle} tw='all:bg-blue-600'>
             <div />
             <div />
             <div />
