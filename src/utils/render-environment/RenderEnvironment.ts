@@ -1,4 +1,4 @@
-const renderEnv = {
+export const RenderEnvironment = {
     get isCSR() {
         return typeof window !== 'undefined'
     },
@@ -6,5 +6,3 @@ const renderEnv = {
         return typeof window === 'undefined'
     },
 }
-
-export default renderEnv

@@ -1,6 +1,6 @@
 import { BaseTable } from '@components/core/common'
 import { useRootState } from '@hooks/shared'
-import CommonConverter from '@utils/convert/CommonConverter'
+import { Converter } from '@utils/convert'
 import 'twin.macro'
 
 const tableColumnList = [
@@ -36,8 +36,8 @@ function ProblemInfoTable() {
 
     const tableData = {
         ...problemDetail,
-        maxMemory: `${CommonConverter.convertByte(problemDetail.maxMemory, 'MB')} MB`,
-        maxCpuTime: `${CommonConverter.convertMillisecond(problemDetail.maxCpuTime, 'SEC')} 초`,
+        maxMemory: `${Converter.convertByte(problemDetail.maxMemory, 'MB')} MB`,
+        maxCpuTime: `${Converter.convertMillisecond(problemDetail.maxCpuTime, 'SEC')} 초`,
         possibleLanguage: problemDetail.languages.map(({ name }) => name).join(', ') ?? '',
     }
 

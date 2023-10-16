@@ -1,6 +1,6 @@
 import { EVENT_BUS_KEY } from '@constants/event-bus'
-import eventBus from '@utils/eventBus'
-import renderEnv from '@utils/renderEnv'
+import { EventBus } from '@utils/event-bus'
+import { RenderEnvironment } from '@utils/render-environment'
 import axios from 'axios'
 
 const createAxiosInstance = (baseURL: string) => {
@@ -9,9 +9,9 @@ const createAxiosInstance = (baseURL: string) => {
     instance.interceptors.response.use(
         (res) => res,
         (error) => {
-            if (renderEnv.isCSR) {
+            if (RenderEnvironment.isCSR) {
                 if (error.response?.status === 401) {
-                    eventBus.dispatch(EVENT_BUS_KEY.UNAUTHORIZED_ERROR)
+                    EventBus.dispatch(EVENT_BUS_KEY.UNAUTHORIZED_ERROR)
                     return null
                 }
             }

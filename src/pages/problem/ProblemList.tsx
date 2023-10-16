@@ -1,5 +1,5 @@
 import { BaseTable } from '@components/core/common'
-import { getPercentage } from '@utils/percentage'
+import { Percentage } from '@utils/percentage'
 import { ColumnsType } from 'antd/es/table'
 import { useRouter } from 'next/router'
 
@@ -46,7 +46,7 @@ function ProblemList({ list = [] }: Props) {
 
     const tableData = list.map((problem) => ({
         ...problem,
-        acceptPer: `${getPercentage(problem.submission, problem.accepted).toFixed(2)}%`,
+        acceptPer: `${Percentage.comparePercentage(problem.submission, problem.accepted).toFixed(2)}%`,
     }))
 
     const handleRowAction = (row: ProblemRow) => ({
