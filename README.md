@@ -16,21 +16,14 @@
 <br/>
 <br/>
 
-|                        백엔드                         |               백엔드, 프론트엔드, 채점서버                |                        프론트엔드                        |                            IOS                             |
-| :---------------------------------------------------: | :-------------------------------------------------------: | :------------------------------------------------------: | :--------------------------------------------------------: |
-| <img src="https://github.com/jeyog.png" width="300"/> | <img src="https://github.com/rrrmaster.png" width="300"/> | <img src="https://github.com/je0ngyun.png" width="300"/> | <img src="https://github.com/hyeonghwan.png" width="300"/> |
-|           [jeyog](https://github.com/jeyog)           |         [rrrmaster](https://github.com/rrrmaster)         |         [je0ngyun](https://github.com/je0ngyun)          |        [hyeonghwan](https://github.com/hyeonghwan)         |
+|                         백엔드                          |               백엔드, 프론트엔드, 채점서버                |                        프론트엔드                        |                            IOS                             |
+| :-----------------------------------------------------: | :-------------------------------------------------------: | :------------------------------------------------------: | :--------------------------------------------------------: |
+| <img src="https://github.com/verduck.png" width="300"/> | <img src="https://github.com/rrrmaster.png" width="300"/> | <img src="https://github.com/je0ngyun.png" width="300"/> | <img src="https://github.com/hyeonghwan.png" width="300"/> |
+|          [verduck](https://github.com/verduck)          |         [rrrmaster](https://github.com/rrrmaster)         |         [je0ngyun](https://github.com/je0ngyun)          |        [hyeonghwan](https://github.com/hyeonghwan)         |
 
 <br/>
 
 ## 프로젝트 소개
 
-> CodeStack은 백준, 프로그래머스, leetcode를 벤치마킹하여 새로운 코딩테스트 연습 플랫폼을 서비스하는 것을 목표로 하고있습니다.
-
-<br/>
-
-## 개발 현황
-
--   현재 MVP 개발을 하고 있으며 최소한의 기능을 우선적으로 구현해보는 과정에 있습니다.
--   VAC 패턴을 적용중이며 실제 UI 컴포넌트가 만들어지지 않은 컴포넌트는 VAC Debugger를 적용해놓았습니다.
--   회원가입, 로그인, 권한유지, 소셜로그인 기능이 구현되어있습니다.
+-   Codebox는 백준, 프로그래머스, leetcode를 벤치마킹하여 새로운 코딩 테스트 연습 플랫폼을 서비스하는 것을 목표로 하고 있습니다.
+-   사용자가 목표치를 설정하고 각 사용자의 목표에 부합하는 문제를 알맞게 추천해 주는 것을 프로젝트 최종 목표로 바라보고 있습니다.
