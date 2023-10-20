@@ -31,6 +31,6 @@
         "incremental": true,
         "jsxImportSource": "@emotion/react"
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/hooks/shared/useClipboard.ts"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules"]
 }
