@@ -7,7 +7,7 @@ export const usePaginationParams = (): [number, typeof setPage] => {
     const searchParams = useSearchParams()
     const router = useRouter()
 
-    const currentPage = Number(searchParams.get('page')) || 0
+    const currentPage = Number(searchParams.get('page')) || 1
 
     const setPage = useCallback(
         (value: number) => {
