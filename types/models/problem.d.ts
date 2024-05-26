@@ -1,7 +1,10 @@
 interface Problem {
     id: number
-    title: string
-    context: string
+    name: string
+    description: {
+        title: string
+        content: string
+    }[]
     maxCpuTime: number
     maxMemory: number
     submission: number

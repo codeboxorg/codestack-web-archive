@@ -25,20 +25,15 @@ function SignUpForm() {
     return (
         <form onSubmit={handleSignUpFormSubmit} id='sign-in'>
             <div className='mb-6'>
-                <FieldLabel htmlFor='username'>아이디</FieldLabel>
+                <FieldLabel htmlFor='id'>아이디</FieldLabel>
                 <Controller
                     control={control}
-                    name='username'
+                    name='id'
                     render={({ field }) => (
-                        <BaseInput
-                            id='username'
-                            placeholder='아이디를 입력해주세요.'
-                            error={errors.username}
-                            {...field}
-                        />
+                        <BaseInput id='id' placeholder='아이디를 입력해주세요.' error={errors.id} {...field} />
                     )}
                 />
-                <FieldErrorMessage error={errors.username}>{errors?.username?.message}</FieldErrorMessage>
+                <FieldErrorMessage error={errors.id}>{errors?.id?.message}</FieldErrorMessage>
             </div>
             <div className='mb-6'>
                 <FieldLabel htmlFor='password'>비밀번호</FieldLabel>

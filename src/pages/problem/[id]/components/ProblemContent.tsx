@@ -1,6 +1,5 @@
 import { useClipboard, useRootState } from '@hooks/shared'
 import { useCallback, useEffect, useRef } from 'react'
-import { problemContentStyle } from './ProblemContent.style'
 
 const isHTMLButtonElement = (targetElement: EventTarget | null): targetElement is HTMLButtonElement =>
     targetElement instanceof HTMLButtonElement
@@ -12,7 +11,7 @@ const getClipboardTargetId = (event: MouseEvent) => {
 }
 
 function ProblemContent() {
-    const { context } = useRootState((state) => state.problem.problem)
+    const { description } = useRootState((state) => state.problem.problem)
 
     const problemContentRef = useRef<HTMLDivElement>(null)
 
@@ -53,12 +52,14 @@ function ProblemContent() {
     }, [handleClipboardCopy])
 
     return (
-        <section
-            ref={problemContentRef}
-            css={problemContentStyle}
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: context }}
-        />
+        <>
+            {description.map((e) => (
+                <div>
+                    <h2 className='text-2xl'>{e.title}</h2>
+                    <div>{e.content}</div>
+                </div>
+            ))}
+        </>
     )
 }
 

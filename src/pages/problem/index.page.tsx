@@ -12,8 +12,8 @@ function ProblemPage() {
     const currentServerPageIndex = currentPage - 1
 
     const { data: problemListPagination } = useProblemList(currentServerPageIndex, {
-        onSuccess({ pageInfo: { totalPage } }) {
-            setTotalPage(totalPage)
+        onSuccess({ totalElements }) {
+            setTotalPage(totalElements)
         },
     })
 

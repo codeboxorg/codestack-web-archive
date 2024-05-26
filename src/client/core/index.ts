@@ -10,7 +10,7 @@ const nextAPI = new RestAPI(createAxiosInstance(`/`))
  */
 const baseAPI = RenderEnvironment.isSSR
     ? new RestAPI(createAxiosInstance(`${process.env.NEXT_SERVER_BASE_API_URL}`))
-    : new RestAPI(createAxiosInstance(`${process.env.NEXT_PUBLIC_BASE_API_URL}`))
+    : new RestAPI(createAxiosInstance(`${process.env.NEXT_SERVER_BASE_API_URL}`))
 
 const graphqlAPI = RenderEnvironment.isSSR
     ? new GraphQLAPI(createGraphQLInstance(`${process.env.NEXT_SERVER_GRAPHQL_BASE_API_URL}`))

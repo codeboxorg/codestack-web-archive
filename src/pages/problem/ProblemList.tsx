@@ -21,8 +21,8 @@ const tableColumns: ProblemColumns = [
     },
     {
         title: '문제 제목',
-        dataIndex: 'title',
-        key: 'title',
+        dataIndex: 'name',
+        key: 'name',
     },
     {
         title: '제출',

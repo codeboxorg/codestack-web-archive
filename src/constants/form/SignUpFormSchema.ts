@@ -16,7 +16,7 @@ const passwordSchema = zod
     })
 
 const baseSchema = zod.object({
-    username: zod
+    id: zod
         .string({ required_error: '아이디를 입력해주세요.' })
         .refine((value) => /^[a-z][a-z0-9]{5,15}$/.test(value), {
             message: '최소 6자에서 최대 16자 사이이며 첫 글자는 영어여야 합니다.',
