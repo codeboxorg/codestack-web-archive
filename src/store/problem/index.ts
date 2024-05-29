@@ -9,8 +9,8 @@ export type ProblemStore = {
 const initialState: ProblemStore = {
     problem: {
         id: -1,
-        title: '',
-        context: '',
+        name: '',
+        description: [],
         maxCpuTime: 0,
         maxMemory: 0,
         languages: [],

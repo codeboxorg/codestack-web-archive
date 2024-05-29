@@ -1,6 +1,5 @@
-import { baseAPI, graphqlAPI } from '@client/core'
+import { baseAPI } from '@client/core'
 import { throwRemoteError } from '@client/error'
-import { PROBLEM_SUBMIT } from './graphqlQueries'
 import { ProblemService } from './problemService'
 
 export const problemServiceRemote = (): ProblemService => ({
@@ -22,14 +21,11 @@ export const problemServiceRemote = (): ProblemService => ({
     },
     problemSubmit: async (id, submitData) => {
         try {
-            const response = await graphqlAPI.request({
-                document: PROBLEM_SUBMIT,
-                params: {
-                    problemId: id,
-                    ...submitData,
-                },
+            const response = await baseAPI.post({
+                url: `/problem/${id}/submit`,
+                data: { source_code: submitData.sourceCode, language_id: submitData.languageId },
             })
-            return response
+            return response.data
         } catch (error) {
             throwRemoteError(error)
         }

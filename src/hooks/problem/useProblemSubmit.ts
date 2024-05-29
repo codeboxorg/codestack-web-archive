@@ -10,8 +10,8 @@ export const useProblemSubmit = (problemId: number) => {
         setSubmitId(undefined)
     }
 
-    const handelSubmitSuccess = ({ createSubmission: { id: currentSubmitId } }: ProblemSubmitResponse) => {
-        setSubmitId(currentSubmitId)
+    const handelSubmitSuccess = (a: ProblemSubmitResponse) => {
+        setSubmitId(a.id)
     }
 
     const mutation = useMutation(

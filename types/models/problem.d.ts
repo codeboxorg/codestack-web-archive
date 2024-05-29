@@ -20,8 +20,6 @@ interface ProblemSubmitRequest {
 }
 
 interface ProblemSubmitResponse {
-    createSubmission: {
-        id: number
-        source_code: string
-    }
+    id: number
+    source_code: string
 }
