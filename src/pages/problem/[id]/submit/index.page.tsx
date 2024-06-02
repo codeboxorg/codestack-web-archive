@@ -6,7 +6,7 @@ import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 
-const EDITOR_LANGUAGE = ['', 'c', 'cpp', 'python', 'javascript', 'go'] as const
+const EDITOR_LANGUAGE = ['c', 'cpp', 'python', 'javascript', 'go'] as const
 
 function SubmitPage() {
     const editorRef = useRef<MonacoEditor>()
@@ -42,7 +42,7 @@ function SubmitPage() {
                 />
             </div>
             <div className='mt-15'>
-                <CodeEditor ref={editorRef} language={EDITOR_LANGUAGE[selectedLanguageId]} />
+                <CodeEditor readonly={false} ref={editorRef} language={EDITOR_LANGUAGE[selectedLanguageId]} />
             </div>
             <div className='flex items-center justify-end mt-15 gap-15'>
                 <LoadableButton

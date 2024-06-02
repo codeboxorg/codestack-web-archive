@@ -1,4 +1,4 @@
-import { baseAPI, graphqlAPI, nextAPI } from '@client/core'
+import { baseAPI, nextAPI } from '@client/core'
 import { throwRemoteError } from '@client/error'
 
 import { API } from '@client/index'
@@ -26,7 +26,6 @@ export const authServiceRemote = (): AuthService => ({
             })
 
             baseAPI.setDefaultAuthorizationHeader(response.data.accessToken)
-            graphqlAPI.setDefaultAuthorizationHeader(response.data.accessToken)
 
             const user = await API.memberService.memberInfo()
 
@@ -51,11 +50,10 @@ export const authServiceRemote = (): AuthService => ({
     async member() {
         try {
             const response = await nextAPI.post({
-                url: `api/auth/member`,
+                url: `api/auth/me`,
             })
 
             baseAPI.setDefaultAuthorizationHeader(response.data.accessToken)
-            graphqlAPI.setDefaultAuthorizationHeader(response.data.accessToken)
 
             return response.data
         } catch (error) {

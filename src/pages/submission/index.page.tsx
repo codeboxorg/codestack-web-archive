@@ -12,8 +12,8 @@ function SubmissionPage() {
     const currentServerPageIndex = currentPage - 1
 
     const { data: submissionListPagination } = useSubmissionList(currentServerPageIndex, {
-        onSuccess({ pageInfo: { totalPage } }) {
-            setTotalPage(totalPage)
+        onSuccess({ totalElements }) {
+            setTotalPage(totalElements)
         },
     })
 

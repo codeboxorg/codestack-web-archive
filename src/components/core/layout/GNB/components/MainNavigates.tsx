@@ -2,7 +2,16 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { NAVIGATE_ITEM_LIST } from '../constants/navigateItemList'
+const NAVIGATE_ITEM_LIST = [
+    {
+        href: '/problem',
+        name: '문제',
+    },
+    {
+        href: '/submission',
+        name: '제출근황',
+    },
+]
 
 function MainNavigates() {
     const { pathname } = useRouter()

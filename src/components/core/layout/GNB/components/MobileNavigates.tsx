@@ -4,8 +4,16 @@ import { useState } from 'react'
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import tw from 'twin.macro'
 
-import { NAVIGATE_ITEM_LIST } from '../constants/navigateItemList'
-
+const NAVIGATE_ITEM_LIST = [
+    {
+        href: '/problem',
+        name: '문제',
+    },
+    {
+        href: '/submission',
+        name: '제출근황',
+    },
+]
 function MobileNavigates() {
     const [isOpenDrawer, setIsOpenDrawer] = useState(false)
 

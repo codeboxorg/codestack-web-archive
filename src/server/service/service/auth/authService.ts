@@ -1,7 +1,6 @@
-import { baseAPI, graphqlAPI } from '@client/core'
+import { baseAPI } from '@client/core'
 import { CookieValueTypes } from 'cookies-next'
 import { SignInFormSchema } from '@constants/form'
-import { MY_INFO } from './graphqlQueries'
 
 interface AuthService {
     signIn(formData: SignInFormSchema): Promise<TokenInfo>
@@ -27,10 +26,10 @@ export const authServerToServerRemote = (): AuthService => ({
     },
 
     async memberInfo(accessToken) {
-        const response = await graphqlAPI.request({
-            document: MY_INFO,
-            requestHeaders: { Authorization: `Bearer ${accessToken}` },
+        const response = await baseAPI.get({
+            url: '',
+            headers: { Authorization: `Bearer ${accessToken}` },
         })
-        return response.getMe
+        return response.data
     },
 })

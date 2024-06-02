@@ -6,9 +6,9 @@ function ProblemContent() {
     return (
         <>
             {description.map((e, i) => (
-                <div key={e.title}>
+                <div key={e.title} className='mb-30'>
                     <h2 className='text-2xl'>{e.title}</h2>
-                    <div>{e.content}</div>
+                    <pre>{e.content}</pre>
                 </div>
             ))}
         </>
