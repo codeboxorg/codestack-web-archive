@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from 'src/store/configureStore'
 
 const AUTH_STORE_NAME = 'STORE/AUTH'
 
@@ -29,7 +28,5 @@ const authStore = createSlice({
 })
 
 export const { setSignInMember } = authStore.actions
-
-export const getSignInUser = (state: RootState) => state.auth.signInMember
 
 export default authStore

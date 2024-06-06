@@ -9,6 +9,7 @@ interface Submission {
     member: Pick<Member, 'id'>
     language: Pick<Language, 'id' | 'name'>
     status: SubmissionStatus
+    testcases: any[]
 }
 
 type Submissions = Record<'submissions', Pagination<Submission>>

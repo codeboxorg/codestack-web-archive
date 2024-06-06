@@ -34,9 +34,12 @@ export const useAuth = () => {
 
     const signIn = useCallback(
         (member: SignInMember, option: SignInMethodOption = signInDefaultOption) => {
-            dispatch(setSignInMember(member))
-
-            if (option.message) messageCall.success(MESSAGE.AUTH_MESSAGE.success.signIn)
+            if (member != null) {
+                dispatch(setSignInMember(member))
+                if (option.message) messageCall.success(MESSAGE.AUTH_MESSAGE.success.signIn)
+            } else {
+                dispatch(setSignInMember(false))
+            }
         },
         [dispatch],
     )
@@ -52,7 +55,6 @@ export const useAuth = () => {
     const signOut = useCallback(
         (option: SignOutMethodOption = signOutDefaultOption) => {
             logoutMutation.mutate()
-
             if (option.message) messageCall.success(MESSAGE.AUTH_MESSAGE.success.signOut)
         },
         [logoutMutation],

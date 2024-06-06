@@ -2,6 +2,7 @@ import { baseAPI, nextAPI } from '@client/core'
 import { throwRemoteError } from '@client/error'
 
 import { API } from '@client/index'
+import axios from 'axios'
 import { AuthService } from './authService'
 
 export const authServiceRemote = (): AuthService => ({
@@ -49,14 +50,15 @@ export const authServiceRemote = (): AuthService => ({
 
     async member() {
         try {
-            const response = await nextAPI.post({
-                url: `api/auth/me`,
+            const response = await baseAPI.post({
+                url: `/auth/me`,
             })
-
-            baseAPI.setDefaultAuthorizationHeader(response.data.accessToken)
 
             return response.data
         } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return null
+            }
             throwRemoteError(error)
         }
     },

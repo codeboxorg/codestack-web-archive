@@ -5,7 +5,7 @@ import { ProblemService } from './problemService'
 export const problemServiceRemote = (): ProblemService => ({
     problemList: async (pageNum) => {
         try {
-            const response = await baseAPI.get({ url: '/problem' })
+            const response = await baseAPI.get({ url: '/problem', params: { page: pageNum } })
             return response.data
         } catch (error) {
             throwRemoteError(error)

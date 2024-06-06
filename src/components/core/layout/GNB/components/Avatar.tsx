@@ -9,7 +9,7 @@ function Avatar() {
     if (!signInMember) return null
     const avatarActionList = [
         {
-            label: <Link href='/member/rrrmaster'>마이페이지</Link>,
+            label: <Link href={`/member/${signInMember.id}`}>마이페이지</Link>,
             key: 'my-page',
         },
         {
@@ -35,7 +35,7 @@ function Avatar() {
                 height={45}
                 alt='ProfileImage of the author'
             /> */}
-            <p>{signInMember.id}11</p>
+            <p>{signInMember.id}</p>
         </Dropdown>
     )
 }

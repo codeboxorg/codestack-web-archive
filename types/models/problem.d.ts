@@ -2,6 +2,7 @@ interface Problem {
     id: number
     name: string
     description: {
+        type: string
         title: string
         content: string
     }[]

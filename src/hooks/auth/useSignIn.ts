@@ -7,8 +7,9 @@ export const useSignIn = () => {
     const router = useRouter()
     const { signIn } = useAuth()
 
-    const handleMutationSuccess = (member: SignInMember) => {
-        signIn(member, { message: true })
+    const handleMutationSuccess = async (token: TokenInfo) => {
+        const a = await API.authService.member()
+        signIn(a, { message: true })
         router.push('/')
     }
 

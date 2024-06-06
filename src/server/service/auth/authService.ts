@@ -26,10 +26,14 @@ export const authServerToServerRemote = (): AuthService => ({
     },
 
     async memberInfo(accessToken) {
-        const response = await baseAPI.get({
-            url: '',
-            headers: { Authorization: `Bearer ${accessToken}` },
-        })
-        return response.data
+        try {
+            const response = await baseAPI.get({
+                url: '/auth/me',
+                headers: { Authorization: `Bearer ${accessToken}` },
+            })
+            return response.data
+        } catch {
+            return null
+        }
     },
 })

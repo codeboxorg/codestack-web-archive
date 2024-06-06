@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 function Document() {
     return (
-        <Html>
+        <Html lang='ko'>
             <Head>
                 <GA />
             </Head>
