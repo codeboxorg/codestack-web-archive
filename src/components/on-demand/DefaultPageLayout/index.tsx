@@ -1,5 +1,4 @@
 import { GNB } from '@components/core/layout'
-import { Footer } from 'antd/es/layout/layout'
 import { ReactNode } from 'react'
 import 'twin.macro'
 

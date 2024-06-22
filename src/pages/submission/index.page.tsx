@@ -5,11 +5,14 @@ import { NextSeo } from 'next-seo'
 import usePagination from 'react-use-pagination-hook'
 import { Tag } from 'antd'
 import Link from 'next/link'
+import { Converter } from '@utils/convert'
+import { useRouter } from 'next/router'
 
 type SubmissionRow = Submission
 type SubmissionColumns = ColumnsType<SubmissionRow>
 
 function SubmissionResultTag({ status }: { status: SubmissionStatus }) {
+    if (status === 'QU') return <Tag color='yellow'>대기중</Tag>
     if (status === 'AC') return <Tag color='green'>정답</Tag>
     if (status === 'WA') return <Tag color='red'>오답</Tag>
     if (status === 'CE') return <Tag color='red'>컴파일 오류</Tag>
@@ -40,9 +43,16 @@ const columns: SubmissionColumns = [
         render: (member: SubmissionRow['member']) => <Link href={`/member/${member.id}`}>{member.id}</Link>,
     },
     {
+        title: '언어',
+        dataIndex: 'language',
+        key: 'language',
+        render: (e) => e.name,
+    },
+    {
         title: '메모리 사용',
         dataIndex: 'maxMemoryUsage',
         key: 'maxMemoryUsage',
+        render: (e) => Converter.convertByte(e, 'KB'),
     },
     {
         title: '실행 시간',
@@ -59,7 +69,7 @@ const columns: SubmissionColumns = [
 
 function SubmissionPage() {
     const paginationMethods = usePagination({ numOfPage: 5 })
-
+    const router = useRouter()
     const { currentPage, setTotalPage } = paginationMethods
     const currentServerPageIndex = currentPage - 1
 
@@ -80,6 +90,9 @@ function SubmissionPage() {
                     dataSource={submissionListPagination?.content ?? []}
                     columns={columns}
                     pagination={false}
+                    onRow={(record, rowIndex) => ({
+                        onClick: (event) => router.push(`/submission/${record.id}`), // click row
+                    })}
                 />
                 <div className='flex justify-center w-full py-30'>
                     <PaginationBar {...paginationMethods} />

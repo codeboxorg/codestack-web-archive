@@ -10,7 +10,9 @@ import { useSignIn } from '@hooks/auth'
 import { Controller, useForm } from 'react-hook-form'
 import 'twin.macro'
 
-const githubClientId = `${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`
+const githubClientId = 'Ov23liXv0cGEZW2vUTKM'
+
+console.log(githubClientId)
 
 function SignInPage() {
     const {
@@ -99,6 +101,13 @@ function SignInPage() {
                                     여기
                                 </Link>
                                 에서 할 수 있어요!
+                            </div>
+                            <div>
+                                아이디나 비밀번호를 잊었을 때는,{' '}
+                                <Link className='text-blue-600/100' href='/sign-up'>
+                                    여기
+                                </Link>
+                                를 눌러주세요.
                             </div>
                         </div>
                     </div>

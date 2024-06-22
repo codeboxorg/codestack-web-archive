@@ -9,8 +9,12 @@ function Avatar() {
     if (!signInMember) return null
     const avatarActionList = [
         {
-            label: <Link href={`/member/${signInMember.id}`}>마이페이지</Link>,
+            label: <Link href={`/member/${signInMember.id}`}>내 프로필</Link>,
             key: 'my-page',
+        },
+        {
+            label: <Link href='/settings'>설정</Link>,
+            key: 'log-out',
         },
         {
             label: (
@@ -23,7 +27,7 @@ function Avatar() {
                     로그아웃
                 </button>
             ),
-            key: 'log-out',
+            key: 'setting',
         },
     ]
     return (

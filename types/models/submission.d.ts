@@ -1,4 +1,4 @@
-type SubmissionStatus = 'AC' | 'WA' | 'PE' | 'TLE' | 'MLE' | 'OLE' | 'RE' | 'CE'
+type SubmissionStatus = 'AC' | 'WA' | 'PE' | 'TLE' | 'MLE' | 'OLE' | 'RE' | 'CE' | 'QU'
 
 interface Submission {
     id: number

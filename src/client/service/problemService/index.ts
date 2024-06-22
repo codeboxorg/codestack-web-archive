@@ -1,9 +1,8 @@
 import { baseAPI } from '@client/core'
 import { throwRemoteError } from '@client/error'
-import { ProblemService } from './problemService'
 
-export const problemServiceRemote = (): ProblemService => ({
-    problemList: async (pageNum) => {
+export const problemServiceRemote = () => ({
+    problemList: async (pageNum: number) => {
         try {
             const response = await baseAPI.get({ url: '/problem', params: { page: pageNum } })
             return response.data
@@ -11,7 +10,7 @@ export const problemServiceRemote = (): ProblemService => ({
             throwRemoteError(error)
         }
     },
-    problemDetail: async (id) => {
+    problemDetail: async (id: number) => {
         try {
             const response = await baseAPI.get({ url: `/problem/${id}` })
             return response.data
@@ -19,11 +18,11 @@ export const problemServiceRemote = (): ProblemService => ({
             throwRemoteError(error)
         }
     },
-    problemSubmit: async (id, submitData) => {
+    problemSubmit: async (problemId: number, submitData: ProblemSubmitRequest) => {
         try {
             const response = await baseAPI.post({
-                url: `/problem/${id}/submit`,
-                data: { source_code: submitData.sourceCode, language_id: submitData.languageId },
+                url: `/submission`,
+                data: { source_code: submitData.sourceCode, problem_id: problemId, language_id: submitData.languageId },
             })
             return response.data
         } catch (error) {

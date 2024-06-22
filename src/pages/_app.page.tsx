@@ -1,6 +1,5 @@
 import { DefaultPageLayout } from '@components/on-demand'
 import { AntdContextRoot, GA, SEO, SSRErrorHandleContainer } from '@components/utils'
-import { ALLOWED_ONLY_TO_MEMBERS } from '@constants/route'
 import wrapper from '@store/configureStore'
 import { COLOR } from '@styles/color'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -35,7 +34,7 @@ function App({ Component, pageProps, router: { route } }: CustomAppProps) {
                 },
             }),
     )
-
+    const ALLOWED_ONLY_TO_MEMBERS = ['/submission', '/problem/[id]/submit', '/settings'] as const
     const isPermissionRequired = ALLOWED_ONLY_TO_MEMBERS.some((path) => route.startsWith(path))
 
     const pagePermissionInfo = {
